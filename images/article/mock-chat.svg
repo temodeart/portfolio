@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 620" width="1100" height="620" role="img" aria-label="Placeholder chat mockup">
+<style>
+  .them { fill: #e8e8e8 } .me { fill: #0a84ff } .ground { fill: #ffffff }
+  @media (prefers-color-scheme: dark) { .them { fill: #262626 } .ground { fill: #101010 } }
+</style>
+<rect class="ground" width="1100" height="620"/>
+<rect class="them" x="60"  y="48"  width="520" height="96" rx="34"/>
+<rect class="me"   x="600" y="176" width="330" height="56" rx="28"/>
+<rect class="them" x="60"  y="264" width="250" height="56" rx="28"/>
+<rect class="me"   x="700" y="352" width="230" height="56" rx="28"/>
+<rect class="them" x="60"  y="440" width="120" height="56" rx="28"/>
+<rect class="me"   x="780" y="528" width="150" height="56" rx="28"/>
+</svg>

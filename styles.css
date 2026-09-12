@@ -1,0 +1,790 @@
+/* =========================================================================
+   Temuujin Batbold — portfolio
+   Header, bio, tabs and the Work list map 1:1 to the Figma file
+   (dXLE4N41qRkrm3CmnVqxI7, node 2:4). Everything below that is built on
+   the same tokens.
+   ========================================================================= */
+
+:root {
+  /* Color — exactly the values from the Figma file */
+  --bg:          #ffffff;
+  --text:        #111111;  /* name, body, row titles */
+  --text-2:      #888888;  /* role line, card copy */
+  --text-3:      #a3a3a3;  /* years, dates, footer, inactive tabs */
+  --rule:        #eeeeee;  /* hairlines */
+  --rule-strong: rgba(0, 0, 0, 0.2); /* active tab underline */
+
+  /* ---------------------------------------------------------------------
+     ACCESSIBILITY NOTE — these greys are below WCAG AA (4.5:1) on white:
+       #888888 = 3.5:1   #a3a3a3 = 2.5:1
+     The design is faithful as-is. To pass AA, swap in:
+       --text-2: #6a6a6a;  --text-3: #767676;
+     --------------------------------------------------------------------- */
+
+  /* Glass — the hover material, also the card surface. On a white page the
+     blur has little to work with, so the edge lip, the cast shadow and the
+     moving sheen are what make it read as a surface. */
+  --glass-bg:    rgba(17, 17, 17, 0.035);
+  --glass-edge:  rgba(17, 17, 17, 0.07);
+  --glass-lip:   rgba(255, 255, 255, 0.95);
+  --glass-sheen: rgba(255, 255, 255, 0.9);
+  --glass-cast:  0 1px 2px rgba(17, 17, 17, 0.05), 0 10px 28px rgba(17, 17, 17, 0.07);
+  --flash:       rgba(17, 17, 17, 0.055);
+
+  /* Type */
+  --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Space */
+  --page-y:   120px;
+  --page-x:   24px;
+  --column:   680px;
+  --stack:    40px;  /* between the main blocks */
+  --row-y:    18px;  /* vertical padding inside a Work row */
+  --year-col: 104px; /* Writing: width of the year gutter */
+
+  /* Icons — masked so they take currentColor */
+  --icon-back: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23000' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 2.5V5a2 2 0 0 1-2 2H3'/%3E%3Cpath d='M5.5 4.5 3 7l2.5 2.5'/%3E%3C/svg%3E");
+  --icon-out: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23000' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 8.5 8.5 3.5'/%3E%3Cpath d='M4.6 3.5h3.9v3.9'/%3E%3C/svg%3E");
+  --icon-down: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23000' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 1.5v6'/%3E%3Cpath d='M3.4 5.4 6 8l2.6-2.6'/%3E%3Cpath d='M2.5 10.2h7'/%3E%3C/svg%3E");
+
+  /* Motion */
+  --ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:          #0b0b0b;
+    --text:        #ededed;
+    --text-2:      #9e9e9e;
+    --text-3:      #7c7c7c;
+    --rule:        #1f1f1f;
+    --rule-strong: rgba(255, 255, 255, 0.28);
+
+    --glass-bg:    rgba(255, 255, 255, 0.055);
+    --glass-edge:  rgba(255, 255, 255, 0.09);
+    --glass-lip:   rgba(255, 255, 255, 0.11);
+    --glass-sheen: rgba(255, 255, 255, 0.1);
+    --glass-cast:  0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.35);
+    --flash:       rgba(255, 255, 255, 0.075);
+  }
+}
+
+/* ---------------------------------------------------------------- reset */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+/* In-page jumps travel rather than teleport, so you keep your bearings. */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* Marks where a footnote jump landed. Spread and background share a colour,
+   so the highlight looks padded without changing the layout. */
+.is-flash {
+  border-radius: 5px;
+  animation: flash 1400ms ease-out;
+}
+
+@keyframes flash {
+  0%, 22% { background-color: var(--flash); box-shadow: 0 0 0 6px var(--flash); }
+  100%    { background-color: transparent; box-shadow: 0 0 0 6px transparent; }
+}
+
+body {
+  margin: 0;
+  padding: var(--page-y) var(--page-x);
+  display: flex;
+  justify-content: center;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+/* height:auto matters: the width/height attributes on an <img> map to CSS,
+   and a leftover height wins over aspect-ratio. */
+img { max-width: 100%; height: auto; }
+
+::selection { background: var(--text); color: var(--bg); }
+
+/* Anything that opens a new tab says so. */
+a[target="_blank"]::after {
+  content: "";
+  display: inline-block;
+  width: 0.62em;
+  height: 0.62em;
+  margin-left: 0.28em;
+  vertical-align: 0.02em;
+  background: currentColor;
+  -webkit-mask: var(--icon-out) center / contain no-repeat;
+  mask: var(--icon-out) center / contain no-repeat;
+}
+
+:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* --------------------------------------------------------------- layout */
+
+.column {
+  width: 100%;
+  max-width: var(--column);
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack);
+}
+
+/* --------------------------------------------------------------- header */
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 16px 24px;
+}
+
+.header-id { display: flex; flex-direction: column; gap: 6px; }
+
+.name {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--text);
+}
+
+.role {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--text-2);
+}
+
+/* -------------------------------------------------------- effects toggle */
+
+/* The site ships with effects off; this is the way in. The state lives on
+   <html data-fx>, set before first paint by the inline script in <head> so
+   the page never flashes the wrong mode. */
+.fx {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  height: 18px;          /* matches the name's line box, so they align */
+  margin: 0 0 0 auto;    /* the far end of the row, wrapped or not */
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: normal;
+  color: var(--text-3);
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 150ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .fx:hover { color: var(--text); }
+}
+
+.fx-switch {
+  position: relative;
+  width: 26px;
+  height: 15px;
+  border-radius: 8px;
+  background: var(--glass-bg);
+  box-shadow: inset 0 0 0 1px var(--glass-edge);
+  transition:
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 160ms var(--ease-out);
+}
+
+.fx-switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--text-3);
+  transition: transform 180ms var(--ease-out), background-color 180ms ease;
+}
+
+/* Presses answer back. */
+.fx:active .fx-switch { transform: scale(0.94); }
+
+:root[data-fx] .fx-switch {
+  background: var(--text);
+  box-shadow: none;
+}
+
+:root[data-fx] .fx-switch::after {
+  transform: translateX(11px);
+  background: var(--bg);
+}
+
+/* ------------------------------------------------------------------ bio */
+
+.bio {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-size: 15px;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.link {
+  color: inherit;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-position: from-font;
+  text-decoration-thickness: from-font;
+  transition: opacity 150ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover { opacity: 0.6; }
+}
+
+/* ----------------------------------------------------------------- tabs */
+
+.work {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 24px;
+}
+
+.tabs {
+  position: relative;
+  display: flex;
+  gap: clamp(14px, 3.4vw, 24px);
+  align-self: flex-start;
+  max-width: 100%;
+  padding-bottom: 2px; /* room for the 2px active underline */
+}
+
+.tab {
+  margin: 0;
+  padding: 4px 0 8px;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--text-3);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 150ms ease;
+}
+
+.tab[aria-selected="true"] { color: var(--text); }
+
+@media (hover: hover) and (pointer: fine) {
+  .tab:hover { color: var(--text); }
+}
+
+/* One shared underline that slides between tabs instead of five that
+   fade in and out — the movement is what says "you are here". */
+.tab-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 1px;              /* scaled to the active tab's width via scaleX */
+  height: 2px;
+  background: var(--rule-strong);
+  transform-origin: left center;
+  transform: translateX(var(--x, 0px)) scaleX(var(--w, 0));
+}
+
+.tabs[data-ready] .tab-indicator {
+  transition: transform 220ms var(--ease-in-out);
+}
+
+.panel-intro {
+  margin-bottom: 20px;
+  padding-top: 6px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-2);
+  text-wrap: pretty;
+}
+
+/* ======================================================== WORK: rows === */
+
+.rows {
+  position: relative;
+  padding-bottom: 32px;
+}
+
+.row {
+  position: relative;
+  z-index: 1;    /* content sits above the glass */
+  display: flex; /* makes the link shrink-wrap without an inline line box */
+}
+
+/* The row hugs its title rather than spanning the column — that empty
+   right-hand half is what the preview needs. */
+.row-link {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: var(--row-y) 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.row-title {
+  font-size: 14px;
+  line-height: normal;
+  color: var(--text);
+}
+
+.row-year {
+  font-size: 14px;
+  line-height: normal;
+  color: var(--text-3);
+}
+
+/* ------------------------------------------------------ WORK: the glass */
+
+/* One pane of glass for the whole list: it travels between rows rather
+   than fading out here and in again there, which is both cheaper (a single
+   backdrop-filter layer) and closer to how the material actually behaves.
+   width/height are animated, which is normally off-limits — but this is one
+   absolutely positioned element with no children, so nothing else relayouts. */
+.row-glass {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--w, 0px);
+  height: var(--h, 0px);
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(var(--x, 0px), var(--y, 0px));
+  transition: opacity 140ms ease;              /* leaving: quick */
+}
+
+.row-glass[data-visible] {
+  opacity: 1;
+  transition: opacity 180ms var(--ease-out);   /* arriving: a beat softer */
+}
+
+/* Travel is only enabled once the glass is already on screen, so it never
+   slides in from the top of the list on the first hover. */
+.row-glass[data-travel] {
+  transition:
+    opacity 180ms var(--ease-out),
+    transform 260ms var(--ease-out),
+    width 260ms var(--ease-out),
+    height 260ms var(--ease-out);
+}
+
+.row-glass::before,
+.row-glass::after {
+  content: "";
+  position: absolute;
+  inset: 4px -20px;           /* breathes past the title */
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.row-glass::before {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(10px) saturate(1.6);
+  backdrop-filter: blur(10px) saturate(1.6);
+  box-shadow:
+    inset 0 0 0 1px var(--glass-edge),
+    inset 0 1px 0 var(--glass-lip),
+    var(--glass-cast);
+}
+
+/* The specular highlight, tracking the pointer — the part that makes it
+   read as liquid rather than as a frosted rectangle. */
+.row-glass::after {
+  background: radial-gradient(
+    200px circle at var(--mx, 50%) var(--my, 50%),
+    var(--glass-sheen),
+    transparent 65%
+  );
+  opacity: 0.7;
+}
+
+/* ==================================================== WORK: preview ==== */
+
+/* Sits just right of the list rather than out against the window edge, so
+   it reads as belonging to the row you're on. Vertically centred on the tab
+   section rather than on the viewport, which keeps it out of the bio — the
+   one block of text that runs the full width of the column. Hidden below
+   1240px, where there is no longer room for it. */
+.preview {
+  display: none;
+  position: fixed;
+  top: var(--top, 50%);
+  left: var(--left, 50%);
+  z-index: 5;
+  translate: 0 -50%;
+  transform: translateX(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+@media (min-width: 1240px) {
+  .preview { display: block; }
+}
+
+.preview[data-visible] {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out);
+}
+
+/* Sized by script.js from each image's own proportions — portrait art stays
+   portrait. The frame morphs between them rather than snapping. */
+.preview-frame {
+  position: relative;
+  width: var(--w, 320px);
+  height: var(--h, 200px);
+  border-radius: 12px;
+  overflow: clip;
+  box-shadow: inset 0 0 0 1px var(--glass-edge), var(--glass-cast);
+}
+
+.preview-frame[data-morph] {
+  transition: width 260ms var(--ease-out), height 260ms var(--ease-out);
+}
+
+/* Two stacked layers so one snapshot crossfades into the next instead of
+   blinking through the empty frame. */
+.preview-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.preview-layer[data-on] { opacity: 1; }
+
+.preview-layer img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===================================================== WRITING: list === */
+
+.writing-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--year-col) 1fr auto;
+  align-items: baseline;
+  gap: 0 16px;
+  padding: 14px 0;
+}
+
+/* The short rule separates entries inside a year. */
+.writing-row::after {
+  content: "";
+  position: absolute;
+  left: var(--year-col);
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* A row carrying a year opens a new group, so its rule runs the full width
+   — including under the year itself. It lands exactly on the previous row's
+   short rule and simply covers it. */
+.writing-row:has(.writing-year):not(:first-child)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: var(--rule);
+}
+
+.writing-year {
+  grid-column: 1;
+  font-size: 14px;
+  line-height: normal;
+  color: var(--text-3);
+}
+
+.writing-link {
+  grid-column: 2;
+  font-size: 14px;
+  line-height: normal;
+  color: var(--text);
+  text-decoration: none;
+  justify-self: start;
+}
+
+/* Stretched so the whole row is the target, not just the title. */
+.writing-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.writing-date {
+  grid-column: 3;
+  font-size: 14px;
+  line-height: normal;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hovering one entry recedes the rest. The rules stay put — only the
+   contents dim, so the list keeps its structure. */
+.writing-row > * { transition: opacity 200ms ease; }
+
+@media (hover: hover) and (pointer: fine) {
+  .writing:hover .writing-row > * { opacity: 0.35; }
+  .writing .writing-row:hover > * { opacity: 1; }
+}
+
+.writing:focus-within .writing-row > * { opacity: 0.35; }
+.writing .writing-row:focus-within > * { opacity: 1; }
+
+/* ======================================================== BENTO cards == */
+
+.bento {
+  display: grid;
+  gap: 12px;
+}
+
+.bento-apps  { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.bento-games { grid-template-columns: minmax(0, 1fr); }
+
+@media (max-width: 560px) {
+  .bento-apps { grid-template-columns: minmax(0, 1fr); }
+}
+
+.card {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  background: var(--glass-bg);
+  box-shadow: inset 0 0 0 1px var(--glass-edge);
+  overflow: clip;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 160ms var(--ease-out), box-shadow 180ms ease;
+}
+
+.card:active { transform: scale(0.99); }
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    box-shadow: inset 0 0 0 1px var(--glass-edge), var(--glass-cast);
+  }
+}
+
+.card-body { padding: 20px; }
+
+.card-title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--text);
+}
+
+.card-text {
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-2);
+  text-wrap: pretty;
+}
+
+.card-app { aspect-ratio: 1; }
+
+/* Reserve the icon's corner so long copy never runs underneath it. */
+.card-app .card-body { padding-bottom: 84px; }
+
+.card-icon {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+}
+
+.card-visual {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* ======================================================== ABOUT: prose = */
+
+.prose {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-top: 6px;
+  font-size: 15px;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.prose-heading {
+  margin-bottom: 14px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--text-3);
+}
+
+.prose-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 15px;
+}
+
+.prose-links a {
+  align-self: flex-start;
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: opacity 150ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .prose-links a:hover { opacity: 0.6; }
+}
+
+/* ------------------------------------------------------------- button */
+
+.button {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 15px;
+  border-radius: 10px;
+  background: var(--glass-bg);
+  box-shadow: inset 0 0 0 1px var(--glass-edge), inset 0 1px 0 var(--glass-lip);
+  font-size: 14px;
+  line-height: normal;
+  color: var(--text);
+  text-decoration: none;
+  transition: transform 160ms var(--ease-out), box-shadow 150ms ease;
+}
+
+.button::before {
+  content: "";
+  width: 13px;
+  height: 13px;
+  background: currentColor;
+  -webkit-mask: var(--icon-down) center / contain no-repeat;
+  mask: var(--icon-down) center / contain no-repeat;
+}
+
+/* Pressed state, so it answers the click. */
+.button:active { transform: scale(0.97); }
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    box-shadow: inset 0 0 0 1px var(--glass-edge), inset 0 1px 0 var(--glass-lip), var(--glass-cast);
+  }
+}
+
+/* ============================================================= shared == */
+
+.empty {
+  display: block;
+  padding: var(--row-y) 0;
+  font-size: 14px;
+  line-height: normal;
+  color: var(--text-3);
+}
+
+.writing-row.empty::after,
+.writing-row.empty::before { content: none; }
+
+/* Panel content settling in after a tab change: short, staggered, and
+   cheap — it only bridges the swap, it is not the point of the page. */
+.panel[data-enter] .row,
+.panel[data-enter] .writing-row,
+.panel[data-enter] .bento > li,
+.panel[data-enter] .prose > * {
+  animation: row-in 200ms var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 24ms);
+}
+
+@keyframes row-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* -------------------------------------------------------------- footer */
+
+.rule {
+  height: 32px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.footer-text {
+  font-size: 13px;
+  line-height: normal;
+  color: var(--text-3);
+}
+
+/* ---------------------------------------------------------- responsive */
+
+@media (max-width: 640px) {
+  :root { --page-y: 64px; --page-x: 20px; --year-col: 64px; }
+}
+
+/* ------------------------------------------------------ reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .tabs[data-ready] .tab-indicator { transition-duration: 0ms; }
+
+  /* Everything still appears — it all carries information. It just stops
+     moving. */
+  .row-glass[data-travel] { transition: opacity 180ms ease; }
+  .preview, .preview[data-visible] { transform: none; transition: opacity 180ms ease; }
+  .preview-frame[data-morph] { transition: none; }
+
+  .panel[data-enter] .row,
+  .panel[data-enter] .writing-row,
+  .panel[data-enter] .bento > li,
+  .panel[data-enter] .prose > * {
+    animation: row-fade 150ms ease both;
+    animation-delay: 0ms;
+  }
+
+  @keyframes row-fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+}

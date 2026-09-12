@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" width="1200" height="1600" role="img" aria-label="Let’s Naadam with Tino Driver">
+  <style>
+    .bg { fill: #f2f2f2 } .fr { stroke: #e4e4e4 } .t { fill: #b3b3b3 } .s { fill: #cfcfcf }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #151515 } .fr { stroke: #262626 } .t { fill: #585858 } .s { fill: #3c3c3c }
+    }
+    text { font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif }
+  </style>
+  <rect class="bg" width="1200" height="1600"/>
+  <rect class="fr" x="20" y="20" width="1160" height="1560" rx="8" fill="none" stroke-width="2"/>
+  <text class="t" x="600" y="796" text-anchor="middle" font-size="74" font-weight="500">Let’s Naadam with Tino Driver</text>
+  <text class="s" x="600" y="904" text-anchor="middle" font-size="46">Placeholder — swap in the real image</text>
+</svg>

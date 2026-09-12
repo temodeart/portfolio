@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="Aise icon placeholder">
+  <style>
+    .b { fill: #e9e9e9 } .e { stroke: #dcdcdc }
+    @media (prefers-color-scheme: dark) { .b { fill: #242424 } .e { stroke: #333 } }
+  </style>
+  <rect class="b" width="256" height="256" rx="58"/>
+  <rect class="e" x="1" y="1" width="254" height="254" rx="57" fill="none" stroke-width="2"/>
+</svg>

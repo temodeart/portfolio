@@ -1,0 +1,110 @@
+/* =========================================================================
+   Effects — everything in this file is scoped to <html data-fx>, so it
+   costs nothing while the toggle is off. Loaded on every page.
+
+   The site's default, effects-off state is the design of record. Nothing in
+   here may change layout, hide content, or make anything harder to read —
+   if an effect needs the page to move, it belongs in the page, not here.
+   ========================================================================= */
+
+/* ------------------------------------------------------------------------
+   PLACEHOLDER — a soft light that follows the pointer, so the toggle has
+   something to prove today. Replace it with the real effects; the --fx-x /
+   --fx-y variables effects.js publishes are yours to use.
+   ------------------------------------------------------------------------ */
+
+:root[data-fx] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    460px circle at var(--fx-x, 50%) var(--fx-y, 35%),
+    var(--fx-glow),
+    transparent 70%
+  );
+  opacity: 0;
+  animation: fx-in 500ms var(--ease-out) forwards;
+}
+
+@keyframes fx-in {
+  to { opacity: 1; }
+}
+
+:root {
+  --fx-glow: rgba(17, 17, 17, 0.055);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root { --fx-glow: rgba(255, 255, 255, 0.07); }
+}
+
+/* ------------------------------------------------------------------------
+   Variable proximity — letters near the pointer gain weight and optical
+   size. effects.js splits text into .fx-ch spans while the toggle is on and
+   puts the original text nodes back when it goes off.
+
+   Letters stay `display: inline` — inline boxes create no line-break
+   opportunities, so text still wraps exactly where it did. Words are
+   `inline-block` because the particle scroll has to transform them, and
+   `transform` does not apply to an inline box.
+   ------------------------------------------------------------------------ */
+
+:root[data-fx] .fx-ch {
+  font-synthesis-weight: none; /* never fake a weight the axis can reach */
+}
+
+:root[data-fx] .fx-w {
+  display: inline-block;
+  white-space: nowrap; /* a word is atomic; it must not break mid-flight */
+  /* deliberately no will-change: there are thousands of these, and asking
+     for a compositor layer each would cost far more than it saves */
+}
+
+/* ------------------------------------------------------------------------
+   Click spark — one fixed canvas over the whole viewport. It never takes a
+   pointer event, so everything underneath stays clickable.
+   ------------------------------------------------------------------------ */
+
+:root[data-fx] .fx-dust {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9998;
+  pointer-events: none;
+  user-select: none;
+}
+
+:root[data-fx] .fx-spark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ------------------------------------------------------------------------
+   Cloth — the Work preview hangs on fabric. The canvas bleeds 48px past the
+   frame so a billow isn't clipped, and it lives outside .preview-frame,
+   which clips its own contents.
+
+   The frame's own surface steps aside: the cloth draws the image, its own
+   rounded hem and its own contact shadow. The layers keep their opacity
+   transition (it feeds the texture composite) but stop painting.
+   ------------------------------------------------------------------------ */
+
+:root[data-fx] .preview[data-cloth] .preview-frame {
+  visibility: hidden;
+  box-shadow: none;
+}
+
+:root[data-fx] .fx-cloth {
+  position: absolute;
+  top: -48px;
+  left: -48px;
+  width: calc(100% + 96px);
+  height: calc(100% + 96px);
+  pointer-events: none;
+}
