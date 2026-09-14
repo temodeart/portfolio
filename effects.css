@@ -108,3 +108,36 @@
   height: calc(100% + 96px);
   pointer-events: none;
 }
+
+/* ------------------------------------------------------------------------
+   Page snap — the transition canvas, and the two holds that keep the page
+   from drawing itself while the dust is standing in for it.
+
+   `data-fx-snap` is set by the inline <head> script before first paint, so
+   an arriving page never flashes its content before assembling. The failsafe
+   animation reveals it after 2.5s regardless: if effects.js fails to run,
+   the page must never stay blank.
+   ------------------------------------------------------------------------ */
+
+:root[data-fx-snap] body > *:not(canvas) {
+  visibility: hidden;
+  animation: fx-snap-failsafe 0s 2.5s forwards;
+}
+
+@keyframes fx-snap-failsafe {
+  to { visibility: visible; }
+}
+
+:root[data-fx-snapping] body > *:not(canvas) {
+  opacity: var(--fx-snap-op, 1);
+}
+
+:root[data-fx-snap] .fx-snap,
+:root[data-fx-snapping] .fx-snap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  pointer-events: none;
+  user-select: none;
+}

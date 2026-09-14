@@ -256,10 +256,24 @@ like cards and figure frames (`roundRect`). The strip is sampled on a
 pixel's colour. The scatter, gravity, swirl, drift, stagger and settle maths
 are ported straight from the point shader.
 
-All twelve props are at the docs-demo values — `point` 0.68, `band` 420,
-`density` 2, `size` 1.25, `spread` 220, `gravity` 0.35, `drift` 0.7, `swirl`
-60, `stagger` 0.7, `fade` 0.85, `settle` 1.2, `smoothing` 0.6. `size` is the
-grain size throughout rather than only when fully scattered — see below.
+Tuned to disturb only the bottom ~10% of the screen: `point` 0.90, `band` 130,
+`spread` 70. Those three move together — dropping the line without shrinking
+the band leaves most of the transition off screen (the effect all but
+disappears), and without shrinking the spread the grains drift far above the
+line anyway. The ratio between them is the docs demo's, scaled down 3.2x.
+
+The rest are at the docs-demo values: `density` 2, `size` 1.25, `gravity`
+0.35, `drift` 0.7, `swirl` 60, `stagger` 0.7, `fade` 0.85, `settle` 1.2,
+`smoothing` 0.6. `size` is the grain size throughout rather than only when
+fully scattered — see below.
+
+**A consequence of the small zone:** an element dissolves as one unit and its
+progress is read at its *top*, so only elements shorter than the zone ever
+dissolve fully on screen. Text lines do; figures, cards and game art scroll
+past crisp. That is geometry, not a bug — a 400px figure cannot dissolve
+inside a 99px window without spilling far above it. Raise the zone (lower
+`POINT`, raise `BAND` and `SPREAD` together) if you want big elements dusting
+too.
 
 Four things that matter in the implementation:
 
@@ -271,7 +285,7 @@ Four things that matter in the implementation:
   glyph stem mostly lands on partial coverage, and centre-sampling turns solid
   type into pale speckle.
 - **An element and its grains share one progress value**, taken at the
-  element's middle row. Letting each row run on its own schedule produced a
+  element's top row. Letting each row run on its own schedule produced a
   chunky stage in the middle of the transition: rows that had landed were
   rebuilt at grain resolution while the element stayed hidden for the rows
   that hadn't, so you read a 2px bitmap of the type. Locked together, an
@@ -329,6 +343,55 @@ The frame's own surface steps aside while the cloth is up: the cloth draws the
 image, its own rounded hem and its own shadow, so `.preview-frame` goes
 `visibility: hidden` — the layers keep their opacity transition, which is what
 feeds the texture composite.
+
+**Page snap** — navigating turns the page to dust and rebuilds the next one
+out of it. Same grains as the scroll effect, driven by one global clock
+instead of per-row scroll progress.
+
+How a navigation runs:
+
+1. A click on a same-origin link is intercepted. The next page is `fetch`ed
+   immediately so the load happens *during* the dissolve rather than after it.
+2. The page cross-fades out under the dust while the grains lift away
+   (`GRAVITY` is negative here) on a diagonal sweep — `SWEEP` sets how much of
+   each grain's delay is positional versus random, so the page goes in a wave
+   rather than all at once.
+3. After `OUT_MS`, the real navigation happens.
+4. The next page arrives **already hidden**: the inline `<head>` script sets
+   `data-fx-snap` before first paint, so there's no flash of content before
+   the assemble. The same grains run backwards, and the page fades in
+   underneath them over the last quarter.
+
+   `effects.js` also falls back to reading the `fxsnap` flag from
+   `sessionStorage` directly, in case the attribute never arrives — a visitor
+   can be holding a cached copy of the HTML from before that inline script
+   existed. They still get the transition, just with one frame of the page
+   visible first, which beats it silently not happening.
+
+Grains stay dust-sized throughout and the page cross-fades under them, so
+there is never a frame where the canvas is showing a 2px rebuild of the page
+— the same reason the scroll dust works that way.
+
+**On the dissolve ending:** it deliberately does *not* restore the page before
+navigating. Tearing down the `--fx-snap-op` hold snaps the page back to full
+opacity, and `location.href` does not commit for another frame or more — so
+the page flashes back into view before vanishing again. A separate 4s timer
+restores it only if the navigation never commits.
+
+**The failsafe matters more than the effect.** If `effects.js` fails to run,
+`data-fx-snap` would leave the page blank forever. `effects.css` carries a
+zero-duration animation with a 2.5s delay that reveals the content regardless.
+Never remove it without replacing it with something equivalent.
+
+Back and forward are covered too: the head script also checks
+`PerformanceNavigationTiming.type === 'back_forward'`, so returning to a page
+assembles it. The outgoing dissolve can't run on a back button — the browser
+has already left — so back gets the assemble only.
+
+Links that opt out: `target="_blank"`, `download`, `href="#"` and anything
+starting with `#` (same-page anchors, including the footnote jumps),
+cross-origin, `mailto:`, and any click already handled by another listener
+(`defaultPrevented`) or with a modifier key held.
 
 **Also in there:** a soft light that follows the cursor. That one is a
 placeholder from before — replace it whenever.

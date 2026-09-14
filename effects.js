@@ -420,6 +420,80 @@
   })();
 
 
+  /* ============================================ shared: painting the page */
+
+  /* Both the scroll dust and the page transition need the page redrawn into
+     a canvas so it can be sampled into grains. The DOM has already done the
+     hard part — it knows where every word sits, in what font, at what weight
+     — so this just replays that with fillText, drawImage and roundRect. */
+
+  const collectSources = () => {
+    const list = textGrid.words().map((word) => ({ el: word.el, kind: 'text', word }));
+
+    for (const img of document.querySelectorAll('img')) {
+      if (img.closest('.preview')) continue;
+      list.push({ el: img, kind: 'image', word: null });
+    }
+
+    // Surfaces with a fill of their own: cards, figure frames, the rule.
+    for (const box of document.querySelectorAll('.card, .figure-frame, .rule')) {
+      list.push({ el: box, kind: 'box', word: null });
+    }
+
+    return list;
+  };
+
+  const paintSources = (ctx, sources, top, height) => {
+    const offset = window.scrollY;
+    const bottom = top + height;
+    ctx.textBaseline = 'alphabetic';
+
+    // Boxes first, then pictures, then type — the page's own paint order.
+    for (const pass of ['box', 'image', 'text']) {
+      for (const entry of sources) {
+        if (entry.kind !== pass) continue;
+        const rect = entry.el.getBoundingClientRect();
+        if (rect.width === 0 && rect.height === 0) continue;
+
+        const y = rect.top + offset;
+        if (y + rect.height < top || y > bottom) continue;
+
+        const dy = y - top;
+        const style = getComputedStyle(entry.el);
+
+        if (pass === 'box') {
+          const fill = style.backgroundColor;
+          if (!fill || fill === 'rgba(0, 0, 0, 0)' || fill === 'transparent') continue;
+          ctx.fillStyle = fill;
+          ctx.beginPath();
+          ctx.roundRect(rect.left, dy, rect.width, rect.height, parseFloat(style.borderRadius) || 0);
+          ctx.fill();
+          continue;
+        }
+
+        if (pass === 'image') {
+          try {
+            ctx.drawImage(entry.el, rect.left, dy, rect.width, rect.height);
+          } catch { /* not decoded yet */ }
+          continue;
+        }
+
+        ctx.font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+        ctx.fillStyle = style.color;
+        const metrics = ctx.measureText(entry.el.textContent);
+        const ascent = metrics.fontBoundingBoxAscent || parseFloat(style.fontSize) * 0.8;
+        const baseline = dy + (rect.height - (ascent + (metrics.fontBoundingBoxDescent || 0))) / 2 + ascent;
+        ctx.fillText(entry.el.textContent, rect.left, baseline);
+
+        // fillText draws no underline, and the word carries its own.
+        if (style.textDecorationLine.includes('underline')) {
+          ctx.fillStyle = style.textDecorationColor || style.color;
+          ctx.fillRect(rect.left, baseline + 2, rect.width, 1);
+        }
+      }
+    }
+  };
+
   /* ================================================== effect: particle scroll */
 
   /* The idea from Canvas UI's <ParticleScroll />: everything below a
@@ -442,11 +516,11 @@
      proportional to grains rather than to draw calls. */
 
   const particleScroll = (() => {
-    const POINT = 0.68;       // viewport fraction of the formation line
-    const BAND = 420;         // px over which a row reassembles
+    const POINT = 0.9;        // viewport fraction of the formation line
+    const BAND = 130;         // px over which a row reassembles
     const DENSITY = 2;        // px between grains
     const SIZE = 1.25;        // grain size in px when fully scattered
-    const SPREAD = 220;       // px a grain scatters from home
+    const SPREAD = 70;        // px a grain scatters from home
     const GRAVITY = 0.35;     // downward bias of the scattered cloud
     const DRIFT = 0.7;        // idle float speed while scattered
     const SWIRL = 60;         // px of sideways arc on the way home
@@ -485,19 +559,7 @@
 
     /* ----- what there is to rasterise ----- */
 
-    const collect = () => {
-      sources = textGrid.words().map((word) => ({ el: word.el, kind: 'text', word }));
-
-      for (const img of document.querySelectorAll('img')) {
-        if (img.closest('.preview')) continue;
-        sources.push({ el: img, kind: 'image', word: null });
-      }
-
-      // Surfaces with a fill of their own: cards, figure frames, the rule.
-      for (const box of document.querySelectorAll('.card, .figure-frame, .rule, .row-glass')) {
-        sources.push({ el: box, kind: 'box', word: null });
-      }
-    };
+    const collect = () => { sources = collectSources(); };
 
     /* ----- draw the page into an offscreen strip ----- */
 
@@ -513,56 +575,7 @@
       }
 
       sctx.clearRect(0, 0, width, height);
-      sctx.textBaseline = 'alphabetic';
-
-      const offset = window.scrollY;
-      const bottom = top + height;
-
-      // Boxes first, then pictures, then type — the page's own paint order.
-      for (const pass of ['box', 'image', 'text']) {
-        for (const entry of sources) {
-          if (entry.kind !== pass) continue;
-          const rect = entry.el.getBoundingClientRect();
-          if (rect.width === 0 && rect.height === 0) continue;
-
-          const y = rect.top + offset;
-          if (y + rect.height < top || y > bottom) continue;
-
-          const dy = y - top;
-          const style = getComputedStyle(entry.el);
-
-          if (pass === 'box') {
-            const fill = style.backgroundColor;
-            if (!fill || fill === 'rgba(0, 0, 0, 0)' || fill === 'transparent') continue;
-            const radius = parseFloat(style.borderRadius) || 0;
-            sctx.fillStyle = fill;
-            sctx.beginPath();
-            sctx.roundRect(rect.left, dy, rect.width, rect.height, radius);
-            sctx.fill();
-            continue;
-          }
-
-          if (pass === 'image') {
-            try {
-              sctx.drawImage(entry.el, rect.left, dy, rect.width, rect.height);
-            } catch { /* not decoded yet */ }
-            continue;
-          }
-
-          sctx.font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
-          sctx.fillStyle = style.color;
-          const metrics = sctx.measureText(entry.el.textContent);
-          const ascent = metrics.fontBoundingBoxAscent || parseFloat(style.fontSize) * 0.8;
-          const baseline = dy + (rect.height - (ascent + (metrics.fontBoundingBoxDescent || 0))) / 2 + ascent;
-          sctx.fillText(entry.el.textContent, rect.left, baseline);
-
-          // fillText draws no underline, and the word carries its own.
-          if (style.textDecorationLine.includes('underline')) {
-            sctx.fillStyle = style.textDecorationColor || style.color;
-            sctx.fillRect(rect.left, baseline + 2, rect.width, 1);
-          }
-        }
-      }
+      paintSources(sctx, sources, top, height);
 
       stripTop = top;
       stripHeight = height;
@@ -778,7 +791,12 @@
           const top = rect.top + scroll;
           const firstRow = Math.max(0, (top / DENSITY) | 0);
           const lastRow = Math.min(rows.length - 1, ((top + rect.height) / DENSITY) | 0);
-          const p = rows[Math.min(rows.length - 1, ((top + rect.height / 2) / DENSITY) | 0)];
+          // Taken at the element's TOP, not its middle. An element dissolves
+          // as one unit, so reading the middle meant a tall figure whose
+          // centre had crossed the line took its whole body with it —
+          // throwing dust far above the line. Reading the top means nothing
+          // starts dissolving until it is wholly past the line.
+          const p = rows[Math.min(rows.length - 1, (top / DENSITY) | 0)];
 
           for (let r = firstRow; r <= lastRow; r++) {
             if (p < override[r]) override[r] = p;
@@ -1508,9 +1526,335 @@ void main () {
     };
   })();
 
+
+  /* ================================================== effect: page snap */
+
+  /* Navigating turns the page to dust and rebuilds the next one out of it.
+
+     Same grains as the scroll effect — the page is redrawn with fillText and
+     sampled on a grid — but driven by one global clock instead of per-row
+     scroll progress. A link click is intercepted, the page dissolves, and
+     only then does the navigation happen; the next page arrives already
+     hidden (an inline <head> script sets data-fx-snap before first paint)
+     and assembles itself out of the same dust.
+
+     Grains stay dust-sized the whole way and the page cross-fades underneath
+     them, so there is never a moment where the canvas is showing a
+     2px-resolution rebuild of the page. */
+
+  const pageSnap = (() => {
+    const OUT_MS = 540;
+    const IN_MS = 700;
+    const DENSITY = 2;
+    const SIZE = 1.25;
+    const SPREAD = 260;
+    const GRAVITY = -0.5;   // negative: the dust lifts away
+    const SWIRL = 70;
+    const STAGGER = 0.6;
+    const DRIFT = 0.9;
+    const ALPHA_MIN = 24;
+    const SWEEP = 0.65;     // how much of the delay is positional vs random
+
+    let canvas = null, ctx = null, image = null, pixels = null, buffer = null;
+    let source = null, sctx = null;
+    let gx, gy, gr, gg, gb, ga, gDelay, gOffX, gOffY, gSwX, gSwY, gDrA, gDrB, gPhA, gPhB;
+    let grains = 0;
+    let phase = null;       // 'out' | 'in'
+    let started = 0;
+    let destination = null;
+    let onClick = null;
+    let stalled = 0;
+
+    const hash = (n) => {
+      const x = Math.sin(n * 127.1 + 311.7) * 43758.5453123;
+      return x - Math.floor(x);
+    };
+
+    const smooth = (a, b, x) => {
+      const t = Math.min(Math.max((x - a) / (b - a), 0), 1);
+      return t * t * (3 - 2 * t);
+    };
+
+    const build = () => {
+      const width = document.documentElement.clientWidth;
+      const height = document.documentElement.clientHeight;
+
+      if (!source) {
+        source = document.createElement('canvas');
+        sctx = source.getContext('2d', { willReadFrequently: true });
+      }
+      source.width = width;
+      source.height = height;
+      sctx.clearRect(0, 0, width, height);
+      paintSources(sctx, collectSources(), window.scrollY, height);
+
+      const data = sctx.getImageData(0, 0, width, height).data;
+      const cols = Math.floor(width / DENSITY);
+      const lines = Math.floor(height / DENSITY);
+      const cap = cols * lines;
+
+      gx = new Float32Array(cap); gy = new Float32Array(cap);
+      gr = new Uint8Array(cap); gg = new Uint8Array(cap); gb = new Uint8Array(cap);
+      ga = new Uint8Array(cap);
+      gDelay = new Float32Array(cap);
+      gOffX = new Float32Array(cap); gOffY = new Float32Array(cap);
+      gSwX = new Float32Array(cap); gSwY = new Float32Array(cap);
+      gDrA = new Float32Array(cap); gDrB = new Float32Array(cap);
+      gPhA = new Float32Array(cap); gPhB = new Float32Array(cap);
+      grains = 0;
+
+      const half = (DENSITY / 2) | 0;
+
+      for (let row = 0; row < lines; row++) {
+        const top = row * DENSITY;
+        for (let col = 0; col < cols; col++) {
+          const left = col * DENSITY;
+
+          let at = 0;
+          let a = 0;
+          for (let cy = 0; cy < DENSITY; cy++) {
+            const base = (top + cy) * width * 4;
+            for (let cx = 0; cx < DENSITY; cx++) {
+              const i = base + (left + cx) * 4;
+              if (data[i + 3] > a) { a = data[i + 3]; at = i; }
+            }
+          }
+          if (a < ALPHA_MIN) continue;
+
+          const px = left + half;
+          const py = top + half;
+          const key = px * 0.618 + py * 1.414;
+          const h1 = hash(key);
+          const h2 = hash(key + 1.7);
+          const h3 = hash(key + 5.5);
+          const h4 = hash(key + 8.4);
+
+          let dirX = h2 - 0.5;
+          let dirY = h3 - 0.5;
+          const len = Math.hypot(dirX, dirY) || 1;
+          dirX /= len; dirY /= len;
+          const reach = 0.08 + 0.92 * h4 ** 2.4;
+
+          // Delay is mostly positional, so the page sweeps rather than
+          // dissolving everywhere at once.
+          const sweep = (px / width) * 0.45 + (py / height) * 0.55;
+
+          const n = grains++;
+          gx[n] = px; gy[n] = py;
+          gr[n] = data[at]; gg[n] = data[at + 1]; gb[n] = data[at + 2]; ga[n] = a;
+          gDelay[n] = STAGGER * (SWEEP * sweep + (1 - SWEEP) * h1);
+          gOffX[n] = dirX * SPREAD * reach;
+          gOffY[n] = dirY * SPREAD * reach + GRAVITY * SPREAD * (0.25 + 0.75 * h4);
+          gSwX[n] = -dirY * (h2 - 0.5) * 2 * SWIRL;
+          gSwY[n] = dirX * (h2 - 0.5) * 2 * SWIRL;
+          gDrA[n] = 4 + 5 * h2; gDrB[n] = 3.5 + 5.5 * h3;
+          gPhA[n] = h3 * 40; gPhB[n] = h2 * 40;
+        }
+      }
+
+      if (!canvas) {
+        canvas = document.createElement('canvas');
+        canvas.className = 'fx-snap';
+        canvas.setAttribute('aria-hidden', 'true');
+        ctx = canvas.getContext('2d');
+        document.body.append(canvas);
+      }
+      if (canvas.width !== width || canvas.height !== height) {
+        canvas.width = width;
+        canvas.height = height;
+        image = ctx.createImageData(width, height);
+        pixels = image.data;
+        buffer = new Uint32Array(pixels.buffer);
+      }
+    };
+
+    const clear = () => {
+      clearTimeout(stalled);
+      stalled = 0;
+      if (canvas) canvas.remove();
+      canvas = null; ctx = null; image = null; pixels = null; buffer = null;
+      source = null; sctx = null; grains = 0; phase = null;
+      root.removeAttribute('data-fx-snapping');
+      root.style.removeProperty('--fx-snap-op');
+    };
+
+    const begin = (next, url) => {
+      phase = next;
+      destination = url || null;
+      root.setAttribute('data-fx-snapping', '');
+      root.style.setProperty('--fx-snap-op', next === 'out' ? '1' : '0');
+      build();
+      root.removeAttribute('data-fx-snap');   // the head script's hold
+      started = performance.now();
+    };
+
+    return {
+      start() {
+        if (reduceMotion.matches) return;
+
+        // Arriving from a snap, or from the back/forward buttons.
+        //
+        // The attribute is the good path: the inline <head> script sets it
+        // before first paint, so the page never shows itself before
+        // assembling. But a visitor can be holding a cached copy of the HTML
+        // from before that script existed, and then the attribute never
+        // arrives. Falling back to the flag itself means they still get the
+        // transition — just with a frame of the page visible first, which
+        // beats the effect silently not happening.
+        let arriving = root.hasAttribute('data-fx-snap');
+        try {
+          if (!arriving && sessionStorage.getItem('fxsnap') === '1') arriving = true;
+          sessionStorage.removeItem('fxsnap');
+        } catch { /* private window */ }
+
+        if (arriving) requestAnimationFrame(() => begin('in'));
+
+        onClick = (event) => {
+          if (phase || event.defaultPrevented) return;
+          if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+          const link = event.target.closest('a[href]');
+          if (!link || link.target === '_blank' || link.hasAttribute('download')) return;
+
+          const raw = link.getAttribute('href');
+          if (!raw || raw === '#' || raw.startsWith('#')) return;   // placeholder or same-page
+
+          let url;
+          try { url = new URL(link.href, location.href); } catch { return; }
+          if (url.origin !== location.origin) return;
+          if (url.pathname === location.pathname) return;           // same document
+
+          event.preventDefault();
+          try { sessionStorage.setItem('fxsnap', '1'); } catch { /* private window */ }
+
+          // Warm the next page while this one dissolves, so the wait is
+          // spent on the animation rather than after it.
+          fetch(url.href, { credentials: 'same-origin' }).catch(() => {});
+
+          begin('out', url.href);
+        };
+
+        document.addEventListener('click', onClick);
+      },
+
+      frame() {
+        if (!phase || !ctx) return;
+
+        const out = phase === 'out';
+        const span = out ? OUT_MS : IN_MS;
+        const t = Math.min((performance.now() - started) / span, 1);
+
+        if (t >= 1) {
+          if (out) {
+            const url = destination;
+            phase = null;
+
+            // Deliberately NOT clear() here. clear() drops the --fx-snap-op
+            // hold, which snaps the page back to full opacity — and the
+            // navigation does not commit for another frame or more, so the
+            // page flashes back into view before vanishing again. The page
+            // is about to be replaced; leave it hidden.
+            if (!url) { clear(); return; }
+
+            // Unless the navigation never happens. Then give the page back.
+            stalled = setTimeout(clear, 4000);
+            location.href = url;
+            return;
+          }
+          clear();
+          return;
+        }
+
+        // The page itself cross-fades under the dust, so the canvas never has
+        // to stand in for it at grain resolution.
+        root.style.setProperty('--fx-snap-op', out
+          ? (1 - smooth(0, 0.3, t)).toFixed(3)
+          : smooth(0.72, 1, t).toFixed(3));
+
+        const width = canvas.width;
+        const height = canvas.height;
+        buffer.fill(0);
+
+        const tt = (performance.now() - started) / 1000 * DRIFT;
+
+        for (let n = 0; n < grains; n++) {
+          const delay = gDelay[n];
+          const local = Math.min(Math.max((t - delay) / Math.max(1 - delay, 1e-3), 0), 1);
+          // 'in' runs the same journey backwards
+          const k = out ? local : 1 - local;
+
+          // How far from home: 0 at home, 1 fully scattered.
+          const away = 1 - (1 - k) ** 2.2;
+          if (away <= 0.0001 && !out) continue;
+
+          const arc = Math.sin((1 - away) * Math.PI);
+          const amp = away * 6;
+
+          const x = gx[n] + gOffX[n] * away + gSwX[n] * arc
+            + Math.sin(tt * gDrA[n] + gPhA[n]) * amp;
+          const y = gy[n] + gOffY[n] * away + gSwY[n] * arc
+            + Math.cos(tt * gDrB[n] + gPhB[n]) * amp;
+
+          if (x < -3 || y < -3 || x >= width + 3 || y >= height + 3) continue;
+
+          // Visible once it has left the page behind, gone once it is spent.
+          const alpha = (ga[n] / 255)
+            * smooth(0, 0.22, out ? t : 1 - t)
+            * (1 - smooth(0.55, 1, away));
+          if (alpha < 0.004) continue;
+
+          const cr = gr[n], cg = gg[n], cb = gb[n];
+          const radius = SIZE / 2;
+          const cxp = x + radius;
+          const cyp = y + radius;
+          const reach = Math.ceil(radius);
+
+          for (let dy = -reach; dy <= reach; dy++) {
+            const py = (cyp + dy) | 0;
+            if (py < 0 || py >= height) continue;
+            const rowBase = py * width;
+
+            for (let dx = -reach; dx <= reach; dx++) {
+              const pxx = (cxp + dx) | 0;
+              if (pxx < 0 || pxx >= width) continue;
+
+              const cover = 1 - smooth(0.25, 0.5, Math.sqrt(dx * dx + dy * dy) / SIZE);
+              const a = alpha * cover;
+              if (a < 0.004) continue;
+
+              const o = (rowBase + pxx) * 4;
+              const da = pixels[o + 3] / 255;
+              if (da === 0) {
+                pixels[o] = cr; pixels[o + 1] = cg; pixels[o + 2] = cb;
+                pixels[o + 3] = a * 255;
+              } else {
+                const outA = a + da * (1 - a);
+                const w1 = a / outA;
+                const w2 = 1 - w1;
+                pixels[o] = cr * w1 + pixels[o] * w2;
+                pixels[o + 1] = cg * w1 + pixels[o + 1] * w2;
+                pixels[o + 2] = cb * w1 + pixels[o + 2] * w2;
+                pixels[o + 3] = outA * 255;
+              }
+            }
+          }
+        }
+
+        ctx.putImageData(image, 0, 0);
+      },
+
+      stop() {
+        if (onClick) document.removeEventListener('click', onClick);
+        onClick = null;
+        root.removeAttribute('data-fx-snap');
+        clear();
+      },
+    };
+  })();
+
   /* ============================================================== runner */
 
-  const EFFECTS = [textGrid, pointerLight, variableProximity, clickSpark, particleScroll, clothPreview];
+  const EFFECTS = [textGrid, pointerLight, variableProximity, clickSpark, particleScroll, clothPreview, pageSnap];
 
   let running = false;
   let rafId = 0;
