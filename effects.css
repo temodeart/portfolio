@@ -53,6 +53,15 @@
 
 :root[data-fx] .fx-ch {
   font-synthesis-weight: none; /* never fake a weight the axis can reach */
+  /* A letter is plain inline text whatever its parent's `span` rule says;
+     without this, any `.thing span { display: block }` on a page stacks the
+     word one letter per line. */
+  display: inline;
+  margin: 0;
+  padding: 0;
+  opacity: 1;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 :root[data-fx] .fx-w {

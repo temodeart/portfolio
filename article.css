@@ -314,7 +314,7 @@ body.article-page {
   letter-spacing: -0.005em;
 }
 
-.swatch span {
+.swatch > span {
   display: block;
   margin-top: 3px;
   font-size: 11px;
@@ -450,7 +450,7 @@ body.article-page {
   border-radius: 10px;
 }
 
-.compare-item span {
+.compare-item > span {
   display: block;
   margin-top: 12px;
   font-size: 12px;
@@ -585,7 +585,7 @@ body.article-page {
   transition: opacity 150ms ease;
 }
 
-.related-list span {
+.related-list > span {
   color: var(--text-3);
   font-variant-numeric: tabular-nums;
 }
@@ -658,7 +658,7 @@ body.article-page {
   box-shadow: inset 0 0 0 1px rgba(17, 17, 17, 0.1);
 }
 
-.series-row span {
+.series-row > span {
   flex: 1;
   height: 54px;
   border-radius: 6px;
@@ -696,7 +696,7 @@ body.article-page {
   counter-reset: chip -1;
 }
 
-.palette span {
+.palette > span {
   display: block;
   aspect-ratio: 1;
   border-radius: 8px;
@@ -706,7 +706,7 @@ body.article-page {
   counter-increment: chip;
 }
 
-.palette span::after {
+.palette > span::after {
   content: counter(chip);
   position: absolute;
   top: 5px;
@@ -717,7 +717,7 @@ body.article-page {
   font-variant-numeric: tabular-nums;
 }
 
-.palette span[data-light]::after { color: rgba(17, 17, 17, 0.62); }
+.palette > span[data-light]::after { color: rgba(17, 17, 17, 0.62); }
 
 
 /* Before and after pairs on one row: a legacy colour and what replaced it. */
@@ -730,7 +730,7 @@ body.article-page {
   gap: 8px;
 }
 
-.pair span {
+.pair > span {
   display: block;
   height: 44px;
   border-radius: 8px;
@@ -843,7 +843,7 @@ body.article-page {
 .swatches.dense { grid-template-columns: repeat(3, 1fr); gap: 8px; }
 .swatches.dense .swatch { min-height: 64px; padding: 10px 10px 8px; }
 .swatches.dense .swatch b { font-size: 12px; }
-.swatches.dense .swatch span { font-size: 10.5px; }
+.swatches.dense .swatch > span { font-size: 10.5px; }
 
 @media (max-width: 480px) {
   .swatches.dense { grid-template-columns: repeat(2, 1fr); }
@@ -1125,7 +1125,7 @@ body.article-page {
 }
 
 /* A plain ramp: no generation-order counters on the chips. */
-.palette.ramp span::after { content: none; }
+.palette.ramp > span::after { content: none; }
 
 /* Done and planned sections of the version-two map. */
 .gloss dd em.planned {
@@ -1245,7 +1245,7 @@ body.article-page {
   padding: 10px 16px 8px;
 }
 
-.tickers-head span {
+.tickers-head > span {
   font-size: 11px;
   padding: 5px 10px;
   border-radius: 999px;
@@ -1253,7 +1253,7 @@ body.article-page {
   background: #1f1f1f;
 }
 
-.tickers-head span.on { color: #000; background: #49cb67; font-weight: 700; }
+.tickers-head > span.on { color: #000; background: #49cb67; font-weight: 700; }
 
 /* Swatches on the dark surface need their own ink. */
 .swatches.dark .swatch { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1); }
