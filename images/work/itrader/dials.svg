@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 552 268" width="552" height="268" role="img" aria-label="Three dials on the pricing section. Account type has two options, stages has two, account size has seven, which multiply to twenty-eight different rule sets.">
+  <style>
+    .lb{font:11px Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;fill:#8a8a8a;letter-spacing:.07em;text-transform:uppercase}
+    .cp{font:12px Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;fill:#111}
+    .sum{font:13px Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;fill:#111;font-weight:500}
+    .box{fill:none;stroke:#dcdcdc}.rule{stroke:#e6e6e6}
+    @media (prefers-color-scheme:dark){.lb{fill:#7c7c7c}.cp{fill:#ededed}.sum{fill:#ededed}.box{stroke:#333}.rule{stroke:#262626}}
+  </style>
+  <text class="lb" x="0" y="14">Account type</text>
+  <rect class="box" x="0.0" y="28" width="272.0" height="30" rx="7"/>
+  <text class="cp" x="136.0" y="47.0" text-anchor="middle">Standard</text>
+  <rect class="box" x="280.0" y="28" width="272.0" height="30" rx="7"/>
+  <text class="cp" x="416.0" y="47.0" text-anchor="middle">Swing</text>
+  <text class="lb" x="0" y="80">Stages</text>
+  <rect class="box" x="0.0" y="94" width="272.0" height="30" rx="7"/>
+  <text class="cp" x="136.0" y="113.0" text-anchor="middle">1 stage</text>
+  <rect class="box" x="280.0" y="94" width="272.0" height="30" rx="7"/>
+  <text class="cp" x="416.0" y="113.0" text-anchor="middle">2 stages</text>
+  <text class="lb" x="0" y="146">Account size</text>
+  <rect class="box" x="0.0" y="160" width="72.0" height="30" rx="7"/>
+  <text class="cp" x="36.0" y="179.0" text-anchor="middle">$5K</text>
+  <rect class="box" x="80.0" y="160" width="72.0" height="30" rx="7"/>
+  <text class="cp" x="116.0" y="179.0" text-anchor="middle">$10K</text>
+  <rect class="box" x="160.0" y="160" width="72.0" height="30" rx="7"/>
+  <text class="cp" x="196.0" y="179.0" text-anchor="middle">$25K</text>
+  <rect class="box" x="240.0" y="160" width="72.0" height="30" rx="7"/>
+  <text class="cp" x="276.0" y="179.0" text-anchor="middle">$50K</text>
+  <rect class="box" x="320.0" y="160" width="72.0" height="30" rx="7"/>
+  <text class="cp" x="356.0" y="179.0" text-anchor="middle">$100K</text>
+  <rect class="box" x="400.0" y="160" width="72.0" height="30" rx="7"/>
+  <text class="cp" x="436.0" y="179.0" text-anchor="middle">$200K</text>
+  <rect class="box" x="480.0" y="160" width="72.0" height="30" rx="7"/>
+  <text class="cp" x="516.0" y="179.0" text-anchor="middle">$300K</text>
+  <line class="rule" x1="0" y1="206" x2="552" y2="206"/>
+  <text class="sum" x="0" y="230">2 &#215; 2 &#215; 7 = 28 rule sets, one table</text>
+</svg>

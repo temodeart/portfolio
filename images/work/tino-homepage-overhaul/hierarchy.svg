@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 552 344" width="552" height="344" role="img" aria-label="Diagram comparing the two service grids. Before, eight identical cells of 90 by 108 points in a four by two grid, with the taxi cell second from the left in the top row, plus page dots showing more services on another page. After, one large Go tile of 173 by 169 points beside two medium tiles, with three smaller tiles below.">
+  <style>
+    .ink  { fill: #111111 }
+    .mid  { fill: #888888 }
+    .dim  { fill: #a3a3a3 }
+    .cell { fill: #f4f4f4; stroke: #e4e4e4; stroke-width: 1 }
+    .go   { fill: #2a3fdb; stroke: #2a3fdb; stroke-width: 1 }
+    .dot  { fill: #d2d2d2 }
+    @media (prefers-color-scheme: dark) {
+      .ink  { fill: #ededed }
+      .mid  { fill: #9e9e9e }
+      .dim  { fill: #7c7c7c }
+      .cell { fill: #171717; stroke: #262626 }
+      .go   { fill: #4054f0; stroke: #4054f0 }
+      .dot  { fill: #383838 }
+    }
+    text { font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif }
+    .t { font-size: 12.5px; font-weight: 500 }
+    .s { font-size: 11px }
+    .l { font-size: 10px; letter-spacing: 0.09em }
+    .g { font-size: 13px; font-weight: 600; fill: #ffffff }
+  </style>
+
+  <!-- BEFORE -->
+  <text class="l mid" x="0" y="14">BEFORE</text>
+  <text class="s dim" x="0" y="34">Eight cells, one size. Taxi is the second of them.</text>
+
+  <g>
+    <rect class="cell" x="0"   y="50" width="54" height="64" rx="7"/>
+    <rect class="go"   x="62"  y="50" width="54" height="64" rx="7"/>
+    <rect class="cell" x="124" y="50" width="54" height="64" rx="7"/>
+    <rect class="cell" x="186" y="50" width="54" height="64" rx="7"/>
+    <rect class="cell" x="0"   y="122" width="54" height="64" rx="7"/>
+    <rect class="cell" x="62"  y="122" width="54" height="64" rx="7"/>
+    <rect class="cell" x="124" y="122" width="54" height="64" rx="7"/>
+    <rect class="cell" x="186" y="122" width="54" height="64" rx="7"/>
+    <text class="g" x="89" y="87" text-anchor="middle">Go</text>
+    <circle class="dot" cx="108" cy="202" r="3"/>
+    <circle class="dot" cx="120" cy="202" r="3"/>
+    <circle class="dot" cx="132" cy="202" r="3"/>
+  </g>
+
+  <text class="s mid" x="0" y="232">90 &#215; 108pt, sitting at y271</text>
+  <text class="s dim" x="0" y="250">Under a 193pt header and a row of five tabs.</text>
+  <text class="s dim" x="0" y="268">Three page dots mean more services are on</text>
+  <text class="s dim" x="0" y="286">a page nobody swipes to.</text>
+  <text class="s dim" x="0" y="314">The label reads &#8220;&#1058;&#1072;&#1082;&#1089;&#1080;&#8221;. A category, not an offer.</text>
+
+  <!-- AFTER -->
+  <text class="l mid" x="312" y="14">AFTER</text>
+  <text class="s dim" x="312" y="34">One tile you cannot miss, then everything else.</text>
+
+  <g>
+    <rect class="go"   x="312" y="50" width="106" height="104" rx="8"/>
+    <rect class="cell" x="426" y="50" width="106" height="48" rx="8"/>
+    <rect class="cell" x="426" y="106" width="106" height="48" rx="8"/>
+    <rect class="cell" x="312" y="162" width="106" height="50" rx="8"/>
+    <rect class="cell" x="426" y="162" width="50" height="50" rx="8"/>
+    <rect class="cell" x="482" y="162" width="50" height="50" rx="8"/>
+    <text class="g" x="365" y="107" text-anchor="middle">Go</text>
+  </g>
+
+  <text class="s mid" x="312" y="232">173 &#215; 169pt, sitting at y163</text>
+  <text class="s dim" x="312" y="250">Three times the area, 108pt further up the</text>
+  <text class="s dim" x="312" y="268">screen, and higher than the old header was</text>
+  <text class="s dim" x="312" y="286">tall. No tabs, no page dots, no search bar.</text>
+  <text class="s dim" x="312" y="314">It reads &#8220;Go. Grab a taxi for free. Just 1 min.&#8221;</text>
+  <text class="s dim" x="312" y="332">A brand, an offer, and a promise about time.</text>
+</svg>

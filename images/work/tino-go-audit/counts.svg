@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 552 366" width="552" height="366" role="img" aria-label="How many times each screen was drawn across the 133 screen audit. Searching for a driver leads with 19, then the address map and the Tino Pay sheet at 16 each, then Home at 10. The screens people actually look at longest are the ones drawn most.">
+  <style>
+    .ink { fill: #111111 } .mid { fill: #888888 } .dim { fill: #a3a3a3 }
+    .bar { fill: #d8d8d8 } .key { fill: #2a3fdb }
+    @media (prefers-color-scheme: dark) {
+      .ink { fill: #ededed } .mid { fill: #9e9e9e } .dim { fill: #7c7c7c }
+      .bar { fill: #2e2e2e } .key { fill: #4054f0 }
+    }
+    text { font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif }
+    .l { font-size: 10px; letter-spacing: 0.09em }
+    .s { font-size: 10.5px } .n { font-size: 10.5px; font-weight: 500 }
+  </style>
+  <text class="l mid" x="0" y="10">TIMES EACH SCREEN WAS DRAWN</text>
+  <text class="s ink" x="144" y="39" text-anchor="end">Searching-Driver</text>
+  <rect class="key" x="152" y="30" width="300" height="12" rx="2"/>
+  <text class="n ink" x="459" y="39">19</text>
+  <text class="s ink" x="144" y="58" text-anchor="end">Address-Select-Map</text>
+  <rect class="key" x="152" y="49" width="253" height="12" rx="2"/>
+  <text class="n ink" x="412" y="58">16</text>
+  <text class="s ink" x="144" y="77" text-anchor="end">Tino-Pay</text>
+  <rect class="key" x="152" y="68" width="253" height="12" rx="2"/>
+  <text class="n ink" x="412" y="77">16</text>
+  <text class="s mid" x="144" y="96" text-anchor="end">Home</text>
+  <rect class="bar" x="152" y="87" width="158" height="12" rx="2"/>
+  <text class="n dim" x="317" y="96">10</text>
+  <text class="s mid" x="144" y="115" text-anchor="end">Ride-Ended-Overlay</text>
+  <rect class="bar" x="152" y="106" width="142" height="12" rx="2"/>
+  <text class="n dim" x="301" y="115">9</text>
+  <text class="s mid" x="144" y="134" text-anchor="end">Select-Pickup-Spot</text>
+  <rect class="bar" x="152" y="125" width="142" height="12" rx="2"/>
+  <text class="n dim" x="301" y="134">9</text>
+  <text class="s mid" x="144" y="153" text-anchor="end">Cancel-Reason</text>
+  <rect class="bar" x="152" y="144" width="126" height="12" rx="2"/>
+  <text class="n dim" x="285" y="153">8</text>
+  <text class="s mid" x="144" y="172" text-anchor="end">Driver-Coming</text>
+  <rect class="bar" x="152" y="163" width="126" height="12" rx="2"/>
+  <text class="n dim" x="285" y="172">8</text>
+  <text class="s mid" x="144" y="191" text-anchor="end">Select-Taxi-Type</text>
+  <rect class="bar" x="152" y="182" width="126" height="12" rx="2"/>
+  <text class="n dim" x="285" y="191">8</text>
+  <text class="s mid" x="144" y="210" text-anchor="end">Service-Type-Expand</text>
+  <rect class="bar" x="152" y="201" width="111" height="12" rx="2"/>
+  <text class="n dim" x="270" y="210">7</text>
+  <text class="s mid" x="144" y="229" text-anchor="end">Trip-Started</text>
+  <rect class="bar" x="152" y="220" width="111" height="12" rx="2"/>
+  <text class="n dim" x="270" y="229">7</text>
+  <text class="s mid" x="144" y="248" text-anchor="end">Peak hour</text>
+  <rect class="bar" x="152" y="239" width="79" height="12" rx="2"/>
+  <text class="n dim" x="238" y="248">5</text>
+  <text class="s mid" x="144" y="267" text-anchor="end">Cancel-Ride</text>
+  <rect class="bar" x="152" y="258" width="63" height="12" rx="2"/>
+  <text class="n dim" x="222" y="267">4</text>
+  <text class="s mid" x="144" y="286" text-anchor="end">Recent</text>
+  <rect class="bar" x="152" y="277" width="47" height="12" rx="2"/>
+  <text class="n dim" x="206" y="286">3</text>
+  <text class="s mid" x="144" y="305" text-anchor="end">Price-Detail</text>
+  <rect class="bar" x="152" y="296" width="32" height="12" rx="2"/>
+  <text class="n dim" x="191" y="305">2</text>
+  <text class="s mid" x="144" y="324" text-anchor="end">Suggested</text>
+  <rect class="bar" x="152" y="315" width="32" height="12" rx="2"/>
+  <text class="n dim" x="191" y="324">2</text>
+  <text class="s dim" x="0" y="352">133 screens in total, across 13 sections. Counted off the file.</text>
+</svg>

@@ -3,20 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Temuujin (Temo) Batbold — Designer</title>
+<title>Temuujin (Temo) Batbold · Designer</title>
 <meta name="description" content="Temuujin (Temo) Batbold is a Sr Designer at Lifetech Ti Mongolia, working on the Tino superapp.">
 <meta name="color-scheme" content="light dark">
 <script>try{if(localStorage.getItem('fx')==='on'){var d=document.documentElement;d.dataset.fx='';var n=performance.getEntriesByType('navigation')[0];if(sessionStorage.getItem('fxsnap')==='1'||(n&&n.type==='back_forward'))d.dataset.fxSnap=''}}catch(e){}</script>
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Temuujin (Temo) Batbold — Designer">
+<meta property="og:title" content="Temuujin (Temo) Batbold · Designer">
 <meta property="og:description" content="Sr Designer at Lifetech Ti Mongolia, working on the Tino superapp.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="effects.css">
+<link rel="stylesheet" href="styles.css?v=42ec7a49">
+<link rel="stylesheet" href="effects.css?v=0bc3862c">
 </head>
 <body>
 
@@ -27,7 +27,7 @@
       <h1 class="name">Temuujin (Temo) Batbold</h1>
       <p class="role">Designer</p>
     </div>
-    <button class="fx" type="button">
+    <button class="fx" type="button" hidden>
       <span class="fx-text">Turn on effects</span>
       <span class="fx-switch" aria-hidden="true"></span>
     </button>
@@ -42,7 +42,9 @@
   <section class="work">
     <div class="tabs" role="tablist" aria-label="Sections">
       <button class="tab" role="tab" id="tab-work"    aria-controls="panel-work"    aria-selected="true"  tabindex="0">Work</button>
-      <button class="tab" role="tab" id="tab-writing" aria-controls="panel-writing" aria-selected="false" tabindex="-1">Writing</button>
+      <!-- Writing is hidden until there is something real to put in it. Delete the
+           hidden attribute here and on #panel-writing to bring the tab back. -->
+      <button class="tab" role="tab" id="tab-writing" aria-controls="panel-writing" aria-selected="false" tabindex="-1" hidden>Writing</button>
       <button class="tab" role="tab" id="tab-apps"    aria-controls="panel-apps"    aria-selected="false" tabindex="-1">Apps</button>
       <button class="tab" role="tab" id="tab-games"   aria-controls="panel-games"   aria-selected="false" tabindex="-1">Games</button>
       <button class="tab" role="tab" id="tab-about"   aria-controls="panel-about"   aria-selected="false" tabindex="-1">About</button>
@@ -54,13 +56,39 @@
          data-preview with the real snapshot (see images/README.md). -->
     <div class="panel" role="tabpanel" id="panel-work" aria-labelledby="tab-work" tabindex="0">
       <ul class="rows">
-        <li class="row"><a class="row-link" href="work/tino-day-in-tino-driver.html" data-preview="images/work/tino-day-in-tino-driver.svg"><span class="row-title">Tino Day feature in Tino Driver</span><span class="row-year">2026</span></a></li>
-        <li class="row"><a class="row-link" href="work/fresh-look-for-tino-mn.html" data-preview="images/work/fresh-look-for-tino-mn.svg"><span class="row-title">Fresh look for Tino.mn</span><span class="row-year">2026</span></a></li>
-        <li class="row"><a class="row-link" href="work/university-pass-in-tino.html" data-preview="images/work/university-pass-in-tino.svg"><span class="row-title">University pass in Tino</span><span class="row-year">2026</span></a></li>
-        <li class="row"><a class="row-link" href="#" data-preview="images/work/today-in-tino.svg"><span class="row-title">Today in Tino</span><span class="row-year">2026</span></a></li>
-        <li class="row"><a class="row-link" href="#" data-preview="images/work/core-flow-audit-in-tino-go.svg"><span class="row-title">Core flow audit &amp; update in Tino Go</span><span class="row-year">2026</span></a></li>
-        <li class="row"><a class="row-link" href="#" data-preview="images/work/naadam-with-tino-driver.svg"><span class="row-title">Let&rsquo;s Naadam with Tino Driver</span><span class="row-year">2026</span></a></li>
-        <li class="row"><a class="row-link" href="#" data-preview="images/work/drive-with-tino.svg"><span class="row-title">Drive with Tino</span><span class="row-year">2026</span></a></li>
+        <li class="row"><a class="row-link" href="work/tino-streamers.html" data-preview="images/work/tino-streamers.jpg"><span class="row-title">Tino Streamers</span><span class="row-year">2026</span></a></li>
+        <li class="row"><a class="row-link" href="work/tino-homepage-overhaul.html" data-preview="images/work/tino-homepage-overhaul.jpg"><span class="row-title">Tino homepage overhaul</span><span class="row-year">2026</span></a></li>
+        <li class="row"><a class="row-link" href="work/tino-day-in-tino-driver.html" data-preview="images/work/tino-day-in-tino-driver.jpg"><span class="row-title">Tino Day feature in Tino Driver</span><span class="row-year">2026</span></a></li>
+        <li class="row"><a class="row-link" href="work/fresh-look-for-tino-mn.html" data-preview="images/work/fresh-look-for-tino-mn.jpg"><span class="row-title">Fresh look for Tino.mn</span><span class="row-year">2026</span></a></li>
+        <li class="row"><a class="row-link" href="work/core-flow-audit-in-tino-go.html" data-preview="images/work/core-flow-audit-in-tino-go.jpg"><span class="row-title">Core flow audit &amp; update in Tino Go</span><span class="row-year">2026</span></a></li>
+        <li class="row"><a class="row-link" href="work/posters-for-tino.html" data-preview="images/work/posters-for-tino.jpg"><span class="row-title">Posters for Tino</span><span class="row-year">2026</span></a></li>
+        <li class="row"><a class="row-link" href="work/tino-onboarding-improvement.html" data-preview="images/work/tino-onboarding-improvement.jpg"><span class="row-title">Tino onboarding improvement</span><span class="row-year">2026</span></a></li>
+        <li class="row"><a class="row-link" href="work/carmax.html" data-preview="images/work/carmax.jpg"><span class="row-title">CarMax car eCommerce platform</span><span class="row-year">2026</span></a></li>
+        <li class="row"><a class="row-link" href="work/money-market-fund.html" data-preview="images/work/money-market-fund.svg"><span class="row-title">Money Market Fund mobile app design &amp; web app redesign</span><span class="row-year">2026</span></a></li>
+        <li class="row"><a class="row-link" href="work/forse-agents.html" data-preview="images/work/forse-agents.jpg"><span class="row-title">Forse Agents</span><span class="row-year">2026</span></a></li>
+        <li class="row"><a class="row-link" href="work/nordic-health-club.html" data-preview="images/work/nordic-health-club.jpg"><span class="row-title">Nordic Health Club brand exploration</span><span class="row-year">2026</span></a></li>
+        <li class="row"><a class="row-link" href="work/forse-insights.html" data-preview="images/work/forse-insights-new-version.jpg"><span class="row-title">Forse Insights, new version</span><span class="row-year">2025</span></a></li>
+        <li class="row"><a class="row-link" href="work/forse-charts-colour-system.html" data-preview="images/work/forse-charts-colour-system.svg"><span class="row-title">Colour system for the Forse charts library</span><span class="row-year">2025</span></a></li>
+        <li class="row"><a class="row-link" data-preview="images/work/skywhale.svg"><span class="row-title">SkyWhale brand identity</span><span class="row-year">2025</span></a></li>
+        <li class="row"><a class="row-link" data-preview="images/work/cafi.svg"><span class="row-title">CAFI brand identity</span><span class="row-year">2025</span></a></li>
+        <li class="row"><a class="row-link" href="work/itrader.html" data-preview="images/work/itrader.jpg"><span class="row-title">iTrader landing page design</span><span class="row-year">2025</span></a></li>
+        <li class="row"><a class="row-link" data-preview="images/work/skypay.svg"><span class="row-title">SkyPay brand identity &amp; product design</span><span class="row-year">2025</span></a></li>
+        <li class="row"><a class="row-link" href="work/khamriin-khiid.html" data-preview="images/work/khamriin-khiid.jpg"><span class="row-title">Khamriin Khiid web design</span><span class="row-year">2025</span></a></li>
+        <li class="row"><a class="row-link" href="work/forse-insights-2024.html" data-preview="images/work/forse-insights-2024.jpg"><span class="row-title">Forse Insights</span><span class="row-year">2024</span></a></li>
+        <li class="row"><a class="row-link" href="work/mot.html" data-preview="images/work/mot.jpg"><span class="row-title">MOT landing page</span><span class="row-year">2024</span></a></li>
+        <li class="row"><a class="row-link" href="work/owl-nest.html" data-preview="images/work/owl-nest.jpg"><span class="row-title">Owl Nest mental health app brand identity</span><span class="row-year">2024</span></a></li>
+        <li class="row"><a class="row-link" href="work/ability-expo.html" data-preview="images/work/ability-expo.jpg"><span class="row-title">Ability Expo, designing for accessibility</span><span class="row-year">2023</span></a></li>
+        <li class="row"><a class="row-link" href="work/pawlovers.html" data-preview="images/work/pawlovers.jpg"><span class="row-title">PawLovers pet accessory eCommerce brand identity</span><span class="row-year">2023</span></a></li>
+        <li class="row"><a class="row-link" href="work/minu-merchant.html" data-preview="images/work/minu-merchant.jpg"><span class="row-title">Minu Merchant app, version 2 redesign</span><span class="row-year">2023</span></a></li>
+        <li class="row"><a class="row-link" data-preview="images/work/linq-store.svg"><span class="row-title">Linq Store eCommerce app design</span><span class="row-year">2023</span></a></li>
+        <li class="row"><a class="row-link" href="work/nadad-oir.html" data-preview="images/work/nadad-oir.jpg"><span class="row-title">Nadad Oir brand identity</span><span class="row-year">2023</span></a></li>
+        <li class="row"><a class="row-link" data-preview="images/work/hipay.svg"><span class="row-title">HiPay Super App, version 3 redesign</span><span class="row-year">2023</span></a></li>
+        <li class="row"><a class="row-link" data-preview="images/work/engo.svg"><span class="row-title">Engo handyman app design</span><span class="row-year">2023</span></a></li>
+        <li class="row"><a class="row-link" data-preview="images/work/golomt-ux-audit.svg"><span class="row-title">UX audit, Golomt Bank mobile app</span><span class="row-year">2023</span></a></li>
+        <li class="row"><a class="row-link" data-preview="images/work/ui-ux-design-course.svg"><span class="row-title">UI/UX design course</span><span class="row-year">2022</span></a></li>
+        <li class="row"><a class="row-link" data-preview="images/work/chotto.svg"><span class="row-title">Chotto manga app brand identity &amp; mobile app UI design</span><span class="row-year">2022</span></a></li>
+        <li class="row"><a class="row-link" href="work/investo.html" data-preview="images/work/investo.jpg"><span class="row-title">Investo stock trading app UI design</span><span class="row-year">2022</span></a></li>
+        <li class="row"><a class="row-link" data-preview="images/work/dentime.svg"><span class="row-title">DenTime dental clinic booking app</span><span class="row-year">2022</span></a></li>
       </ul>
     </div>
 
@@ -80,12 +108,13 @@
     -->
     <div class="panel" role="tabpanel" id="panel-writing" aria-labelledby="tab-writing" tabindex="0" hidden>
       <ul class="writing">
-        <li class="writing-row"><span class="writing-year">2026</span><a class="writing-link" href="writing/designing-for-the-pause.html">Designing for the pause</a><span class="writing-date">12/03</span></li>
-        <li class="writing-row"><a class="writing-link" href="writing/notes-on-motion.html">Notes on motion</a><span class="writing-date">04/02</span></li>
-        <li class="writing-row"><a class="writing-link" href="writing/a-small-case-for-slowness.html">A small case for slowness</a><span class="writing-date">19/01</span></li>
-        <li class="writing-row"><span class="writing-year">2025</span><a class="writing-link" href="writing/what-i-learned-shipping-fast.html">What I learned shipping fast</a><span class="writing-date">08/11</span></li>
-        <li class="writing-row"><a class="writing-link" href="writing/reading-the-room.html">Reading the room</a><span class="writing-date">23/05</span></li>
-        <li class="writing-row"><span class="writing-year">2024</span><a class="writing-link" href="writing/first-principles-again.html">First principles, again</a><span class="writing-date">08/07</span></li>
+        <!-- One row per piece. Include <span class="writing-year"> only on the
+             first entry of a year; it is what draws the full-width rule above
+             the group. Omit it on the rest.
+
+        <li class="writing-row"><span class="writing-year">2026</span><a class="writing-link" href="writing/a-real-piece.html">A real piece</a><span class="writing-date">12/03</span></li>
+        <li class="writing-row"><a class="writing-link" href="writing/another.html">Another</a><span class="writing-date">04/02</span></li>
+        -->
       </ul>
     </div>
 
@@ -95,7 +124,7 @@
       <!-- Drop real icons into images/apps/ over the placeholders. -->
       <ul class="bento bento-apps">
         <li>
-          <a class="card card-app" href="apps/aise.html">
+          <a class="card card-app">
             <div class="card-body">
               <h3 class="card-title">Aise</h3>
               <p class="card-text">Menstrual cycle tracking for boyfriends. Not for girls.</p>
@@ -104,7 +133,7 @@
           </a>
         </li>
         <li>
-          <a class="card card-app" href="apps/exit-plan.html">
+          <a class="card card-app">
             <div class="card-body">
               <h3 class="card-title">Exit Plan</h3>
               <p class="card-text">A fake call app that saves you from an undesired situation.</p>
@@ -113,7 +142,7 @@
           </a>
         </li>
         <li>
-          <a class="card card-app" href="apps/cattime.html">
+          <a class="card card-app">
             <div class="card-body">
               <h3 class="card-title">Cattime</h3>
               <p class="card-text">A pomodoro app. During the break a big fat cute cat comes and sits on your screen, blocking you from working, then walks away when the break is over.</p>
@@ -129,7 +158,7 @@
       <!-- Swap images/games/*.svg for real key art — landscape, 16:9. -->
       <ul class="bento bento-games">
         <li>
-          <a class="card card-game" href="games/block-runner.html">
+          <a class="card card-game">
             <img class="card-visual" src="images/games/block-runner.svg" alt="" width="1600" height="900" loading="lazy" decoding="async">
             <div class="card-body">
               <h3 class="card-title">A Block Runner</h3>
@@ -138,7 +167,7 @@
           </a>
         </li>
         <li>
-          <a class="card card-game" href="games/the-lost-kitten.html">
+          <a class="card card-game">
             <img class="card-visual" src="images/games/the-lost-kitten.svg" alt="" width="1600" height="900" loading="lazy" decoding="async">
             <div class="card-body">
               <h3 class="card-title">The Lost Kitten</h3>
@@ -147,7 +176,7 @@
           </a>
         </li>
         <li>
-          <a class="card card-game" href="games/the-lost-astronaut.html">
+          <a class="card card-game">
             <img class="card-visual" src="images/games/the-lost-astronaut.svg" alt="" width="1600" height="900" loading="lazy" decoding="async">
             <div class="card-body">
               <h3 class="card-title">The Lost Astronaut</h3>
@@ -163,7 +192,7 @@
       <div class="prose">
         <!-- TODO: this intro is a draft assembled from what's already on the
              page — rewrite it in your own voice. -->
-        <p>I design products at Lifetech Ti Mongolia, mostly on Tino — a superapp
+        <p>I design products at Lifetech Ti Mongolia, mostly on Tino, a superapp
         people in Ulaanbaatar use to get around and pay for things. Outside of
         that I build small apps for reasons that usually start as a joke, and
         games, which I am much slower at.</p>
@@ -186,11 +215,11 @@
         <!-- Each of these gets its own page — hrefs stay "#" until that
              design lands. -->
         <ul class="prose-links">
-          <li><a href="#">Best Payment App in Central Asia 2023</a></li>
-          <li><a href="#">Best Product Design Nominee 2023</a></li>
-          <li><a href="#">Winner of Khan Bank&rsquo;s Future of Digipay hackathon 2025</a></li>
-          <li><a href="#">Took part in EthGlobal 2024 and won a prize</a></li>
-          <li><a href="#">3rd place, Ard Hackathon 2023</a></li>
+          <li>Best Payment App in Central Asia 2023</li>
+          <li>Best Product Design Nominee 2023</li>
+          <li>Winner of Khan Bank&rsquo;s Future of Digipay hackathon 2025</li>
+          <li>Took part in EthGlobal 2024 and won a prize</li>
+          <li>3rd place, Ard Hackathon 2023</li>
         </ul>
         </section>
 
@@ -220,7 +249,7 @@
   </div>
 </aside>
 
-<script src="script.js" defer></script>
-<script src="effects.js" defer></script>
+<script src="script.js?v=288ae4a1" defer></script>
+<script src="effects.js?v=92f0cab3" defer></script>
 </body>
 </html>

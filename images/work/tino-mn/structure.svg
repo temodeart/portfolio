@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 552 372" width="552" height="372" role="img" aria-label="Two page structures drawn to the same vertical scale. The old tino.mn is 2,726 pixels tall with three blocks: a hero, five feature cards, and a download prompt. The new page is 11,367 pixels tall with twelve blocks, including an indexed directory of 29 mini-apps, a Tino AI section, two audience paths, and a legal footer.">
+  <style>
+    .ink  { fill: #111111 }
+    .mid  { fill: #888888 }
+    .dim  { fill: #a3a3a3 }
+    .old  { fill: #e8e8e8; stroke: #dcdcdc; stroke-width: 1 }
+    .new  { fill: #dfe3fb; stroke: #ccd3f7; stroke-width: 1 }
+    .key  { fill: #2a3fdb; stroke: #2a3fdb; stroke-width: 1 }
+    .rule { stroke: #e4e4e4; stroke-width: 1 }
+    @media (prefers-color-scheme: dark) {
+      .ink  { fill: #ededed }
+      .mid  { fill: #9e9e9e }
+      .dim  { fill: #7c7c7c }
+      .old  { fill: #202020; stroke: #2c2c2c }
+      .new  { fill: #1e2340; stroke: #2b3358 }
+      .key  { fill: #4054f0; stroke: #4054f0 }
+      .rule { stroke: #262626 }
+    }
+    text { font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif }
+    .l { font-size: 10px; letter-spacing: 0.09em }
+    .s { font-size: 10.5px }
+    .t { font-size: 11px; font-weight: 500 }
+  </style>
+
+  <!-- 1px of drawing = 33.4px of page, so both columns share one scale -->
+
+  <!-- OLD -->
+  <text class="l mid" x="0" y="12">OLD TINO.MN</text>
+  <rect class="old" x="0" y="26" width="58" height="32" rx="3"/>
+  <rect class="old" x="0" y="60" width="58" height="32" rx="3"/>
+  <rect class="old" x="0" y="94" width="58" height="12" rx="3"/>
+  <line class="rule" x1="66" y1="26" x2="66" y2="106"/>
+  <text class="s ink" x="74" y="38">Hero</text>
+  <text class="s ink" x="74" y="70">Five feature cards</text>
+  <text class="s dim" x="74" y="84">one of them called</text>
+  <text class="s dim" x="74" y="97">&#8220;Other Exciting Features&#8221;</text>
+  <text class="s ink" x="74" y="115">Download prompt</text>
+
+  <text class="t ink" x="0" y="150">Old: 2,726px tall</text>
+  <text class="s dim" x="0" y="166">423 words. No h1 on the page.</text>
+  <text class="s dim" x="0" y="182">Four services named out of 29.</text>
+
+  <!-- NEW -->
+  <text class="l mid" x="292" y="12">NEW</text>
+  <rect class="new" x="292" y="26" width="58" height="26" rx="3"/>
+  <rect class="new" x="292" y="54" width="58" height="22" rx="3"/>
+  <rect class="new" x="292" y="78" width="58" height="22" rx="3"/>
+  <rect class="new" x="292" y="102" width="58" height="22" rx="3"/>
+  <rect class="new" x="292" y="126" width="58" height="22" rx="3"/>
+  <rect class="new" x="292" y="150" width="58" height="22" rx="3"/>
+  <rect class="key" x="292" y="174" width="58" height="42" rx="3"/>
+  <rect class="new" x="292" y="218" width="58" height="30" rx="3"/>
+  <rect class="new" x="292" y="250" width="58" height="26" rx="3"/>
+  <rect class="new" x="292" y="278" width="58" height="34" rx="3"/>
+  <rect class="new" x="292" y="314" width="58" height="20" rx="3"/>
+  <rect class="new" x="292" y="336" width="58" height="24" rx="3"/>
+  <line class="rule" x1="358" y1="26" x2="358" y2="360"/>
+
+  <text class="s ink" x="366" y="42">Hero</text>
+  <text class="s ink" x="366" y="68">Tino Pay</text>
+  <text class="s ink" x="366" y="92">TinoGO</text>
+  <text class="s ink" x="366" y="116">Tino Charge</text>
+  <text class="s ink" x="366" y="140">Tino Fridge</text>
+  <text class="s ink" x="366" y="164">Grocery</text>
+  <text class="t ink" x="366" y="192">The index</text>
+  <text class="s dim" x="366" y="206">29 mini-apps, filterable</text>
+  <text class="s ink" x="366" y="236">Tino AI</text>
+  <text class="s ink" x="366" y="266">Living here / Just visiting</text>
+  <text class="s ink" x="366" y="298">TinoGO, ten sub-services</text>
+  <text class="s ink" x="366" y="328">Download</text>
+  <text class="s ink" x="366" y="352">Legal footer</text>
+
+  <text class="t ink" x="0" y="214">New: 11,367px tall</text>
+  <text class="s dim" x="0" y="230">1,293 words. Four times the page,</text>
+  <text class="s dim" x="0" y="246">and the extra length is all answers.</text>
+</svg>

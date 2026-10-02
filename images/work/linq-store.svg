@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1600" width="900" height="1600" role="img" aria-label="Linq Store eCommerce app design">
+  <style>
+    .bg { fill: #f2f2f2 } .fr { stroke: #e4e4e4 } .t { fill: #b3b3b3 } .s { fill: #cfcfcf }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #151515 } .fr { stroke: #262626 } .t { fill: #585858 } .s { fill: #3c3c3c }
+    }
+    text { font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif }
+  </style>
+  <rect class="bg" width="900" height="1600"/>
+  <rect class="fr" x="20" y="20" width="860" height="1560" rx="8" fill="none" stroke-width="2"/>
+  <text class="t" x="450" y="780" text-anchor="middle" font-size="49" font-weight="500">Linq Store eCommerce app</text>
+  <text class="t" x="450" y="841" text-anchor="middle" font-size="49" font-weight="500">design</text>
+  <text class="s" x="450" y="929" text-anchor="middle" font-size="30">Placeholder, swap in the real image</text>
+</svg>

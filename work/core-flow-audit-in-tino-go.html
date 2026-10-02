@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Core flow audit &amp; update in Tino Go &middot; Temuujin (Temo) Batbold</title>
+<meta name="description" content="Laying all 133 screens of a ride hailing app on one canvas to find out where the flow actually breaks.">
+<meta name="color-scheme" content="light dark">
+<script>try{if(localStorage.getItem('fx')==='on'){var d=document.documentElement;d.dataset.fx='';var n=performance.getEntriesByType('navigation')[0];if(sessionStorage.getItem('fxsnap')==='1'||(n&&n.type==='back_forward'))d.dataset.fxSnap=''}}catch(e){}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
+<link rel="stylesheet" href="../styles.css?v=42ec7a49">
+<link rel="stylesheet" href="../article.css?v=7e8ee6ff">
+<link rel="stylesheet" href="../effects.css?v=0bc3862c">
+</head>
+<body class="article-page">
+
+<nav class="side">
+  <a class="side-back" href="../index.html#work">Index</a>
+  <ol class="side-index">
+    <li><a href="#one-canvas">Everything on one canvas</a></li>
+    <li><a href="#three-tracks">Three ways to start one journey</a></li>
+    <li><a href="#waiting">Waiting is the product</a></li>
+    <li><a href="#no-driver">When nobody comes</a></li>
+    <li><a href="#the-ending">The ending, and what it asks for</a></li>
+    <li><a href="#what-it-cost">What an audit that size is for</a></li>
+  </ol>
+</nav>
+
+<article class="article">
+
+  <header class="article-head">
+    <h1 class="article-title">Core flow audit &amp; update in Tino Go</h1>
+    <p class="article-date">2026</p>
+  </header>
+
+
+  <p class="article-lead">A ride looks like four taps. Open, pick a car, wait, pay. When I drew it
+  out properly it was 133 screens, and most of them are the parts nobody
+  demos.<a class="note-ref" id="ref-1" href="#note-1">1</a></p>
+
+  <dl class="meta">
+    <dt>Role</dt><dd>Audit and redesign of the passenger core flow</dd>
+    <dt>Platform</dt><dd>Tino Go, iOS and Android</dd>
+    <dt>Scope</dt><dd>133 screens across 13 sections, from opening the app to rating the driver</dd>
+    <dt>Year</dt><dd>2026</dd>
+    <dt>Design file</dt><dd><a href="https://www.figma.com/design/BEgz89NntG0q3XDnQdkLYu/Tino-Go?node-id=42-8610" target="_blank" rel="noopener noreferrer">Tino Go, core flow audit</a></dd>
+  </dl>
+
+  <hr>
+
+  <h2 id="one-canvas">Everything on one canvas</h2>
+
+  <p>The method was the whole point. Rather than auditing screen by screen in separate files, I put
+  the entire flow onto one board, 12,885 by 19,275 points, with every branch drawn at the same scale
+  as the happy path.</p>
+
+  <figure class="figure">
+    <div class="figure-frame"><img src="../images/work/tino-go-audit/board.jpg" alt="The full audit board seen from far out. Dozens of dark grouped sections, each holding a row of phone screens, arranged in bands down a very tall canvas." loading="lazy" decoding="async"></div>
+    <figcaption>The whole board. Each dark band is one flow, drawn end to end.</figcaption>
+  </figure>
+
+  <p>I have never found a broken flow by looking at screens. I find them by looking at the gaps
+  between screens, and gaps only become visible when the thing is laid out flat and you can walk
+  along it.</p>
+
+  <h2 id="three-tracks">Three ways to start one journey</h2>
+
+  <p>I drew the main flow as three parallel tracks. A trip with no destination, where you get in and
+  tell the driver. A trip with a destination. And a multi-stop trip.</p>
+
+  <figure class="figure">
+    <div class="figure-frame"><img src="../images/work/tino-go-audit/mainflow.jpg" alt="Three long horizontal rows of phone screens, one above the other. Each row runs left to right through booking, a Tino Pay sheet, then the ride and its ending. The rows are aligned so the same stage sits in the same column." loading="lazy" decoding="async"></div>
+    <figcaption>Three destination modes, stacked so the same stage lands in the same column.</figcaption>
+  </figure>
+
+  <p>Stacking them is what made the audit work. Read down a column and you are comparing the same
+  moment across three modes. That is where the inconsistencies fell out, and it is also where I saw
+  how much of the work is shared.</p>
+
+  <figure class="figure figure-bare">
+    <img src="../images/work/tino-go-audit/tracks.svg" alt="The three tracks drawn as bars. No destination takes 19 screens, destination 20, multi-stop 25. Each bar is split into address, pay, wait, ride and end stages, and only the address stage differs in length between them." loading="lazy" decoding="async">
+    <figcaption>Nineteen, twenty, twenty five. Segment widths are the real screen counts,
+    not an impression of them.</figcaption>
+  </figure>
+
+  <p>Paying is four screens in all three. Waiting is one. Ending is four. The address stage goes
+  seven, seven, twelve, and that is the entire difference between the three modes. Multi-stop costs
+  a quarter more screens than a plain trip and spends all of it on adding, reordering and removing
+  a stop.</p>
+
+  <h2 id="waiting">Waiting is the product</h2>
+
+  <p>When I counted how many times I had drawn each screen, it told me where the real design problem
+  was.</p>
+
+  <figure class="figure figure-bare">
+    <img src="../images/work/tino-go-audit/counts.svg" alt="A bar chart of how often each screen appears across the 133 screens. Searching for a driver leads at 19, the address map and the Tino Pay sheet follow at 16 each, then Home at 10, the ride-ended overlay and pickup spot at 9, cancel reason and driver coming at 8." loading="lazy" decoding="async">
+    <figcaption>Counted off the file. Searching for a driver is drawn twice as often as Home.</figcaption>
+  </figure>
+
+  <p class="pull">The screen a passenger stares at hardest is the one where nothing is happening
+  yet. It is drawn nineteen times on this board, and Home is drawn ten.</p>
+
+  <p>Here is the thing that ratio hides. In each of the three main tracks, waiting is exactly one
+  screen. It reached nineteen only once I drew what can happen during it, which took four separate
+  sections: looking, driver found, driver not found, and the flash call variant.</p>
+
+  <p>That was my finding. Booking a ride is a solved problem and the industry solved it years ago.
+  Waiting for one is not solved, because waiting has three endings and two of them are bad. The
+  driver arrives, no driver arrives, or you give up. All three needed designing, and only the first
+  one ever gets a mockup.</p>
+
+  <h2 id="no-driver">When nobody comes</h2>
+
+  <p>I gave the no-driver path its own section, eight screens of it, and built it as a ladder rather
+  than an error.</p>
+
+  <figure class="figure">
+    <div class="figure-frame"><img src="../images/work/tino-go-audit/notfound.jpg" alt="Eight screens showing the escalation when no driver accepts. The first screens show the map with a searching message and a cancel button. Then an orange prompt offers to add a bonus of 1000, 2000 or 3000 tugrik. The last two show a list of every service tier with its fare and the same bonus buttons on each row, and a re-call button carrying the added amount." loading="lazy" decoding="async"></div>
+    <figcaption>Search, then offer a bonus, then open up every tier with the bonus attached to each.</figcaption>
+  </figure>
+
+  <p>I wanted the escalation to be honest about what is happening. It does not say &ldquo;no
+  drivers available&rdquo; and leave you there. It tells you the market is tight and offers you the
+  one lever that actually moves it, which is money, in fixed steps you can see before you
+  commit.</p>
+
+  <p>I let colour carry it. The whole app is blue. The moment the flow starts asking for a bonus I
+  turn it orange, and it stays orange through the tier list and into the re-call button. One hue
+  doing the work of a paragraph.<a class="note-ref" id="ref-2" href="#note-2">2</a></p>
+
+  <h2 id="the-ending">The ending, and what it asks for</h2>
+
+  <p>Five states of the screen that closes every ride.</p>
+
+  <figure class="figure">
+    <div class="figure-frame"><img src="../images/work/tino-go-audit/tiprate.jpg" alt="Five versions of the ride-ended overlay. The first has an empty star rating and a disabled submit button. The second shows three stars selected and submit enabled. The third shows one star, which reveals a feedback text field. The fourth is a numeric keypad for a custom tip. The fifth shows the custom tip applied as a dark chip alongside the one star rating and the feedback field." loading="lazy" decoding="async"></div>
+    <figcaption>Submit stays disabled until you rate. The tip never becomes mandatory.</figcaption>
+  </figure>
+
+  <p>Two decisions I made deliberately. Rating is required and tipping is not, which is the right way
+  round and the opposite of what a revenue target would ask for. And a low rating opens a free text
+  field that a high rating does not. I ask for detail when something went wrong, not when it went
+  fine.</p>
+
+  <p>One thing I flagged for the next round. The tip presets are 2k, 5k, 10k and 15k against a fare
+  of 23,200₮ on this screen. That top preset is a 65 percent tip. Preset ladders anchor people, and
+  a ladder that reaches that high is doing something other than making it easy to be
+  generous.<a class="note-ref" id="ref-3" href="#note-3">3</a></p>
+
+  <h2 id="what-it-cost">What an audit that size is for</h2>
+
+  <p>Thirteen sections, 133 screens, one canvas. A fair question, and one I was asked, is whether any
+  of that was worth it against fixing bugs as they came in.</p>
+
+  <p>My argument for it is that a flow this size has failure modes nobody reports. Nobody files a
+  ticket saying the cancel reason list is inconsistent between a multi-stop trip and a plain one.
+  They just cancel, and you read it as churn. Drawing all three modes side by side was the only way
+  I could surface that kind of thing before a user found it.</p>
+
+  <p>The argument against, which I take seriously, is that a board this size is expensive to keep
+  true, and a canvas that stops matching the build is worse than no canvas at
+  all.<a class="note-ref" id="ref-4" href="#note-4">4</a></p>
+
+  <p>What it bought us was a shared picture. Thirteen sections on one wall meant the conversation
+  stopped being about single screens and started being about the shape of the whole journey, which
+  is where the waiting problem was hiding. That is why I would do it once, properly, at the start
+  of a cycle rather than never.</p>
+
+  <hr class="notes-rule">
+  <ol class="notes">
+    <li id="note-1"><span class="note-body">The 133 is every phone sized frame on the board,
+    counted from the file rather than estimated. Section counts, screen types and board dimensions
+    come from the same place. These are design files, not production screenshots, and the fares and
+    names on them are placeholder data. <a class="note-back" href="#ref-1" aria-label="Back to reference 1"></a></span></li>
+    <li id="note-2"><span class="note-body">Orange is doing something slightly uncomfortable here.
+    It reads as urgency, and urgency is exactly the state in which people agree to pay more. Worth
+    being deliberate that it signals a changed price rather than manufacturing pressure. <a class="note-back" href="#ref-2" aria-label="Back to reference 2"></a></span></li>
+    <li id="note-3"><span class="note-body">The presets may well be flat amounts chosen for round
+    numbers rather than percentages of the fare. Even so, what a passenger sees is a ladder next to
+    their total, and they read it as a proportion. <a class="note-back" href="#ref-3" aria-label="Back to reference 3"></a></span></li>
+    <li id="note-4"><span class="note-body">Two sections on this board are both called Multi-Stop,
+    one inside the main flow and one about eight thousand points further down. I could not tell
+    from the file which is current. That is the maintenance problem in miniature. <a class="note-back" href="#ref-4" aria-label="Back to reference 4"></a></span></li>
+  </ol>
+
+  <footer class="article-foot">
+    <h2 class="foot-heading">Similar</h2>
+    <ul class="related-list">
+      <li><a href="tino-day-in-tino-driver.html">Tino Day feature in Tino Driver<span>2026</span></a></li>
+      <li><a href="tino-homepage-overhaul.html">Tino homepage overhaul<span>2026</span></a></li>
+      <li><a href="tino-streamers.html">Tino Streamers<span>2026</span></a></li>
+    </ul>
+
+    <nav class="pager">
+      <a class="pager-prev" href="fresh-look-for-tino-mn.html"><span class="pager-label">Previous</span>Fresh look for Tino.mn</a>
+    </nav>
+  </footer>
+
+</article>
+
+<script src="../article.js?v=c5c2e37a" defer></script>
+<script src="../effects.js?v=92f0cab3" defer></script>
+</body>
+</html>

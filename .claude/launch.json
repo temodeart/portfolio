@@ -4,8 +4,23 @@
     {
       "name": "portfolio",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "4321", "--directory", "."],
+      "runtimeArgs": [
+        "tools/devserver.py",
+        "4321"
+      ],
       "port": 4321
+    },
+    {
+      "name": "oyutan-landing",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4322",
+        "--directory",
+        "/Users/temo/Claude/Oyutan/landing"
+      ],
+      "port": 4322
     }
   ]
 }

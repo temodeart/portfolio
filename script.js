@@ -43,7 +43,7 @@
   const tablist = document.querySelector('.tabs');
 
   if (tablist) {
-    const tabs = [...tablist.querySelectorAll('[role="tab"]')];
+    const tabs = [...tablist.querySelectorAll('[role="tab"]:not([hidden])')];
     const indicator = tablist.querySelector('.tab-indicator');
     const panelOf = (tab) => document.getElementById(tab.getAttribute('aria-controls'));
 
@@ -207,10 +207,12 @@
 
     /* ----- preview ----- */
 
-    // How much room the preview actually has: the band beside the tab
-    // section (never beside the bio), starting just right of whichever is
-    // wider — the longest row title or the tab row itself. Both are measured,
-    // not guessed, so they stay correct as titles change.
+    // Where the preview sits: one square box of a fixed size, just right of
+    // whichever is wider, the longest row title or the tab row itself. Both
+    // are measured, not guessed, so they stay correct as titles change. The
+    // box shrinks only when the window is too narrow to hold it.
+    const BOX = 320;
+
     const room = () => {
       const margin = 24;
       const gap = 64;
@@ -226,24 +228,26 @@
       return {
         left,
         centerY: (top + bottom) / 2,
-        maxH: Math.max(bottom - top, 180),
-        maxW: Math.max(Math.min(520, window.innerWidth - left - margin), 180),
+        box: Math.max(Math.min(BOX, window.innerWidth - left - margin, bottom - top), 180),
       };
     };
 
-    // Fit the image inside that room without cropping it, so a portrait
-    // screenshot stays portrait and a wide one stays wide.
+    // Fit the image inside the square without cropping it, so a portrait
+    // screenshot stays portrait and a wide one stays wide. Every preview is
+    // centred in the same box, so the frame only changes shape, never place.
     const fitFrame = (img, morph) => {
       const w = img.naturalWidth || 16;
       const h = img.naturalHeight || 10;
-      const { left, centerY, maxW, maxH } = room();
-      const scale = Math.min(maxW / w, maxH / h);
+      const { left, centerY, box } = room();
+      const scale = Math.min(box / w, box / h);
+      const fw = Math.round(w * scale);
+      const fh = Math.round(h * scale);
 
       frame.toggleAttribute('data-morph', Boolean(morph));
-      frame.style.setProperty('--w', `${Math.round(w * scale)}px`);
-      frame.style.setProperty('--h', `${Math.round(h * scale)}px`);
+      frame.style.setProperty('--w', `${fw}px`);
+      frame.style.setProperty('--h', `${fh}px`);
       preview.style.setProperty('--top', `${Math.round(centerY)}px`);
-      preview.style.setProperty('--left', `${Math.round(left)}px`);
+      preview.style.setProperty('--left', `${Math.round(left + (box - fw) / 2)}px`);
     };
 
     const showPreview = (src) => {

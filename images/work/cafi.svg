@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200" role="img" aria-label="CAFI brand identity">
+  <style>
+    .bg { fill: #f2f2f2 } .fr { stroke: #e4e4e4 } .t { fill: #b3b3b3 } .s { fill: #cfcfcf }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #151515 } .fr { stroke: #262626 } .t { fill: #585858 } .s { fill: #3c3c3c }
+    }
+    text { font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif }
+  </style>
+  <rect class="bg" width="1200" height="1200"/>
+  <rect class="fr" x="20" y="20" width="1160" height="1160" rx="8" fill="none" stroke-width="2"/>
+  <text class="t" x="600" y="614" text-anchor="middle" font-size="66" font-weight="500">CAFI brand identity</text>
+  <text class="s" x="600" y="733" text-anchor="middle" font-size="40">Placeholder, swap in the real image</text>
+</svg>

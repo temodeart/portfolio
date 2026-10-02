@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Investo trading app &middot; Temuujin (Temo) Batbold</title>
+<meta name="description" content="Investo puts the Mongolian Stock Exchange and foreign markets in one dark, green app. I designed version one, the version two update, the component library, the landing page and the investor deck.">
+<meta name="color-scheme" content="light dark">
+<script>try{if(localStorage.getItem('fx')==='on'){var d=document.documentElement;d.dataset.fx='';var n=performance.getEntriesByType('navigation')[0];if(sessionStorage.getItem('fxsnap')==='1'||(n&&n.type==='back_forward'))d.dataset.fxSnap=''}}catch(e){}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Roboto:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../styles.css?v=42ec7a49">
+<link rel="stylesheet" href="../article.css?v=7e8ee6ff">
+<link rel="stylesheet" href="../effects.css?v=0bc3862c">
+</head>
+<body class="article-page">
+
+<nav class="side">
+  <a class="side-back" href="../index.html#work">Index</a>
+  <ol class="side-index">
+    <li><a href="#the-brief">Trading for the other 88 percent</a></li>
+    <li><a href="#home">A home screen that leads with the market</a></li>
+    <li><a href="#reading">Reading a Mongolian stock in one glance</a></li>
+    <li><a href="#trade">Buy in three taps, cancel until I say so</a></li>
+    <li><a href="#the-rest">Everything else a broker does</a></li>
+    <li><a href="#system">Black, three greys, one green</a></li>
+    <li><a href="#beyond">The deck and the landing page</a></li>
+    <li><a href="#what-i-learned">What a trading app taught me</a></li>
+  </ol>
+</nav>
+
+<article class="article">
+
+  <header class="article-head">
+    <h1 class="article-title">Investo stock trading app UI design</h1>
+    <p class="article-date">2022 to 2023</p>
+  </header>
+
+  <p class="article-lead">Investo set out to be the first Mongolian app where you could buy a
+  share on the Mongolian Stock Exchange and a share of Tesla from the same screen, with live
+  prices and a 1.5 percent commission. I designed the app that shipped, the update that followed,
+  the component library under both, the landing page, and the deck the founders raised on. Three
+  hundred and fifty-nine screens, all of them dark.<a class="note-ref" id="ref-1" href="#note-1">1</a></p>
+
+  <dl class="meta">
+    <dt>Role</dt><dd>Product design, design system, landing page, investor deck</dd>
+    <dt>Client</dt><dd>Investo, a Mongolian fintech start-up</dd>
+    <dt>Scope</dt><dd>Version one as shipped, version two update, components, landing page, 21-slide pitch deck</dd>
+    <dt>Years</dt><dd>2022 to 2023</dd>
+  </dl>
+
+  <hr>
+
+  <h2 id="the-brief">Trading for the other 88 percent</h2>
+
+  <p>The founders&rsquo; deck opened with a number I kept pinned above the file: only 12 percent
+  of Mongolians say they understand the stock market. The people who do trade are mostly over
+  forty, go through a broker, and move about 70 million tugrik at a time. Investo wanted the
+  person who is 25 to 40, has never called a broker, and has 15 million to put somewhere better
+  than a deposit account.<a class="note-ref" id="ref-2" href="#note-2">2</a></p>
+
+  <figure class="figure figure-bare">
+    <img src="../images/work/investo/deck-before-after.jpg" alt="A navy slide from the investor deck headed, in Mongolian, the situation and future of participants in foreign trading. Two grey cards. Before Investo: broker-dependent, over 40, low trading frequency, average trade 70 million tugrik, 17,500 citizens, cannot decide alone, does not read analysis. After Investo: broker-independent, 25 to 40, high frequency, average trade 15 million, 50,000 people, decides alone, reads analysis." loading="lazy" decoding="async">
+    <figcaption>The slide that set the brief. Left is who trades today, right is who I was designing for.</figcaption>
+  </figure>
+
+  <p>That person needed two things at once. An app that does not look like a bank, because the
+  bank apps had already lost them. And an app that quietly teaches, because most of what they
+  would see on screen, order books, earnings per share, limit orders, they had never met. I made
+  both of those design principles before I drew a screen.</p>
+
+  <h2 id="home">A home screen that leads with the market</h2>
+
+  <figure class="figure figure-duo">
+    <div class="figure-frame">
+      <img src="../images/work/investo/m-home.jpg" alt="Version one home, a long dark screen. A greeting with the user's name, a banner headed Dividend Stock asking what it is, three shortcuts for account top up, watchlist and order, then cards headed stocks you own and stocks you watch, each a small tile with ticker, price and change, and a news feed of articles with thumbnails." loading="lazy" decoding="async">
+      <img src="../images/work/investo/u-home.jpg" alt="Version two home. A promo banner offering the first 1,000 customers a free trading account, shortcuts for top up, watchlist and IPO, tabs for all, decreasing, increasing and ratio, then a list of foreign tickers, Amazon, Apple, Tesla, Nvidia, Microsoft, Meta, each with a logo, a red or green sparkline, a price and a change, followed by a Watchlist section in the same format." loading="lazy" decoding="async">
+    </div>
+    <figcaption>Version one on the left, the update on the right. The second home opens on prices, because that is what a trader opens an app for.</figcaption>
+  </figure>
+
+  <p>I built the shipped home as an onboarding device as much as a dashboard. The first card explained
+  what a dividend stock is. The cards below it showed the stocks you own and the stocks you watch
+  as tiles, and a news feed ran underneath, because a first-time investor reads before they
+  buy.</p>
+
+  <p>By the update I had usage to look at, and the update leads with the list. Foreign tickers,
+  sparklines, price and change, then the watchlist in the same format. I kept one promotional
+  banner at the top and moved the teaching into the places it was needed, which I will come back
+  to. The tab bar went from five items to four, because Watchlist had become a section of Home
+  rather than a destination.</p>
+
+  <h2 id="reading">Reading a Mongolian stock in one glance</h2>
+
+  <p>Every list in Investo is built from one row, and I spent more time on that row than on any
+  screen. Logo, ticker and company name, a sparkline of the day, the price and the change. Green
+  up, red down, grey flat, and never any other colour in the list, so the eye can scan for colour
+  before it reads a number.</p>
+
+  <div class="tickers" aria-label="Six Mongolian Stock Exchange rows rebuilt in the page">
+    <div class="tickers-head"><span class="on">Top 20</span><span>I ангилал</span><span>II ангилал</span></div>
+    <div class="tk"><i>AIC</i><div><b>AIC</b><small>Ард Даатгал</small></div><svg viewBox="0 0 72 26" class="down"><polyline fill="none" stroke="currentColor" stroke-width="1.6" points="0,8 10,10 20,7 30,14 40,12 50,18 60,16 72,20"/></svg><div class="px"><b>1478 ₮</b><small class="down">-1.14%</small></div></div>
+    <div class="tk"><i>APU</i><div><b>APU</b><small>АПУ</small></div><svg viewBox="0 0 72 26" class="down"><polyline fill="none" stroke="currentColor" stroke-width="1.6" points="0,10 12,8 22,13 32,11 44,15 56,13 72,16"/></svg><div class="px"><b>740.18 ₮</b><small class="down">-0.57%</small></div></div>
+    <div class="tk"><i>BDS</i><div><b>BDS</b><small>Би ди сек</small></div><svg viewBox="0 0 72 26" class="up"><polyline fill="none" stroke="currentColor" stroke-width="1.6" points="0,20 12,18 22,19 34,12 46,13 58,7 72,4"/></svg><div class="px"><b>1000 ₮</b><small class="up">+5.26%</small></div></div>
+    <div class="tk"><i>BNG</i><div><b>BNG</b><small>Баянгол зочид буудал</small></div><svg viewBox="0 0 72 26" class="flat"><polyline fill="none" stroke="currentColor" stroke-width="1.6" points="0,13 14,12 28,14 42,12 56,13 72,12"/></svg><div class="px"><b>23900 ₮</b><small class="flat">0.42%</small></div></div>
+    <div class="tk"><i>BODI</i><div><b>BODI</b><small>Бодь Даатгал</small></div><svg viewBox="0 0 72 26" class="down"><polyline fill="none" stroke="currentColor" stroke-width="1.6" points="0,9 14,11 26,10 38,15 50,14 62,17 72,18"/></svg><div class="px"><b>130 ₮</b><small class="down">-0.76%</small></div></div>
+    <div class="tk"><i>GOV</i><div><b>GOV</b><small>Говь</small></div><svg viewBox="0 0 72 26" class="down"><polyline fill="none" stroke="currentColor" stroke-width="1.6" points="0,7 12,9 24,8 36,13 48,15 60,14 72,19"/></svg><div class="px"><b>237.92 ₮</b><small class="down">-0.94%</small></div></div>
+  </div>
+  <p class="kit-cap">The row, rebuilt here from the file&rsquo;s tokens with the prices that were in my wireframes. The three filters are how the exchange itself sorts its companies.<a class="note-ref" id="ref-3" href="#note-3">3</a></p>
+
+  <figure class="figure figure-grid" style="--n:3">
+    <div class="figure-frame">
+      <img src="../images/work/investo/m-stocks.jpg" alt="The stocks screen. A search field, filter pills for Top 20, tier one and tier two, then the Top 20 list of Mongolian companies with logos, tickers, names, red and green sparklines, prices and changes, followed by tier one and tier two sections." loading="lazy" decoding="async">
+      <img src="../images/work/investo/m-market.jpg" alt="A stock detail for Mandal Insurance, ticker MNDL. Price 93.87 tugrik up 0.79 percent, tabs for chart, overview and news, a green area chart with a time scrubber and a highlighted hour, period pills from one hour to all, average, low and high figures, an order book in green and red columns, and buy and sell buttons." loading="lazy" decoding="async">
+      <img src="../images/work/investo/u-eps.jpg" alt="The version two stock detail with a dark sheet over it headed Earnings per share, explaining in Mongolian that EPS is the company's profit divided by its shares and that companies report quarterly, with a green Close link. Behind it, a statistics grid of open, volume, high, low, market cap and P/E ratio." loading="lazy" decoding="async">
+    </div>
+    <figcaption>The list, the detail with its order book, and one of the explainer sheets. Tap any term you do not know and it tells you.</figcaption>
+  </figure>
+
+  <p>The detail screen is where I put the teaching. In the update every statistic on it, EPS,
+  P/E, market cap, is a tap away from a plain-language sheet in Mongolian, and I wrote a pair of
+  sheets headed advantage and disadvantage for each company so the analysis the deck promised
+  actually appears next to the number it explains. The order book sits below the chart in the
+  same green and red as everything else, because a first-time trader should meet it as a
+  picture before they meet it as a concept.</p>
+
+  <h2 id="trade">Buy in three taps, cancel until I say so</h2>
+
+  <figure class="figure figure-grid" style="--n:3">
+    <div class="figure-frame">
+      <img src="../images/work/investo/m-trade.jpg" alt="The trade screen for MNDL. Buy and sell tabs with buy selected, available balance 999,000 tugrik, a segmented control for market or limit with limit selected in blue, then fields for price per share 93.87, quantity 2,150, fee 1.5 percent, total 300,000.87, and a green Buy button." loading="lazy" decoding="async">
+      <img src="../images/work/investo/m-confirm.jpg" alt="A sell confirmation. A yellow warning triangle, total 200,000 tugrik, quantity 4,853, price per share 41.21, fee 1.5 percent, a line reading expiry condition, until I cancel, and a red Sell button." loading="lazy" decoding="async">
+      <img src="../images/work/investo/u-trade.jpg" alt="The orders screen with tabs for open and filled. Each row is a limit buy for MNDL with a ring showing the filled percentage, 70 percent on the first and zero on the rest, the amount and price, a timestamp, and a cancel button." loading="lazy" decoding="async">
+    </div>
+    <figcaption>Order, confirm, and the open orders with how much of each has filled.</figcaption>
+  </figure>
+
+  <p>I kept the order form to what a person has to decide: buy or sell, market or limit, how
+  many, and the total with the fee already inside it. The price field repeats at the bottom as a
+  dropdown so a limit order can be adjusted without scrolling back up. Buy is green, sell is red,
+  and the confirmation screen for a sell puts a warning triangle above the figures because
+  selling is the tap people regret.</p>
+
+  <p>The line I am most pleased with is the expiry: <em>Намайг цуцлах хүртэл</em>, until I
+  cancel. The finance term is good-till-cancelled. Nobody outside a brokerage says that, so the
+  app does not either. The orders list then shows each open order as a ring that fills as the
+  exchange fills it, so a partial fill is a picture and not a percentage you have to interpret.</p>
+
+  <h2 id="the-rest">Everything else a broker does</h2>
+
+  <figure class="figure figure-grid" style="--n:4">
+    <div class="figure-frame">
+      <img src="../images/work/investo/m-portfolio1.jpg" alt="Version one portfolio. Trading account 1.5 million tugrik, total stock value 200,100 up 15.10 percent, a bubble chart of holdings with MNDL at 50 percent in a large white circle and AIC and LEND in smaller grey ones, then a list of holdings." loading="lazy" decoding="async">
+      <img src="../images/work/investo/u-portfolio.jpg" alt="Version two portfolio. Trading account 39.4 million with top up and withdraw buttons, total 250,000 up 1.5 percent, tabs for stocks, government securities, bonds, funds and crypto, the same bubble chart by asset class, and holdings below." loading="lazy" decoding="async">
+      <img src="../images/work/investo/u-ipo.jpg" alt="The IPO list. A line saying you can follow, invest in and track the latest IPOs on the Mongolian Stock Exchange, tabs for open and closed, and cards for a Golomt Bank offering with unit price 250, total raised 5 million on a progress bar, start date, days left and end date." loading="lazy" decoding="async">
+      <img src="../images/work/investo/u-faceid.jpg" alt="A biometric prompt. Fingerprint and face icons in rounded squares, the question turn on biometric login, a line explaining that face or fingerprint can be used to enter the app, a green Turn on button and a Skip link." loading="lazy" decoding="async">
+    </div>
+    <figcaption>Portfolio in both versions, the IPO list, and the biometric prompt from the update.</figcaption>
+  </figure>
+
+  <p>I let the portfolio grow the way the company did. In version one it was a bubble chart of stocks.
+  In the update the bubbles are asset classes, stocks, government securities, bonds, funds and
+  crypto, because by then the roadmap had more than shares on it. I kept the bubble chart rather
+  than a donut because a bubble that is half the screen says &ldquo;most of your money is
+  here&rdquo; faster than any legend.</p>
+
+  <p>Under those sit the screens nobody puts in a portfolio and everybody uses: a four-step KYC
+  with the progress drawn as segments, deposit and withdrawal, notifications, a profile, and an
+  IPO list where a live offering is a progress bar with a countdown. The biometric prompt came in
+  the update, after the first version taught us how often people log in.</p>
+
+  <h2 id="system">Black, three greys, one green</h2>
+
+  <p>I put the whole app on true black, with one grey for surfaces and three for content. There
+  is a single green and a single red, and I gave them nothing to do except mean up and down, buy
+  and sell. Every other signal is a grey. That is the entire palette, and it is why 359 screens
+  still look like one product.</p>
+
+  <p class="swatch-role">Tokens <em>as named in the file, Investo/Core</em></p>
+  <div class="swatches four dark">
+    <div class="swatch" style="--c:#000000"><b>Background</b><span>#000000</span></div>
+    <div class="swatch" style="--c:#1f1f1f"><b>Surface</b><span>#1F1F1F, backgroundSecondary</span></div>
+    <div class="swatch" style="--c:#e2e2e2;--ink:#111"><b>Content primary</b><span>#E2E2E2</span></div>
+    <div class="swatch" style="--c:#757575"><b>Content tertiary</b><span>#757575, with #AFAFAF between</span></div>
+  </div>
+  <div class="swatches four dark" style="margin-top:8px">
+    <div class="swatch" style="--c:#49cb67;--ink:#111"><b>Green</b><span>#49CB67, up and buy</span></div>
+    <div class="swatch" style="--c:#e43e2b"><b>Red</b><span>#E43E2B, down and sell</span></div>
+    <div class="swatch" style="--c:#06ba63;--ink:#111"><b>Success</b><span>#06BA63</span></div>
+    <div class="swatch" style="--c:#3b7ded"><b>Limit</b><span>#3B7DED, the one blue, for the limit toggle</span></div>
+  </div>
+
+  <p>I set the type in Roboto in eight roles, each with a Mongolian and an English specimen on its card so
+  the Cyrillic never surprises anyone at build time.</p>
+
+  <dl class="gloss">
+    <div><dt>Display and Heading</dt><dd>Bold. The balance, the price, a screen title.</dd></div>
+    <div><dt>Label and Paragraph</dt><dd>Regular. Field labels, explainer sheets, news.</dd></div>
+    <div><dt>Button and Caption</dt><dd>The one place I allow all caps, and the smallest thing a finger should read.</dd></div>
+    <div><dt>Overline and Number</dt><dd>Section eyebrows, and a tabular figure set so columns of prices line up.</dd></div>
+  </dl>
+
+  <figure class="figure figure-bare">
+    <img src="../images/work/investo/inputs.jpg" alt="The components page, dark. Text inputs in four variants across the top, standard, with icon, with caption and both, each in states initial, active, typing, filled, disabled and success in green and error in red, and below them text areas in the same states." loading="lazy" decoding="async">
+    <figcaption>Every input state, drawn once. Success and error are the only times the field border takes a colour.</figcaption>
+  </figure>
+
+  <h2 id="beyond">The deck and the landing page</h2>
+
+  <p>At a start-up I end up designing the company as well as the app. I laid out the 21-slide deck the
+  founders took to investors, and the table I built for it is the clearest statement of what
+  Investo was for.</p>
+
+  <div class="table-wrap">
+    <table class="rules" aria-label="Competitive comparison from the investor deck">
+      <thead><tr><th></th><th>Investo</th><th>Golomt Capital</th><th>TDB Capital</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Prices</th><td data-win>Real time</td><td>30 to 120 second delay</td><td>Real time</td></tr>
+        <tr><th scope="row">Mobile app</th><td data-win>Yes</td><td>Yes</td><td>No</td></tr>
+        <tr><th scope="row">Commission</th><td data-win>1.5%</td><td>2%</td><td>2%</td></tr>
+        <tr><th scope="row">Foreign trading in the app</th><td data-win>Yes</td><td>No</td><td>No</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="kit-cap">The deck&rsquo;s own comparison, redrawn. The brokers&rsquo; figures are the founders&rsquo; claims, not mine.<a class="note-ref" id="ref-4" href="#note-4">4</a></p>
+
+  <figure class="figure figure-duo">
+    <div class="figure-frame">
+      <img src="../images/work/investo/deck-roadmap.jpg" alt="A navy slide headed Roadmap with a timeline of three points: April 2023, Interactive Brokers; September 2023, social trading; November 2023, MSE launch." loading="lazy" decoding="async">
+      <img src="../images/work/investo/deck-done.jpg" alt="A navy slide headed, in Mongolian, what have we done so far. Six logos with captions: the Investo app icon for mobile app and admin dashboard, Lifetime Investment for a brokerage partnership, the Mongolian Stock Exchange for a fibre connection, the Central Securities Depository for an API connection, Gmobile for a server in its data centre, and Interactive Brokers for a test connection." loading="lazy" decoding="async">
+    </div>
+    <figcaption>Two of the 21 slides. I kept the deck to navy, white and the brand green so the app screenshots inside it did the selling.</figcaption>
+  </figure>
+
+  <figure class="figure figure-bare">
+    <img src="../images/work/investo/landing.png" alt="A long marketing landing page in green and white. A hero reading invest in your future with a phone showing the app, a section on domestic trading with a map of Mongolia and a phone, a section on foreign trading with a world map and tickers for Tesla and Nvidia, a green band asking why Investo with six benefits around a phone, an IPO section with a laptop showing the admin dashboard, an FAQ, contact cards, a team block with portraits, and a QR code to download." loading="lazy" decoding="async">
+    <figcaption>The landing page. Domestic trading, foreign trading, why Investo, IPO, and a QR code at the end, in that order.</figcaption>
+  </figure>
+
+  <h2 id="what-i-learned">What a trading app taught me</h2>
+
+  <p>A trading app is a list and a form, and everything else is trust. The list has to be
+  scannable by colour before it is readable by number. The form has to contain every decision
+  and nothing else. And the trust comes from the small things: a warning above a sell, an expiry
+  written in the words a person would actually say, a sheet that explains EPS the moment you
+  wonder about it.</p>
+
+  <p>I also learned to design the second version while shipping the first. The tab bar, the home
+  screen and the portfolio all changed between the two, and every change came from watching what
+  people did with the first one. The system underneath did not have to change at all, which is
+  the part I would point a hiring manager to.</p>
+
+  <hr class="notes-rule">
+  <ol class="notes">
+    <li id="note-1"><span class="note-body">Screen counts from the Figma file: 52 phone frames
+    on the Master page, 114 on the Update page and 193 on the Process page. The Master page is
+    stamped App ver 1.1.9 (67), Design ver 2.1.1. <a class="note-back" href="#ref-1" aria-label="Back to reference 1"></a></span></li>
+    <li id="note-2"><span class="note-body">The 12 percent figure, the 70 million and 15 million
+    tugrik averages and the age bands are from the investor deck in the file and are the
+    company&rsquo;s own research. <a class="note-back" href="#ref-2" aria-label="Back to reference 2"></a></span></li>
+    <li id="note-3"><span class="note-body">Top 20 is the exchange&rsquo;s index of its most
+    traded companies. I ангилал and II ангилал are the Mongolian Stock Exchange&rsquo;s first and
+    second classification tiers. <a class="note-back" href="#ref-3" aria-label="Back to reference 3"></a></span></li>
+    <li id="note-4"><span class="note-body">The deck also scored user experience out of ten and
+    gave Investo eight. I left that row out here, because I designed it and it is not for me to
+    grade. <a class="note-back" href="#ref-4" aria-label="Back to reference 4"></a></span></li>
+  </ol>
+
+  <footer class="article-foot">
+    <h2 class="foot-heading">Similar</h2>
+    <ul class="related-list">
+      <li><a href="itrader.html">iTrader landing page design<span>2025</span></a></li>
+      <li><a href="money-market-fund.html">Money Market Fund<span>2026</span></a></li>
+    </ul>
+
+    <nav class="pager">
+      <a class="pager-prev" href="nadad-oir.html"><span class="pager-label">Previous</span>Nadad Oir brand identity</a>
+    </nav>
+  </footer>
+
+</article>
+
+<script src="../article.js?v=c5c2e37a" defer></script>
+<script src="../effects.js?v=92f0cab3" defer></script>
+</body>
+</html>

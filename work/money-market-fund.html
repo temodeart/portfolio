@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Money Market Fund &middot; Temuujin (Temo) Batbold</title>
+<meta name="description" content="A regulated investment product designed as a working React prototype, 38 flows across three surfaces, signed off before a line of production code.">
+<meta name="color-scheme" content="light dark">
+<script>try{if(localStorage.getItem('fx')==='on'){var d=document.documentElement;d.dataset.fx='';var n=performance.getEntriesByType('navigation')[0];if(sessionStorage.getItem('fxsnap')==='1'||(n&&n.type==='back_forward'))d.dataset.fxSnap=''}}catch(e){}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
+<link rel="stylesheet" href="../styles.css?v=42ec7a49">
+<link rel="stylesheet" href="../article.css?v=7e8ee6ff">
+<link rel="stylesheet" href="../effects.css?v=0bc3862c">
+</head>
+<body class="article-page">
+
+<nav class="side">
+  <a class="side-back" href="../index.html#work">Index</a>
+  <ol class="side-index">
+    <li><a href="#not-a-mockup">Not a mockup</a></li>
+    <li><a href="#three-surfaces">Three surfaces, 38 flows</a></li>
+    <li><a href="#thirteen-steps">Thirteen steps to an account</a></li>
+    <li><a href="#seventeen">Seventeen flows before you can buy</a></li>
+    <li><a href="#the-yield">The number I flagged</a></li>
+    <li><a href="#the-web">Improving the web platform</a></li>
+    <li><a href="#principles">Five principles, and the one to hold</a></li>
+    <li><a href="#week-eight">The web gets week eight</a></li>
+  </ol>
+</nav>
+
+<article class="article">
+
+  <header class="article-head">
+    <h1 class="article-title">Money Market Fund</h1>
+    <p class="article-date">2026</p>
+  </header>
+
+
+  <p class="article-lead">I designed three surfaces and 38 flows, and got stakeholder sign-off by
+  having them click through a working app rather than swipe a slide deck. Development has not
+  started.<a class="note-ref" id="ref-1" href="#note-1">1</a></p>
+
+  <dl class="meta">
+    <dt>Role</dt><dd>Product design, and the prototype build</dd>
+    <dt>Product</dt><dd>A money market fund. Certificates, trusts and similar short instruments</dd>
+    <dt>Scope</dt><dd>Landing site, mobile app, web app, all clickable</dd>
+    <dt>Year</dt><dd>2026, approved and awaiting build</dd>
+    <dt>Status</dt><dd>Signed off by stakeholders</dd>
+  </dl>
+
+  <hr>
+
+  <h2 id="not-a-mockup">Not a mockup</h2>
+
+  <p>What I handed stakeholders was not a Figma prototype. I built a React application: one HTML
+  entry point, 22 JSX modules, every screen real, every field typable, every transition wired. A
+  query string picks which of the 38 flows you land in.</p>
+
+  <p>That choice is the case study. A money market fund is not a product you can evaluate by looking
+  at pictures of it. The question a stakeholder actually has is whether a person can get from never
+  having heard of this to owning a certificate, and the only honest way I could answer it was to
+  hand them a phone and watch.</p>
+
+  <p>I went further than that. Finishing the registration flow lands you on an empty home screen.
+  Finishing the login flow lands you on a home screen with holdings. I modelled the difference
+  between a new account and a used one, which is the state most demos quietly skip because it is
+  the least flattering.</p>
+
+  <h2 id="three-surfaces">Three surfaces, 38 flows</h2>
+
+  <figure class="figure figure-bare">
+    <img src="../images/work/mmf/surfaces.svg" alt="Three surfaces. A landing site of three pages, a mobile app of twenty flows, and a web app of fifteen. Below, the mobile app broken into six families: four flows for start and login, three for buying and selling, two for automatic investment, four for the wallet, three for loans and four for everything else." loading="lazy" decoding="async">
+    <figcaption>Counted off the portal, which lists every flow and the steps inside it.</figcaption>
+  </figure>
+
+  <p>The landing site is three pages. The mobile app is twenty flows. The web app is fifteen, and I
+  did not make it a shrunk copy of the phone: I built the dashboard, the filtering and the
+  transaction history for a browser, because someone reviewing a portfolio at a desk wants
+  different things from someone topping up on a bus.</p>
+
+  <h2 id="thirteen-steps">Thirteen steps to an account</h2>
+
+  <figure class="figure figure-bare">
+    <img src="../images/work/mmf/registration.svg" alt="The registration flow as thirteen numbered blocks: onboarding, phone, email, bank account verification, link a card, password, PIN, biometrics, DAN consent, MONPEP, terms, master agreement and signature, ending at an empty home screen. Bank account, DAN, MONPEP, the master agreement and the signature are highlighted as regulated steps." loading="lazy" decoding="async">
+    <figcaption>Five of the thirteen exist because a regulator says so, not because a designer
+    wanted them.</figcaption>
+  </figure>
+
+  <p>Phone, email, password, PIN and biometrics are the ordinary part. The rest is what selling
+  regulated investments to the public costs: a bank account verified before you can trade, consent
+  through <strong>DAN</strong>, the national digital identity system, a <strong>MONPEP</strong>
+  check, a master agreement, and a signature you draw with your finger.</p>
+
+  <p class="pull">I could not design thirteen steps down to four. I could only decide what order they
+  come in, which ones can wait, and whether the person still understands what they are agreeing to
+  by step eleven.</p>
+
+  <h2 id="seventeen">Seventeen flows before you can buy</h2>
+
+  <p>Three of the twenty mobile flows are the thing people think this app is for. Buy on the primary
+  market, buy on the secondary market, sell.</p>
+
+  <p>The other seventeen are the conditions that have to hold first. Getting money in, through QPay
+  or a transfer from one of four banks. Getting money out. Linking a card. Reading a contract.
+  Borrowing against what you hold, then closing that loan or paying part of it. Finding out why a
+  number changed.</p>
+
+  <p>The automatic investment builder is nine steps on its own: type, term, unit count, frequency,
+  payment day, end date, a projection, a priority order across seven or eight products, a funding
+  source, a name, a review, a PIN. I let it be the most elaborate flow in the app because it exists
+  so that the other flows stop being necessary.</p>
+
+  <h2 id="the-yield">The number I flagged</h2>
+
+  <p>The primary market list shows nine open issuances. A bank certificate at 12.5% over six months.
+  Another at 14.5% over twelve. And a non-bank financial institution at
+  <strong>23.0%</strong>.<a class="note-ref" id="ref-2" href="#note-2">2</a></p>
+
+  <p>Each card carries the issuer, the ticker, the instrument type, the yield, the term, the par
+  value and how much is left. What no card carries yet is a signal of risk. The only number set in
+  large type is the yield, and 23.0 is a bigger number than 12.5.</p>
+
+  <p>The instrument type is the signal, in small grey text, and it assumes the reader knows that a
+  trust from a non-bank lender is a different proposition from a bank certificate. Some will. The
+  people this app is trying to reach, who are new to investing and arriving from an onboarding
+  screen that promised short-term investing made simple, mostly will not.</p>
+
+  <p>I flagged it in the sign-off notes. I am not going to remove the 23%. In the next pass I want
+  the card to say what it is buying.</p>
+
+
+  <h2 id="the-web">Improving the web platform</h2>
+
+  <p>The mobile app is new. The web platform already existed, and improving something that already
+  exists is a different job from drawing something that does not.</p>
+
+  <p>I scoped the work as six things. An audit of the existing web UX. A visual refresh. Alignment
+  to the design system. A rebuilt dashboard and transaction experience. Developer handoff. And a
+  loan flow, which I wrote down with a question mark next to it, because nobody had decided yet
+  whether it belonged in this phase.<a class="note-ref" id="ref-3" href="#note-3">3</a></p>
+
+  <p>I put the audit first, in week one, next to a competitor benchmark of lending apps and a set of
+  risk and compliance notes. The ordering mattered to me. You cannot refresh the visuals of a
+  financial platform until you know which of its awkward bits are bad design and which are a
+  regulator&rsquo;s requirement wearing bad design as a disguise.</p>
+
+  <p class="pull">A visual refresh that quietly removes a disclosure is not a refresh. It is a
+  compliance incident with better typography.</p>
+
+  <p>The binding constraint I set was the design system. One set of tokens, components, forms, tables
+  and financial cards, shared across mobile and web, with Oswald for headings and Inter for body
+  text, which I chose for legibility at small sizes. That is what stops the web from becoming a
+  shrunken phone or a museum of the old product.</p>
+
+  <h2 id="principles">Five principles, and the one to hold</h2>
+
+  <p>I set out five principles in the deck. <strong>Trust before action</strong>, reassure people
+  before asking them for a decision or for money. <strong>Clarity over complexity</strong>, plain
+  language for financial concepts. <strong>Risk transparency</strong>, communicate risk honestly
+  and visibly. <strong>Fast decision-making</strong>, less friction in the core money flows.
+  <strong>Cross-platform consistency</strong>, one experience across mobile and web.</p>
+
+  <p>Four of those are the usual good intentions and hard to argue with. The third one is the
+  expensive one, and it is the one the primary market card is not yet keeping. A list that sets
+  12.5% and 23.0% in the same weight is communicating return visibly and risk not at all. I wrote
+  the principle down. Now I have to make the screen catch up with it.</p>
+
+  <h2 id="week-eight">The web gets week eight</h2>
+
+  <figure class="figure figure-bare">
+    <img src="../images/work/mmf/roadmap.svg" alt="The eight week roadmap as a row of circles. Weeks 1 and 2 are research, audit, information architecture and UX direction, in the Discover phase. Weeks 3 to 5 are wireframes, UI direction and system, and core mobile screens, in Design. Weeks 6 and 7 are refinement, QA, usability and iteration, in Refine. Week 8 is the web revamp and developer handoff, the whole Ship phase." loading="lazy" decoding="async">
+    <figcaption>Seven weeks of mobile, then the existing web platform and the handoff share the
+    last one.</figcaption>
+  </figure>
+
+  <p>This is the part of my own plan I am least comfortable with. The web revamp sits in week eight,
+  alongside developer handoff, in a phase called Ship. Handoff weeks are the least able to absorb a
+  surprise, and an audit of an existing platform is the single most likely place for one to turn
+  up.</p>
+
+  <p>I can defend it. The design system is built by week four, so by week eight the web work is
+  mostly application rather than invention, and doing it last means it inherits everything the
+  mobile screens learned in usability testing. That is a real argument and it only holds if the week
+  one audit finds nothing structural.</p>
+
+  <p>Either way, I named the risk while the plan was still a plan, which is most of the value of
+  writing a roadmap down. The version stakeholders approved has the audit in week one for exactly
+  that reason: whatever the web platform turns out to need, we know in week one rather than week
+  eight.</p>
+
+  <hr class="notes-rule">
+  <ol class="notes">
+    <li id="note-1"><span class="note-body">The prototype documents every flow and its steps,
+    which is where the counts on this page come from. <a class="note-back" href="#ref-1" aria-label="Back to reference 1"></a></span></li>
+    <li id="note-2"><span class="note-body">Those figures are what the prototype displays, and may
+    be illustrative rather than live issuances. The design point holds either way: whatever the
+    real spread turns out to be, the card has to carry more than the yield. <a class="note-back" href="#ref-2" aria-label="Back to reference 2"></a></span></li>
+    <li id="note-3"><span class="note-body">A question mark in a scope list is worth more than it
+    looks. It is somebody being honest in writing that a decision has not been made, which is rarer
+    than it should be and much cheaper than finding out in week seven. <a class="note-back" href="#ref-3" aria-label="Back to reference 3"></a></span></li>
+  </ol>
+
+  <footer class="article-foot">
+    <h2 class="foot-heading">Similar</h2>
+    <ul class="related-list">
+      <li><a href="carmax.html">CarMax car eCommerce platform<span>2026</span></a></li>
+      <li><a href="tino-onboarding-improvement.html">Tino onboarding improvement<span>2026</span></a></li>
+    </ul>
+
+    <nav class="pager">
+      <a class="pager-prev" href="carmax.html"><span class="pager-label">Previous</span>CarMax car eCommerce platform</a>
+    </nav>
+  </footer>
+
+</article>
+
+<script src="../article.js?v=c5c2e37a" defer></script>
+<script src="../effects.js?v=92f0cab3" defer></script>
+</body>
+</html>

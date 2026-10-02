@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colour system for the Forse charts library &middot; Temuujin (Temo) Batbold</title>
+<meta name="description" content="A rule that generates distinct, on-brand chart colours for series counts no palette can cover, reconstructed from the sixty colours it left behind.">
+<meta name="color-scheme" content="light dark">
+<script>try{if(localStorage.getItem('fx')==='on'){var d=document.documentElement;d.dataset.fx='';var n=performance.getEntriesByType('navigation')[0];if(sessionStorage.getItem('fxsnap')==='1'||(n&&n.type==='back_forward'))d.dataset.fxSnap=''}}catch(e){}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
+<link rel="stylesheet" href="../styles.css?v=42ec7a49">
+<link rel="stylesheet" href="../article.css?v=7e8ee6ff">
+<link rel="stylesheet" href="../effects.css?v=0bc3862c">
+</head>
+<body class="article-page">
+
+<nav class="side">
+  <a class="side-back" href="../index.html#work">Index</a>
+  <ol class="side-index">
+    <li><a href="#the-problem">A hundred series</a></li>
+    <li><a href="#what-survived">What survived</a></li>
+    <li><a href="#evidence">What the palette proves</a></li>
+    <li><a href="#the-rule">The rule, rebuilt</a></li>
+    <li><a href="#try-it">Run it</a></li>
+    <li><a href="#overrides">Overrides, and the grey</a></li>
+    <li><a href="#legacy">Out of the neon</a></li>
+    <li><a href="#confidence">Certain, inferred, gone</a></li>
+  </ol>
+</nav>
+
+<article class="article">
+
+  <header class="article-head">
+    <h1 class="article-title">Colour system for the Forse charts library</h1>
+    <p class="article-date">2025</p>
+  </header>
+
+  <p class="article-lead">A chart in Forse Insights can carry a hundred series. Nobody hand-picks a
+  hundred colours. This is the rule I wrote to pick them, rebuilt from the palette it left behind
+  after the company closed and the document describing it went with it.</p>
+
+  <dl class="meta">
+    <dt>Role</dt><dd>Design system. Colour space research and the generation rule</dd>
+    <dt>Product</dt><dd>The charts library shared by every Forse Insights terminal</dd>
+    <dt>Scope</dt><dd>Distance metric research, generation rule, a 60-colour pregenerated palette, 18 protocol overrides, legacy migration</dd>
+    <dt>Year</dt><dd>2025</dd>
+    <dt>Status</dt><dd>Shipped in every terminal. Spec reconstructed here from the Figma artefact</dd>
+    <dt>Reference</dt><dd><a href="https://stablelab.gitbook.io/forse-grants-handbook/5.-measuring-impact-and-roi">Forse Grants Handbook</a>, chapter five, on the metrics these charts carry</dd>
+  </dl>
+
+  <hr>
+
+  <h2 id="the-problem">A hundred series</h2>
+
+  <p>A Forse terminal answers questions like which of these two hundred wallets received the most,
+  or how a grant programme&rsquo;s money moved across forty protocols. The handbook StableLab wrote
+  for those programmes asks for cost per retained 90-day user, cost per surviving project, and how
+  concentrated spend is by category, and each of those is a many-series chart by definition. So the
+  terminals carry dozens of series, sometimes a hundred, and every one needs a colour that reads as
+  itself against the others and still looks like it belongs to Forse.</p>
+
+  <p>Hand-picking stopped working for me at about twelve. Past that I was choosing between colours
+  that were already too close, and every new terminal restarted the argument. So I turned the job
+  from a palette into a rule: given what is already on the chart, produce the next colour.</p>
+
+  <p class="pull">A palette is a list. A rule is a list that has not run out yet.</p>
+
+  <h2 id="what-survived">What survived</h2>
+
+  <p>StableLab ceased operating and the Linear library went with it, including the page where I
+  documented this rule. What survived is the Forse Design System 2.0 file, which holds the
+  rule&rsquo;s output: my seed colour, sixty pregenerated colours in the order the rule produced
+  them, eighteen per-protocol overrides, and a slide showing the three legacy terminal colours
+  being replaced.</p>
+
+  <p>Sixty colours in generation order is a fingerprint. The code is gone, but its habits are all
+  over the sequence, so I reverse-engineered my own work.</p>
+
+  <div class="palette" aria-label="The sixty pregenerated chart colours in generation order">
+    <span style="--c:#9666cc" title="#9666CC" data-light></span>
+    <span style="--c:#ddbf6e" title="#DDBF6E" data-light></span>
+    <span style="--c:#3c8531" title="#3C8531"></span>
+    <span style="--c:#b281ca" title="#B281CA" data-light></span>
+    <span style="--c:#b00f6a" title="#B00F6A"></span>
+    <span style="--c:#7a2323" title="#7A2323"></span>
+    <span style="--c:#92791f" title="#92791F"></span>
+    <span style="--c:#78de6d" title="#78DE6D" data-light></span>
+    <span style="--c:#a929d4" title="#A929D4"></span>
+    <span style="--c:#cc7fa8" title="#CC7FA8" data-light></span>
+    <span style="--c:#6d2e2d" title="#6D2E2D"></span>
+    <span style="--c:#eccf2b" title="#ECCF2B"></span>
+    <span style="--c:#89c18e" title="#89C18E" data-light></span>
+    <span style="--c:#81269a" title="#81269A"></span>
+    <span style="--c:#e369a2" title="#E369A2" data-light></span>
+    <span style="--c:#e74840" title="#E74840" data-light></span>
+    <span style="--c:#bdc42d" title="#BDC42D"></span>
+    <span style="--c:#1fdd52" title="#1FDD52"></span>
+    <span style="--c:#9514a0" title="#9514A0"></span>
+    <span style="--c:#945973" title="#945973"></span>
+    <span style="--c:#c29288" title="#C29288" data-light></span>
+    <span style="--c:#dde54b" title="#DDE54B" data-light></span>
+    <span style="--c:#318d59" title="#318D59"></span>
+    <span style="--c:#d873ce" title="#D873CE" data-light></span>
+    <span style="--c:#be8c9e" title="#BE8C9E" data-light></span>
+    <span style="--c:#a03d22" title="#A03D22"></span>
+    <span style="--c:#d3d873" title="#D3D873" data-light></span>
+    <span style="--c:#42b88d" title="#42B88D"></span>
+    <span style="--c:#7e1c73" title="#7E1C73"></span>
+    <span style="--c:#ce1754" title="#CE1754"></span>
+    <span style="--c:#e3784b" title="#E3784B" data-light></span>
+    <span style="--c:#76812e" title="#76812E"></span>
+    <span style="--c:#63c3b1" title="#63C3B1" data-light></span>
+    <span style="--c:#ca11ae" title="#CA11AE"></span>
+    <span style="--c:#6d2c3e" title="#6D2C3E"></span>
+    <span style="--c:#ec7513" title="#EC7513"></span>
+    <span style="--c:#5b6831" title="#5B6831"></span>
+    <span style="--c:#5a65a7" title="#5A65A7"></span>
+    <span style="--c:#e467cb" title="#E467CB" data-light></span>
+    <span style="--c:#d77484" title="#D77484" data-light></span>
+    <span style="--c:#d3a578" title="#D3A578" data-light></span>
+    <span style="--c:#a7d446" title="#A7D446" data-light></span>
+    <span style="--c:#968bbf" title="#968BBF" data-light></span>
+    <span style="--c:#71295d" title="#71295D"></span>
+    <span style="--c:#e45666" title="#E45666" data-light></span>
+    <span style="--c:#6e4e2b" title="#6E4E2B"></span>
+    <span style="--c:#b2cb80" title="#B2CB80" data-light></span>
+    <span style="--c:#6b45a1" title="#6B45A1"></span>
+    <span style="--c:#eb61bf" title="#EB61BF" data-light></span>
+    <span style="--c:#eb2236" title="#EB2236"></span>
+    <span style="--c:#644f36" title="#644F36"></span>
+    <span style="--c:#88d54e" title="#88D54E" data-light></span>
+    <span style="--c:#9b6ad2" title="#9B6AD2" data-light></span>
+    <span style="--c:#f158b1" title="#F158B1" data-light></span>
+    <span style="--c:#b7202a" title="#B7202A"></span>
+    <span style="--c:#c58011" title="#C58011"></span>
+    <span style="--c:#4ec935" title="#4EC935"></span>
+    <span style="--c:#8137ac" title="#8137AC"></span>
+    <span style="--c:#ed2496" title="#ED2496"></span>
+    <span style="--c:#d57679" title="#D57679" data-light></span>
+  </div>
+  <p class="pair-cap">The sixty, numbered in generation order. Zero is the seed, #9666CC, used
+  only when the first series has no override of its own. Read down a column and you are reading
+  one hue lane.</p>
+
+  <h2 id="evidence">What the palette proves</h2>
+
+  <figure class="figure figure-bare">
+    <img src="../images/work/forse-charts-colour-system/lanes.svg" alt="Hue of each of the sixty colours plotted in generation order. The points fall into five lanes, each drifting slowly upward." loading="lazy" decoding="async">
+    <figcaption>Hue in generation order. Five lanes, each creeping upward by a few degrees per
+    pass.</figcaption>
+  </figure>
+
+  <p>Read the hues in order and they fall into five lanes. My rule visited each lane once per cycle,
+  then came back a little further along, so the sixth colour is a redder red than the first and the
+  eleventh is redder still. By the end each lane has drifted between thirty and seventy degrees from
+  where it started. That is a hue walk with a step that does not divide 360 evenly, so the lanes
+  never land on the same colour twice.</p>
+
+  <figure class="figure figure-bare">
+    <img src="../images/work/forse-charts-colour-system/bounds.svg" alt="Two panels. Top, HSL lightness of each colour by position with dashed rails at 30 and 65 that many points sit exactly on. Bottom, HSL saturation by position, staying between rails at 25 and 85." loading="lazy" decoding="async">
+    <figcaption>Lightness and saturation of the same sixty. Twenty-five of them sit exactly on
+    lightness 30 or 65.</figcaption>
+  </figure>
+
+  <p>Lightness tells the sharper story. Twenty-five of the sixty sit at exactly 30 or exactly 65 in
+  HSL. Not near, exactly. Values do not pile up on two numbers by chance. They pile up there because
+  I pushed them and a bound stopped them. Saturation shows the same fence at 25 and 85, less
+  crowded. And the bounds are HSL bounds: in CIELAB or OKLab lightness, only four colours touch an
+  extreme. I moved colours in HSL.</p>
+
+  <p>I judged them somewhere else. Measured in CIEDE2000, no colour in the first twenty comes within
+  3.6 of any colour before it, and the median gap is nearly twelve. In the last twenty, seven
+  colours land under 5, one within 1.7 of the seed. A floor that holds early and gives way late is a
+  threshold with a retry limit. The rule kept trying until a candidate cleared the line, and when
+  it had tried enough times it took the best it found.<a class="note-ref" id="ref-1" href="#note-1">1</a></p>
+
+  <p>One more habit. The distance between each colour and the one immediately before it never drops
+  below 15.7. Whatever else I did, I made sure neighbours in the legend always came out distinct,
+  which is the one place a reader compares two colours directly.</p>
+
+  <h2 id="the-rule">The rule, rebuilt</h2>
+
+  <p>Put those habits together and the shape of what I built is not in doubt.</p>
+
+  <p><strong>Start from the seed, or from an override.</strong> #9666CC is the seed. It is used
+  only when the first series has no fixed colour of its own. A Uniswap series takes Uniswap&rsquo;s
+  pink before the rule runs at all.</p>
+
+  <p><strong>Move in HSL.</strong> Advance hue by a fixed step. Carry saturation and lightness
+  forward from the last accepted colour.</p>
+
+  <p><strong>Measure in a perceptual space.</strong> Compute the distance from the candidate to
+  every colour already on the chart, overrides included. HSL is where a colour gets nudged, never
+  where it gets judged, because equal hue steps are not equally visible.</p>
+
+  <p><strong>Hold a threshold.</strong> If the smallest distance clears it, accept. If not, push
+  lightness by a fixed amount toward the far bound, nudge saturation, advance hue again, measure
+  again.</p>
+
+  <p><strong>Clamp.</strong> Lightness stays between 30 and 65, saturation between 25 and 85. A push
+  that hits the wall stops there and turns round next time. That is where twenty-five colours ended
+  up sitting on the rails.</p>
+
+  <p><strong>Give up gracefully.</strong> After a set number of tries, accept the candidate that
+  scored best. The palette keeps growing and the late colours are as distinct as the space allows.</p>
+
+<pre><code>function next(palette, state, opts) {
+  let best = null;
+  for (let t = 0; t &lt; opts.tries; t++) {
+    state.h = (state.h + opts.hueStep) % 360;
+    if (t &gt; 0) {                       // a failed try nudges, then clamps
+      state.l = clamp(state.l + opts.push * state.ldir, 30, 65);
+      if (state.l === 30 || state.l === 65) state.ldir *= -1;
+      state.s = clamp(state.s + 5 * state.sdir, 25, 85);
+      if (state.s === 25 || state.s === 85) state.sdir *= -1;
+    }
+    const cand = hsl(state.h, state.s, state.l);
+    const gap  = Math.min(...palette.map(p =&gt; distance(cand, p)));  // CIEDE2000 or OKLab
+    if (!best || gap &gt; best.gap) best = { cand, gap };
+    if (gap &gt;= opts.threshold) break;
+  }
+  palette.push(best.cand);
+  return best.cand;
+}</code></pre>
+
+  <p>Which perceptual space the threshold used is the one thing the sequence does not settle. I
+  tested the floor under CIEDE2000, plain CIELAB distance and OKLab, and the sequence respects all
+  three about equally, which is what you would expect since they agree across most of the gamut. I
+  remember the research comparing exactly those three. The artefact cannot tell me which one
+  won.</p>
+
+  <h2 id="try-it">Run it</h2>
+
+  <p>My reconstruction, running on this page. Same seed, same bounds, same shape of loop. I fitted
+  the step and threshold to the original&rsquo;s statistics rather than recovering them, so this
+  will not reproduce the sixty hexes above. It reproduces their habits.<a class="note-ref" id="ref-2" href="#note-2">2</a></p>
+
+  <div class="gen" id="gen">
+    <div class="gen-controls">
+      <label><b>Seed</b><input type="text" id="g-seed" value="#9666CC" spellcheck="false" autocomplete="off"></label>
+      <label><b>Distance <output id="g-space-out"></output></b>
+        <select id="g-space"><option value="de2000">CIEDE2000</option><option value="oklab">OKLab</option></select></label>
+      <label><b>Threshold <output id="g-t-out"></output></b><input type="range" id="g-t" min="2" max="14" step="0.5" value="6"></label>
+      <label><b>Hue step <output id="g-h-out"></output></b><input type="range" id="g-h" min="20" max="180" step="1" value="45"></label>
+      <label><b>Lightness push <output id="g-p-out"></output></b><input type="range" id="g-p" min="3" max="20" step="1" value="15"></label>
+      <label><b>Colours <output id="g-n-out"></output></b><input type="range" id="g-n" min="12" max="100" step="1" value="60"></label>
+    </div>
+    <div class="palette" id="g-out" aria-live="polite"></div>
+    <p class="gen-note" id="g-stats"></p>
+  </div>
+
+  <h2 id="overrides">Overrides, and the grey</h2>
+
+  <p>I gave eighteen protocols their own colour, taken from their brand, and made the rule treat
+  those as already on the chart before it generates anything. Sky&rsquo;s blue and USDC&rsquo;s blue
+  are close. That is the brands&rsquo; problem, and my generated colours route around both.</p>
+
+  <div class="swatches dense">
+    <div class="swatch" style="--c:#0000FF"><b>Base</b><span>#0000FF &middot; sky_base_integrators_impact</span></div>
+    <div class="swatch" style="--c:#4F4DFF;--ink:#0a1516"><b>Sky</b><span>#4F4DFF &middot; Sky</span></div>
+    <div class="swatch" style="--c:#3CCD98"><b>sUSDS</b><span>#3CCD98 &middot; Sky</span></div>
+    <div class="swatch" style="--c:#FFA64C;--ink:#0a1516"><b>USDS</b><span>#FFA64C &middot; Sky</span></div>
+    <div class="swatch" style="--c:#2775CA"><b>USDC</b><span>#2775CA &middot; USDC</span></div>
+    <div class="swatch" style="--c:#12AAFF"><b>Arbitrum</b><span>#12AAFF &middot; Arbitrum</span></div>
+    <div class="swatch" style="--c:#705CF2;--ink:#0a1516"><b>Lifinity</b><span>#705CF2 &middot; Lifinity</span></div>
+    <div class="swatch" style="--c:#70815A"><b>Perena</b><span>#70815A &middot; Perena</span></div>
+    <div class="swatch" style="--c:#9CADFF;--ink:#0a1516"><b>Aerodrome</b><span>#9CADFF &middot; Aerodrome</span></div>
+    <div class="swatch" style="--c:#8C8EF9;--ink:#0a1516"><b>SyncSwap</b><span>#8C8EF9 &middot; SyncSwap</span></div>
+    <div class="swatch" style="--c:#D5508C"><b>Drift</b><span>#D5508C &middot; Drift</span></div>
+    <div class="swatch" style="--c:#627EEA;--ink:#0a1516"><b>Ethereum</b><span>#627EEA &middot; Ethereum</span></div>
+    <div class="swatch" style="--c:#FF524A;--ink:#0a1516"><b>Thruster</b><span>#FF524A &middot; Thruster</span></div>
+    <div class="swatch" style="--c:#F58B00"><b>Camelot</b><span>#F58B00 &middot; Camelot</span></div>
+    <div class="swatch" style="--c:#D9D912"><b>Blast</b><span>#D9D912 &middot; Blast</span></div>
+    <div class="swatch" style="--c:#FC72FF;--ink:#0a1516"><b>Uniswap</b><span>#FC72FF &middot; Uniswap</span></div>
+    <div class="swatch" style="--c:#F7B869;--ink:#0a1516"><b>Scroll</b><span>#F7B869 &middot; Scroll</span></div>
+    <div class="swatch" style="--c:#9B9DAC;--ink:#0a1516"><b>Untagged</b><span>#9B9DAC &middot; grey2 from the core greys</span></div>
+  </div>
+
+  <p>I gave untagged data #9B9DAC, which is grey2 from the core greys rather than a generated hue,
+  and gave Kamino nothing at all, because its brand is black and white and a generated colour serves
+  it better than either. The grey mattered more than it looks. Untagged series never compete with a
+  real one for a hue, so a chart with a lot of unlabelled noise reads as a few coloured lines over
+  grey rather than a rainbow.</p>
+
+  <h2 id="legacy">Out of the neon</h2>
+
+  <div class="pairs">
+    <div class="pair"><span style="--c:#b30fff"></span><i>&rarr;</i><span style="--c:#9666cc"></span></div>
+    <div class="pair"><span style="--c:#00ffff"></span><i>&rarr;</i><span style="--c:#ddbf6e"></span></div>
+    <div class="pair"><span style="--c:#ffa500"></span><i>&rarr;</i><span style="--c:#3c8531"></span></div>
+  </div>
+  <p class="pair-cap">#B30FFF, #00FFFF and #FFA500 on the left. The first three generated colours on
+  the right.</p>
+
+  <p>The terminals before this ran on web primaries at full saturation: an electric violet, pure
+  cyan, pure orange. On the old dark surface they glowed. On the light system they vibrated against
+  white and flattened everything near them. I replaced them one for one with the first three
+  generated colours, and put the mapping into the design system as its own slide so legacy
+  terminals could be migrated without anyone re-deciding.</p>
+
+  <h2 id="confidence">Certain, inferred, gone</h2>
+
+  <p><strong>Certain, because it is in the file.</strong> The seed. The sixty colours and their
+  order. The eighteen overrides and the untagged grey. The legacy mapping. The HSL bounds of 30 to
+  65 and 25 to 85.</p>
+
+  <p><strong>Inferred, because the sequence behaves that way.</strong> Generation in HSL along a hue
+  walk. A perceptual distance threshold around 5 to 8 CIEDE2000. A lightness push of about 15 toward
+  the far bound on failure. A retry cap. A sweep of that rule over a few hundred parameter sets lands
+  closest to the original at a 45 degree hue step.</p>
+
+  <p><strong>Gone.</strong> The exact step, the exact threshold, which of the three spaces won, and
+  the code. The reconstruction reproduces the sequence&rsquo;s statistics: the same share of colours
+  on the rails, the same distance floor giving way at the same point. It does not reproduce the sixty
+  hexes, and I would rather say so than pretend.</p>
+
+  <hr class="notes-rule">
+  <ol class="notes">
+    <li id="note-1"><span class="note-body">Consecutive colours are always far apart and the
+    minimum distance to any earlier colour is what decays, which rules out a rule that only checked
+    the neighbour. It was checking the whole chart. <a class="note-back" href="#ref-1" aria-label="Back to reference 1"></a></span></li>
+    <li id="note-2"><span class="note-body">Fitted against four statistics of the original: how
+    many colours sit on a lightness rail, the median distance to the nearest earlier colour, how
+    many fall under 5 in each third of the sequence, and the largest gap in hue coverage. <a class="note-back" href="#ref-2" aria-label="Back to reference 2"></a></span></li>
+  </ol>
+
+  <footer class="article-foot">
+    <h2 class="foot-heading">Similar</h2>
+    <ul class="related-list">
+      <li><a href="forse-insights.html">Forse Insights, new version<span>2025</span></a></li>
+      <li><a href="forse-agents.html">Forse Agents<span>2026</span></a></li>
+    </ul>
+
+    <nav class="pager">
+      <a class="pager-prev" href="forse-insights.html"><span class="pager-label">Previous</span>Forse Insights, new version</a>
+      <a class="pager-next" href="itrader.html"><span class="pager-label">Next</span>iTrader landing page design</a>
+    </nav>
+  </footer>
+
+</article>
+
+<script src="../article.js?v=c5c2e37a" defer></script>
+<script src="../effects.js?v=92f0cab3" defer></script>
+<script>
+(() => {
+  'use strict';
+  const $ = (id) => document.getElementById(id);
+  const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+  const lin = (c) => (c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
+
+  const hslToRgb = (h, s, l) => {
+    s /= 100; l /= 100;
+    const k = (n) => (n + h / 30) % 12;
+    const a = s * Math.min(l, 1 - l);
+    const f = (n) => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+    return [f(0), f(8), f(4)];
+  };
+  const rgbToHsl = ([r, g, b]) => {
+    const max = Math.max(r, g, b), min = Math.min(r, g, b), l = (max + min) / 2, d = max - min;
+    let h = 0, s = 0;
+    if (d) {
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      h = max === r ? (g - b) / d + (g < b ? 6 : 0) : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
+      h *= 60;
+    }
+    return [h, s * 100, l * 100];
+  };
+  const toHex = (rgb) => '#' + rgb.map((v) => Math.round(v * 255).toString(16).padStart(2, '0')).join('');
+  const parseHex = (t) => {
+    const m = /^#?([0-9a-f]{6})$/i.exec(t.trim());
+    return m ? [0, 2, 4].map((i) => parseInt(m[1].slice(i, i + 2), 16) / 255) : null;
+  };
+  const toLab = ([r, g, b]) => {
+    r = lin(r); g = lin(g); b = lin(b);
+    const x = (0.4124 * r + 0.3576 * g + 0.1805 * b) / 0.95047;
+    const y = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    const z = (0.0193 * r + 0.1192 * g + 0.9505 * b) / 1.08883;
+    const f = (t) => (t > 0.008856 ? Math.cbrt(t) : 7.787 * t + 16 / 116);
+    const fx = f(x), fy = f(y), fz = f(z);
+    return [116 * fy - 16, 500 * (fx - fy), 200 * (fy - fz)];
+  };
+  const toOklab = ([r, g, b]) => {
+    r = lin(r); g = lin(g); b = lin(b);
+    const l = Math.cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b);
+    const m = Math.cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b);
+    const s = Math.cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b);
+    return [0.2104542553 * l + 0.7936177850 * m - 0.0040720468 * s,
+            1.9779984951 * l - 2.4285922050 * m + 0.4505937099 * s,
+            0.0259040371 * l + 0.7827717662 * m - 0.8086757660 * s];
+  };
+  const rad = (d) => (d * Math.PI) / 180, deg = (r) => (r * 180) / Math.PI;
+  const de2000 = ([L1, a1, b1], [L2, a2, b2]) => {
+    const C1 = Math.hypot(a1, b1), C2 = Math.hypot(a2, b2), Cb = (C1 + C2) / 2;
+    const G = 0.5 * (1 - Math.sqrt(Cb ** 7 / (Cb ** 7 + 25 ** 7)));
+    const a1p = a1 * (1 + G), a2p = a2 * (1 + G);
+    const C1p = Math.hypot(a1p, b1), C2p = Math.hypot(a2p, b2);
+    const hue = (a, b) => (a || b ? (deg(Math.atan2(b, a)) + 360) % 360 : 0);
+    const h1 = hue(a1p, b1), h2 = hue(a2p, b2);
+    const dL = L2 - L1, dC = C2p - C1p;
+    let dh = h2 - h1;
+    if (C1p * C2p === 0) dh = 0; else if (dh > 180) dh -= 360; else if (dh < -180) dh += 360;
+    const dH = 2 * Math.sqrt(C1p * C2p) * Math.sin(rad(dh / 2));
+    const Lb = (L1 + L2) / 2, Cbp = (C1p + C2p) / 2;
+    let hb;
+    if (C1p * C2p === 0) hb = h1 + h2;
+    else if (Math.abs(h1 - h2) <= 180) hb = (h1 + h2) / 2;
+    else hb = h1 + h2 < 360 ? (h1 + h2 + 360) / 2 : (h1 + h2 - 360) / 2;
+    const T = 1 - 0.17 * Math.cos(rad(hb - 30)) + 0.24 * Math.cos(rad(2 * hb)) + 0.32 * Math.cos(rad(3 * hb + 6)) - 0.20 * Math.cos(rad(4 * hb - 63));
+    const dth = 30 * Math.exp(-(((hb - 275) / 25) ** 2));
+    const Rc = 2 * Math.sqrt(Cbp ** 7 / (Cbp ** 7 + 25 ** 7));
+    const Sl = 1 + (0.015 * (Lb - 50) ** 2) / Math.sqrt(20 + (Lb - 50) ** 2);
+    const Sc = 1 + 0.045 * Cbp, Sh = 1 + 0.015 * Cbp * T;
+    const Rt = -Math.sin(rad(2 * dth)) * Rc;
+    return Math.sqrt((dL / Sl) ** 2 + (dC / Sc) ** 2 + (dH / Sh) ** 2 + Rt * (dC / Sc) * (dH / Sh));
+  };
+  const entry = (rgb) => ({ rgb, lab: toLab(rgb), ok: toOklab(rgb) });
+  const distance = (space, A, B) =>
+    space === 'oklab' ? Math.hypot(A.ok[0] - B.ok[0], A.ok[1] - B.ok[1], A.ok[2] - B.ok[2]) * 100 : de2000(A.lab, B.lab);
+
+  const generate = (seedRgb, o) => {
+    const pal = [entry(seedRgb)];
+    const st = { ldir: 1, sdir: -1 };
+    [st.h, st.s, st.l] = rgbToHsl(seedRgb);
+    for (let i = 1; i < o.count; i++) {
+      let best = null;
+      for (let t = 0; t < 8; t++) {
+        st.h = (st.h + o.hueStep) % 360;
+        if (t > 0) {
+          st.l = clamp(st.l + o.push * st.ldir, 30, 65);
+          if (st.l === 30 || st.l === 65) st.ldir *= -1;
+          st.s = clamp(st.s + 5 * st.sdir, 25, 85);
+          if (st.s === 25 || st.s === 85) st.sdir *= -1;
+        }
+        const cand = entry(hslToRgb(st.h, st.s, st.l));
+        const gap = Math.min(...pal.map((p) => distance(o.space, cand, p)));
+        if (!best || gap > best.gap) best = { cand, gap };
+        if (gap >= o.threshold) break;
+      }
+      pal.push(best.cand);
+    }
+    return pal;
+  };
+
+  const out = $('g-out'), stats = $('g-stats');
+  const ids = { space: 'g-space', threshold: 'g-t', hueStep: 'g-h', push: 'g-p', count: 'g-n' };
+  const read = () => ({
+    space: $(ids.space).value,
+    threshold: +$(ids.threshold).value,
+    hueStep: +$(ids.hueStep).value,
+    push: +$(ids.push).value,
+    count: +$(ids.count).value,
+  });
+  const render = () => {
+    const seed = parseHex($('g-seed').value) || parseHex('#9666CC');
+    const o = read();
+    $('g-space-out').textContent = '';
+    $('g-t-out').textContent = o.threshold;
+    $('g-h-out').textContent = o.hueStep + '°';
+    $('g-p-out').textContent = o.push;
+    $('g-n-out').textContent = o.count;
+    const pal = generate(seed, o);
+    out.style.setProperty('--cols', clamp(Math.round(360 / o.hueStep), 4, 10));
+    out.textContent = '';
+    let onRail = 0, floor = Infinity;
+    pal.forEach((p, i) => {
+      const [, , l] = rgbToHsl(p.rgb);
+      if (Math.abs(l - 30) < 0.6 || Math.abs(l - 65) < 0.6) onRail++;
+      if (i) floor = Math.min(floor, ...pal.slice(0, i).map((q) => de2000(q.lab, p.lab)));
+      const s = document.createElement('span');
+      s.style.setProperty('--c', toHex(p.rgb));
+      s.title = toHex(p.rgb).toUpperCase();
+      if (l >= 55) s.dataset.light = '';
+      out.appendChild(s);
+    });
+    stats.textContent = `${pal.length} colours. ${onRail} sitting on a lightness rail. Closest pair anywhere in the set: ${floor.toFixed(1)} CIEDE2000. The original sixty: 25 on a rail, closest pair 1.7.`;
+  };
+  ['g-seed', ...Object.values(ids)].forEach((id) => $(id).addEventListener('input', render));
+  render();
+})();
+</script>
+</body>
+</html>

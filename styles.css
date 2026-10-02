@@ -222,6 +222,9 @@ a[target="_blank"]::after {
   transition: transform 180ms var(--ease-out), background-color 180ms ease;
 }
 
+/* Hidden for now; the mode still works for anyone who already turned it on. */
+.fx[hidden] { display: none; }
+
 /* Presses answer back. */
 .fx:active .fx-switch { transform: scale(0.94); }
 
@@ -455,8 +458,9 @@ a[target="_blank"]::after {
   transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out);
 }
 
-/* Sized by script.js from each image's own proportions — portrait art stays
-   portrait. The frame morphs between them rather than snapping. */
+/* Sized by script.js from each image's own proportions, fitted inside one
+   320px square so a portrait screenshot and a wide one share a box. The
+   frame morphs between shapes rather than snapping. */
 .preview-frame {
   position: relative;
   width: var(--w, 320px);

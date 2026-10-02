@@ -3,28 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tino Day feature in Tino Driver &mdash; Temuujin (Temo) Batbold</title>
-<meta name="description" content="Tino Day feature in Tino Driver &mdash; placeholder article.">
+<title>Tino Day feature in Tino Driver &middot; Temuujin (Temo) Batbold</title>
+<meta name="description" content="One commission free day a month for drivers, and the single irreversible tap that starts it.">
 <meta name="color-scheme" content="light dark">
 <script>try{if(localStorage.getItem('fx')==='on'){var d=document.documentElement;d.dataset.fx='';var n=performance.getEntriesByType('navigation')[0];if(sessionStorage.getItem('fxsnap')==='1'||(n&&n.type==='back_forward'))d.dataset.fxSnap=''}}catch(e){}</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
-<link rel="stylesheet" href="../styles.css">
-<link rel="stylesheet" href="../article.css">
-<link rel="stylesheet" href="../effects.css">
+<link rel="stylesheet" href="../styles.css?v=42ec7a49">
+<link rel="stylesheet" href="../article.css?v=7e8ee6ff">
+<link rel="stylesheet" href="../effects.css?v=0bc3862c">
 </head>
 <body class="article-page">
 
 <nav class="side">
   <a class="side-back" href="../index.html#work">Index</a>
   <ol class="side-index">
-    <li><a href="#where-it-started">Where it started</a></li>
-    <li><a href="#making-it-feel-right">Making it feel right</a></li>
-    <li><a href="#little-big-details">Little big details</a></li>
-    <li><a href="#did-it-work">Did it work</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
+    <li><a href="#where-a-perk-lives">Where a perk has to live</a></li>
+    <li><a href="#one-tap">One tap you cannot take back</a></li>
+    <li><a href="#a-badge-not-a-banner">A badge, not a banner</a></li>
+    <li><a href="#the-button-grows">The button grows while the day runs</a></li>
+    <li><a href="#days-not-seconds">Days, not seconds</a></li>
+    <li><a href="#the-part-that-worries-me">The trade-off I keep coming back to</a></li>
   </ol>
 </nav>
 
@@ -35,63 +36,172 @@
     <p class="article-date">2026</p>
   </header>
 
-  <p>This page is a template. Every paragraph on it describes itself, so nothing here can be mistaken for finished writing — replace it section by section as the real piece comes together.<a class="note-ref" id="ref-1" href="#note-1">1</a></p>
-  <p>The column is 552px wide, which lands at roughly seventy-five characters a line at this size. That measure is what the whole page is built around: figures match it, the footnotes match it, and the side index sits outside it so it never competes for attention.<a class="note-ref" id="ref-2" href="#note-2">2</a></p>
-  <p>Below are all three figure treatments, a set of footnotes, and the navigation that closes every article.</p>
+
+  <p class="article-lead">Drivers pay Tino a commission on every fare they take. Tino Day hands one
+  of those days back. Twenty four hours at zero percent, once every thirty days, and the driver
+  picks which day it lands on.<a class="note-ref" id="ref-1" href="#note-1">1</a></p>
+
+  <dl class="meta">
+    <dt>Role</dt><dd>Product design, the feature end to end</dd>
+    <dt>Platform</dt><dd>Tino Go Driver, iOS and Android</dd>
+    <dt>Scope</dt><dd>One control, one confirmation, and the five states it moves through</dd>
+    <dt>Year</dt><dd>2026</dd>
+    <dt>Design file</dt><dd><a href="https://www.figma.com/design/mnADBS8LNlXMWcHl6EVC2W/Tino-Go-Driver?node-id=6208-74269" target="_blank" rel="noopener noreferrer">Tino Go Driver, Go Day</a><a class="note-ref" id="ref-2" href="#note-2">2</a></dd>
+  </dl>
+
   <hr>
-  <h2 id="where-it-started">Where it started</h2>
-  <p>Open with the context a reader actually needs, and stop there. The temptation is to explain the whole org chart before getting to the thing you made; resist it. Two paragraphs of setup is usually one more than necessary.</p>
-  <p>This second paragraph exists only to show what two stacked paragraphs look like at this measure — where the rag falls, how much air sits between blocks, and whether the leading holds up once there is more than one line to read.</p>
-  <figure class="figure">
-    <div class="figure-frame"><img src="../images/article/mock-chat.svg" alt="" loading="lazy" decoding="async"></div>
-    <figcaption>A framed figure. Screenshots and mockups get a tinted container and a rounded corner, so they read as an artefact rather than as part of the page.</figcaption>
+
+  <h2 id="where-a-perk-lives">Where a perk has to live</h2>
+
+  <p>A driver opens this app to do one thing. Go online. That button is the busiest control in the
+  entire product, and everything else on the screen is arranged around it.</p>
+
+  <p>So I welded the perk to it. In the file the 0% chip and the shift button are joined by a single
+  boolean union, 204 by 92 points. They are not two controls that happen to sit near each other. I
+  made them one shape.<a class="note-ref" id="ref-3" href="#note-3">3</a> A driver cannot start a
+  shift without their free day sitting right there under their thumb.</p>
+
+  <p>That was my whole placement argument. A perk in a menu is a perk nobody uses, and a driver who
+  never finds the thing you gave them is a driver who never feels paid back.</p>
+
+  <figure class="figure figure-duo">
+    <div class="figure-frame">
+      <img src="../images/work/tino-day/idle.jpg" alt="The driver home screen off duty. A map of the city, a wallet chip at the top, and at the bottom left a dark 0 percent commission chip sitting directly above the turn service on button." loading="lazy" decoding="async">
+      <img src="../images/work/tino-day/live.jpg" alt="The same screen with the day running. A countdown badge reading 23 hours 15 minutes 10 seconds sits above a now blue 0 percent chip, and the button reads turn service off with 0 percent commission on a second line." loading="lazy" decoding="async">
+    </div>
+    <figcaption>Off duty on the left, day running on the right. The chip and the shift button move
+    as one object because in the file they are one.</figcaption>
   </figure>
-  <h2 id="making-it-feel-right">Making it feel right</h2>
-  <p>Anything with chrome of its own — a browser window, an editor, a device — goes in the same container at the same radius.<a class="note-ref" id="ref-3" href="#note-3">3</a> Consistency between figures is what stops a long article from feeling like a scrapbook.</p>
-  <p>If a figure needs explaining, the caption does it. If the caption is running to three lines, the explanation probably belongs in the body instead.</p>
-  <figure class="figure">
-    <div class="figure-frame"><img src="../images/article/mock-browser.svg" alt="" loading="lazy" decoding="async"></div>
-    <figcaption>The same container, holding something with a very different shape. The padding and the radius do not change between figures.</figcaption>
+
+  <h2 id="one-tap">One tap you cannot take back</h2>
+
+  <p>Activation is permanent, and I put that in the sheet&rsquo;s second sentence rather than burying
+  it. No commission for the next 24 hours. Once started it cannot be paused, and the next one is 30
+  days away.</p>
+
+  <p>I made the confirm button repeat the length. Not &ldquo;Confirm&rdquo;, not
+  &ldquo;Activate&rdquo;, but <em>activate for 24 hours</em>. Someone reading fast still walks away
+  with the number in their head.</p>
+
+  <figure class="figure figure-phone">
+    <div class="figure-frame"><img src="../images/work/tino-day/confirm.jpg" alt="The confirmation sheet. The Go Day logo, a heading asking whether to activate the 0 percent commission right, and body text explaining that no commission will be taken for 24 hours, that it cannot be stopped once activated, and that 30 days must pass before the next one. A primary button reads activate for 24 hours, and a secondary button cancels." loading="lazy" decoding="async"></div>
+    <figcaption>The warning is the body copy, not the small print. I would rather lose a driver at
+    this sheet than surprise them tomorrow.</figcaption>
   </figure>
-  <h2 id="little-big-details">Little big details</h2>
-  <p>Device mockups sit in the frame like everything else. Export them at twice the width they will render at and let the container do the rest.</p>
-  <p>This is placeholder copy. It sits here so the measure, the leading and the rhythm between blocks can be judged honestly — a column of Lorem ipsum tells you nothing about how a real paragraph will breathe.</p>
-  <figure class="figure">
-    <div class="figure-frame"><img src="../images/article/mock-phone.svg" alt="" loading="lazy" decoding="async"></div>
-    <figcaption>Portrait artwork works the same way; the frame takes whatever proportions you give it.</figcaption>
-  </figure>
-  <h2 id="did-it-work">Did it work</h2>
-  <p>Charts are the exception. They get no container at all, because a chart is mostly whitespace already and a box around it just fences off the space it is using.</p>
+
+  <p>A perk that feels like a trick costs more trust than it ever buys.</p>
+
+  <h2 id="a-badge-not-a-banner">A badge, not a banner</h2>
+
+  <p>Once the day starts, a countdown appears. I made it a 26 point badge tucked above the shift
+  button, not a banner across the top of the screen.</p>
+
+  <p>That sounds like a small call and it decides whether the whole feature is bearable. A driver
+  looks at this map for ten hours straight. Anything covering it gets in the way of the job. The
+  badge takes a strip of space that was empty anyway and returns the one number the driver actually
+  wants, which is how much of the good day is left.</p>
+
+  <h2 id="the-button-grows">The button grows while the day runs</h2>
+
+  <p>I made the control change shape three times, and each change does a job.</p>
+
   <figure class="figure figure-bare">
-    <img src="../images/article/chart-line.svg" alt="" loading="lazy" decoding="async">
-    <figcaption>A bare figure. The chart draws straight onto the page background, in both light and dark.</figcaption>
+    <img src="../images/work/tino-day/control.svg" alt="Diagram of the control in three states. Off duty it is one line of text at 204 by 48 points. Running, a countdown badge appears above it, the chip fills blue, and a second line reading 0 percent commission appears inside the button as its inner frame grows from 20 to 36 points. Ending, the button widens from 204 to 223 points to fit the longer Mongolian word for turn off." loading="lazy" decoding="async">
+    <figcaption>Three states of one control, with the measurements taken off the file rather than
+    paced out by eye.</figcaption>
   </figure>
-  <h2 id="acknowledgements">Acknowledgements</h2>
-  <p>Close by naming the people who actually did the work with you. It costs you nothing and it matters more than the rest of the page.<a class="note-ref" id="ref-4" href="#note-4">4</a></p>
+
+  <p>Off duty it shows a single line. The words <em>0% commission</em> exist inside the button but
+  sit switched off in the file. Nothing is running, so nothing claims to be.</p>
+
+  <p>While the day is live those words switch on and the inner frame grows from 20 points to 36.
+  The control gets taller for as long as the benefit lasts.</p>
+
+  <p>Then the label flips from <em>&#1072;&#1089;&#1072;&#1072;&#1093;</em> to
+  <em>&#1091;&#1085;&#1090;&#1088;&#1072;&#1072;&#1093;</em>, which is the longer word, so I widened
+  the button from 204 to 223 points. I could have truncated it, dropped the type size, or left it
+  overflowing. I resized the button. Nobody will ever thank me for that, which is how I know it was
+  right.</p>
+
+  <h2 id="days-not-seconds">Days, not seconds</h2>
+
+  <p>I did not keep the countdown in the same unit the whole way round.</p>
+
+  <p>While the day runs it reads 24:00:00, then 23:15:10. Hours, minutes and seconds, because at
+  that scale every hour on the clock is money.</p>
+
+  <p>Once the day is spent, I switch the badge to <em>29 &#1257;&#1076;&#1257;&#1088;</em>. Days.
+  Watching a month tick down second by second on your home screen would be a small daily
+  punishment, and the driver did nothing wrong. They used a thing they had earned.</p>
+
+  <figure class="figure figure-duo">
+    <div class="figure-frame">
+      <img src="../images/work/tino-day/spent.jpg" alt="The spent sheet. The Go Day logo, a badge reading 29 days 22 hours 10 minutes 45 seconds, a heading saying you have used your commission free day, a line saying to use the Go Day right again after 29 days, and a single close button." loading="lazy" decoding="async">
+      <img src="../images/work/tino-day/cooldown.jpg" alt="The driver home screen during the cooldown. A small badge above the shift button reads 29 days with an hourglass, and the 0 percent chip carries a lock." loading="lazy" decoding="async">
+    </div>
+    <figcaption>The sheet gives full precision once. The badge you live with for a month gives
+    days.</figcaption>
+  </figure>
+
+  <p>I closed the sheet with a single button that says Close. No upsell, no offer to buy more days,
+  no invitation to refer a friend for another one. It tells you when to come back and it gets out
+  of the way.</p>
+
+  <figure class="figure figure-bare">
+    <img src="../images/work/tino-day/cycle.svg" alt="Diagram of the thirty day cycle. Available, then a confirmation sheet that states the day cannot be paused, then twenty four hours running counted in hours minutes and seconds, then a sheet confirming the day is spent, then twenty nine days of waiting counted in days, then available again." loading="lazy" decoding="async">
+    <figcaption>The loop, once a month, with the unit changing to match the scale of the wait.</figcaption>
+  </figure>
+
+  <h2 id="the-part-that-worries-me">The trade-off I keep coming back to</h2>
+
+  <p>Here is the trade-off I keep coming back to.</p>
+
+  <p>A 24 hour window that cannot be paused is an argument for driving straight through it. If
+  today is the only day this month where you keep every tugrik, the rational move is to stay out
+  as long as your body allows. My design does not invent that pressure. It does concentrate it
+  into one stretch, and then it puts a clock on the screen counting the pressure down.</p>
+
+  <p class="pull">The reward is real and I still think the shape deserves another round. An
+  incentive that pays best when you sleep least is worth a second look, whoever it came from.</p>
+
+  <p>Other shapes are not hard to picture, and I have sketched them. The same allowance spent as
+  hours across the month rather than one unbroken block. A pause. A cap on how many hours the perk
+  covers in a single stretch. Any of those keeps the reward and removes the reason to drive
+  tired.<a class="note-ref" id="ref-4" href="#note-4">4</a></p>
 
   <hr class="notes-rule">
   <ol class="notes">
-    <li id="note-1"><span class="note-body">Footnotes are for the asides that would derail a paragraph — the caveat, the second thought, the thing you would say out loud but not write into the body. Disclaimers live here. Click anywhere on this note to go back to the line that called it. <a class="note-back" href="#ref-1" aria-label="Back to reference 1"></a></span></li>
-    <li id="note-2"><span class="note-body">Every note links both ways: the marker in the body jumps down here, and the note jumps back up. Both travel rather than teleport, and mark where they land. <a class="note-back" href="#ref-2" aria-label="Back to reference 2"></a></span></li>
-    <li id="note-3"><span class="note-body">Notes hold links as comfortably as prose. An external one looks like this: <a href="https://www.figma.com" target="_blank" rel="noopener noreferrer">Figma</a> — clicking it opens the link instead of jumping back. <a class="note-back" href="#ref-3" aria-label="Back to reference 3"></a></span></li>
-    <li id="note-4"><span class="note-body">And a last one, to show what four stacked notes do to the bottom of the page. Delete the ones you do not need — the numbering is generated, so it renumbers itself. <a class="note-back" href="#ref-4" aria-label="Back to reference 4"></a></span></li>
+    <li id="note-1"><span class="note-body">These are design files rather than production
+    screenshots. The ratings, badges and timer values are placeholder data chosen to exercise the
+    layout. <a class="note-back" href="#ref-1" aria-label="Back to reference 1"></a></span></li>
+    <li id="note-2"><span class="note-body">The file calls this Go Day and the wordmark on both
+    sheets says Go Day. It reaches me as Tino Day. Worth settling before anything ships, because
+    drivers will use whichever name they see first and support will inherit the other one. <a class="note-back" href="#ref-2" aria-label="Back to reference 2"></a></span></li>
+    <li id="note-3"><span class="note-body">Every measurement here comes straight off the Figma
+    file. The union is 204 by 92, the button 203.8 by 48, and the widened version 222.8, which I
+    have rounded throughout. <a class="note-back" href="#ref-3" aria-label="Back to reference 3"></a></span></li>
+    <li id="note-4"><span class="note-body">Writing a concern into a case study about your own work
+    is a slightly odd thing to do. I would rather have it here than find out later that nobody in
+    the room said it. <a class="note-back" href="#ref-4" aria-label="Back to reference 4"></a></span></li>
   </ol>
 
   <footer class="article-foot">
     <h2 class="foot-heading">Similar</h2>
     <ul class="related-list">
+      <li><a href="tino-streamers.html">Tino Streamers<span>2026</span></a></li>
+      <li><a href="tino-homepage-overhaul.html">Tino homepage overhaul<span>2026</span></a></li>
       <li><a href="fresh-look-for-tino-mn.html">Fresh look for Tino.mn<span>2026</span></a></li>
-      <li><a href="university-pass-in-tino.html">University pass in Tino<span>2026</span></a></li>
     </ul>
 
     <nav class="pager">
+      <a class="pager-prev" href="tino-homepage-overhaul.html"><span class="pager-label">Previous</span>Tino homepage overhaul</a>
       <a class="pager-next" href="fresh-look-for-tino-mn.html"><span class="pager-label">Next</span>Fresh look for Tino.mn</a>
     </nav>
   </footer>
 
 </article>
 
-<script src="../article.js" defer></script>
-<script src="../effects.js" defer></script>
+<script src="../article.js?v=c5c2e37a" defer></script>
+<script src="../effects.js?v=92f0cab3" defer></script>
 </body>
 </html>

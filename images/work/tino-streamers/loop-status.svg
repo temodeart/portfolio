@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 552 480" width="552" height="480" role="img" aria-label="Diagram. A loop: you give, your weekly rank moves, a tier badge attaches to your name, the streamer reads your name out, and you give again. A dashed branch shows the hide-my-name switch leaving the loop while the money and the rank still count.">
+  <style>
+    .ink  { fill: #111111 }
+    .mid  { fill: #888888 }
+    .dim  { fill: #a3a3a3 }
+    .box  { fill: none; stroke: #e4e4e4; stroke-width: 1.25 }
+    .boxf { fill: #fafafa; stroke: #e4e4e4; stroke-width: 1.25 }
+    .line { stroke: #d2d2d2; stroke-width: 1.25; fill: none }
+    .dash { stroke: #d2d2d2; stroke-width: 1.25; fill: none; stroke-dasharray: 4 4 }
+    .head { fill: #d2d2d2 }
+    @media (prefers-color-scheme: dark) {
+      .ink  { fill: #ededed }
+      .mid  { fill: #9e9e9e }
+      .dim  { fill: #7c7c7c }
+      .box  { stroke: #262626 }
+      .boxf { fill: #131313; stroke: #262626 }
+      .line, .dash { stroke: #383838 }
+      .head { fill: #383838 }
+    }
+    text { font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif }
+    .t { font-size: 13px; font-weight: 500 }
+    .s { font-size: 11.5px }
+    .l { font-size: 10px; letter-spacing: 0.09em }
+  </style>
+
+  <marker id="b" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+    <path class="head" d="M0 0 L8 4 L0 8 Z"/>
+  </marker>
+
+  <text class="l mid" x="88" y="22">THE LOOP</text>
+
+  <!-- 1 -->
+  <rect class="boxf" x="88" y="34" width="330" height="58" rx="9"/>
+  <text class="t ink" x="253" y="59" text-anchor="middle">You give</text>
+  <text class="s dim" x="253" y="79" text-anchor="middle">money, or an object</text>
+  <path class="line" d="M253 92 L253 118" marker-end="url(#b)"/>
+
+  <!-- 2 -->
+  <rect class="box" x="88" y="118" width="330" height="58" rx="9"/>
+  <text class="t ink" x="253" y="143" text-anchor="middle">Your rank moves</text>
+  <text class="s dim" x="253" y="163" text-anchor="middle">weekly, not lifetime</text>
+  <path class="line" d="M253 176 L253 202" marker-end="url(#b)"/>
+
+  <!-- 3 -->
+  <rect class="box" x="88" y="202" width="330" height="58" rx="9"/>
+  <text class="t ink" x="253" y="227" text-anchor="middle">A badge attaches to your name</text>
+  <text class="s dim" x="253" y="247" text-anchor="middle">bronze, silver, gold, platinum</text>
+  <path class="line" d="M253 260 L253 286" marker-end="url(#b)"/>
+
+  <!-- 4 -->
+  <rect class="boxf" x="88" y="286" width="330" height="58" rx="9"/>
+  <text class="t ink" x="253" y="311" text-anchor="middle">The streamer reads your name out</text>
+  <text class="s dim" x="253" y="331" text-anchor="middle">which is the whole point</text>
+
+  <!-- return arc, down the right -->
+  <path class="line" d="M418 315 L486 315 L486 63 L418 63" marker-end="url(#b)"/>
+  <text class="s mid" x="500" y="193">so you</text>
+  <text class="s mid" x="500" y="209">give</text>
+  <text class="s mid" x="500" y="225">again</text>
+
+  <!-- opt out, off to the left -->
+  <path class="dash" d="M88 63 L46 63 L46 420 L120 420" marker-end="url(#b)"/>
+  <text class="l mid" x="120" y="402">THE ESCAPE HATCH</text>
+  <rect class="boxf" x="120" y="408" width="298" height="46" rx="9"/>
+  <text class="t ink" x="269" y="436" text-anchor="middle">&#8220;Нэр нуусан&#8221;, hide my name</text>
+
+</svg>

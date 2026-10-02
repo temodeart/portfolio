@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 552 300" role="img" aria-label="Hue of each of the sixty generated colours plotted in generation order. The points fall into five lanes, each lane drifting slowly upward in hue.">
+<style>
+    .ax{stroke:#c9c9c9;stroke-width:1}.rail{stroke:#111;stroke-width:1;stroke-dasharray:3 4;opacity:.45}.lane{stroke:#111;stroke-width:1;opacity:.14;fill:none}
+    .lbl{font:10px Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;fill:#8a8a8a}.tl{font:11px Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;fill:#111;font-weight:500}
+    @media (prefers-color-scheme:dark){.ax{stroke:#2a2a2a}.rail{stroke:#ededed}.lane{stroke:#ededed}.lbl{fill:#7c7c7c}.tl{fill:#ededed}}
+  </style>
+<line class="ax" x1="40" y1="270.0" x2="540" y2="270.0"/><text class="lbl" x="34" y="273.5" text-anchor="end">0°</text>
+<line class="ax" x1="40" y1="208.0" x2="540" y2="208.0"/><text class="lbl" x="34" y="211.5" text-anchor="end">90°</text>
+<line class="ax" x1="40" y1="146.0" x2="540" y2="146.0"/><text class="lbl" x="34" y="149.5" text-anchor="end">180°</text>
+<line class="ax" x1="40" y1="84.0" x2="540" y2="84.0"/><text class="lbl" x="34" y="87.5" text-anchor="end">270°</text>
+<line class="ax" x1="40" y1="22.0" x2="540" y2="22.0"/><text class="lbl" x="34" y="25.5" text-anchor="end">360°</text>
+<text class="lbl" x="40.0" y="290" text-anchor="middle">0</text>
+<text class="lbl" x="124.7" y="290" text-anchor="middle">10</text>
+<text class="lbl" x="209.5" y="290" text-anchor="middle">20</text>
+<text class="lbl" x="294.2" y="290" text-anchor="middle">30</text>
+<text class="lbl" x="379.0" y="290" text-anchor="middle">40</text>
+<text class="lbl" x="463.7" y="290" text-anchor="middle">50</text>
+<text class="tl" x="40" y="12">HSL hue, by position in the sequence</text>
+<line class="lane" x1="82.4" y1="270.0" x2="124.7" y2="269.4"/>
+<line class="lane" x1="124.7" y1="269.4" x2="167.1" y2="268.0"/>
+<line class="lane" x1="167.1" y1="268.0" x2="209.5" y2="262.9"/>
+<line class="lane" x1="209.5" y1="262.9" x2="251.9" y2="261.1"/>
+<line class="lane" x1="251.9" y1="261.1" x2="294.2" y2="257.8"/>
+<line class="lane" x1="294.2" y1="257.8" x2="336.6" y2="251.3"/>
+<line class="lane" x1="336.6" y1="251.3" x2="379.0" y2="249.6"/>
+<line class="lane" x1="379.0" y1="249.6" x2="421.4" y2="248.4"/>
+<line class="lane" x1="421.4" y1="248.4" x2="463.7" y2="247.5"/>
+<line class="lane" x1="463.7" y1="247.5" x2="506.1" y2="244.5"/>
+<line class="lane" x1="48.5" y1="239.8" x2="90.8" y2="237.7"/>
+<line class="lane" x1="90.8" y1="237.7" x2="133.2" y2="234.9"/>
+<line class="lane" x1="133.2" y1="234.9" x2="175.6" y2="226.8"/>
+<line class="lane" x1="175.6" y1="226.8" x2="218.0" y2="226.5"/>
+<line class="lane" x1="218.0" y1="226.5" x2="260.3" y2="226.6"/>
+<line class="lane" x1="260.3" y1="226.6" x2="302.7" y2="223.2"/>
+<line class="lane" x1="302.7" y1="223.2" x2="345.1" y2="218.9"/>
+<line class="lane" x1="345.1" y1="218.9" x2="387.5" y2="215.6"/>
+<line class="lane" x1="387.5" y1="215.6" x2="429.8" y2="214.9"/>
+<line class="lane" x1="429.8" y1="214.9" x2="472.2" y2="205.1"/>
+<line class="lane" x1="472.2" y1="205.1" x2="514.6" y2="194.3"/>
+<line class="lane" x1="56.9" y1="192.7" x2="99.3" y2="191.4"/>
+<line class="lane" x1="99.3" y1="191.4" x2="141.7" y2="183.6"/>
+<line class="lane" x1="141.7" y1="183.6" x2="184.1" y2="176.2"/>
+<line class="lane" x1="184.1" y1="176.2" x2="226.4" y2="169.4"/>
+<line class="lane" x1="226.4" y1="169.4" x2="268.8" y2="161.1"/>
+<line class="lane" x1="268.8" y1="161.1" x2="311.2" y2="153.8"/>
+<line class="lane" x1="311.2" y1="153.8" x2="353.6" y2="110.6"/>
+<line class="lane" x1="353.6" y1="110.6" x2="395.9" y2="95.9"/>
+<line class="lane" x1="395.9" y1="95.9" x2="438.3" y2="87.6"/>
+<line class="lane" x1="438.3" y1="87.6" x2="480.7" y2="85.2"/>
+<line class="lane" x1="480.7" y1="85.2" x2="523.1" y2="78.5"/>
+<line class="lane" x1="65.4" y1="76.9" x2="107.8" y2="73.7"/>
+<line class="lane" x1="107.8" y1="73.7" x2="150.2" y2="72.2"/>
+<line class="lane" x1="150.2" y1="72.2" x2="192.5" y2="66.6"/>
+<line class="lane" x1="192.5" y1="66.6" x2="234.9" y2="59.2"/>
+<line class="lane" x1="234.9" y1="59.2" x2="277.3" y2="58.7"/>
+<line class="lane" x1="277.3" y1="58.7" x2="319.7" y2="57.1"/>
+<line class="lane" x1="319.7" y1="57.1" x2="362.0" y2="55.1"/>
+<line class="lane" x1="362.0" y1="55.1" x2="404.4" y2="51.9"/>
+<line class="lane" x1="404.4" y1="51.9" x2="446.8" y2="50.2"/>
+<line class="lane" x1="446.8" y1="50.2" x2="489.2" y2="46.0"/>
+<line class="lane" x1="489.2" y1="46.0" x2="531.5" y2="45.4"/>
+<line class="lane" x1="73.9" y1="45.4" x2="116.3" y2="44.0"/>
+<line class="lane" x1="116.3" y1="44.0" x2="158.6" y2="41.3"/>
+<line class="lane" x1="158.6" y1="41.3" x2="201.0" y2="40.2"/>
+<line class="lane" x1="201.0" y1="40.2" x2="243.4" y2="36.9"/>
+<line class="lane" x1="243.4" y1="36.9" x2="285.8" y2="35.8"/>
+<line class="lane" x1="285.8" y1="35.8" x2="328.1" y2="33.4"/>
+<line class="lane" x1="328.1" y1="33.4" x2="370.5" y2="28.7"/>
+<line class="lane" x1="370.5" y1="28.7" x2="412.9" y2="26.7"/>
+<line class="lane" x1="412.9" y1="26.7" x2="455.3" y2="26.1"/>
+<line class="lane" x1="455.3" y1="26.1" x2="497.6" y2="24.7"/>
+<line class="lane" x1="497.6" y1="24.7" x2="540.0" y2="23.3"/>
+<circle cx="40.0" cy="85.2" r="4.2" fill="#9666cc"/>
+<circle cx="48.5" cy="239.8" r="4.2" fill="#ddbf6e"/>
+<circle cx="56.9" cy="192.7" r="4.2" fill="#3c8531"/>
+<circle cx="65.4" cy="76.9" r="4.2" fill="#b281ca"/>
+<circle cx="73.9" cy="45.4" r="4.2" fill="#b00f6a"/>
+<circle cx="82.4" cy="270.0" r="4.2" fill="#7a2323"/>
+<circle cx="90.8" cy="237.7" r="4.2" fill="#92791f"/>
+<circle cx="99.3" cy="191.4" r="4.2" fill="#78de6d"/>
+<circle cx="107.8" cy="73.7" r="4.2" fill="#a929d4"/>
+<circle cx="116.3" cy="44.0" r="4.2" fill="#cc7fa8"/>
+<circle cx="124.7" cy="269.4" r="4.2" fill="#6d2e2d"/>
+<circle cx="133.2" cy="234.9" r="4.2" fill="#eccf2b"/>
+<circle cx="141.7" cy="183.6" r="4.2" fill="#89c18e"/>
+<circle cx="150.2" cy="72.2" r="4.2" fill="#81269a"/>
+<circle cx="158.6" cy="41.3" r="4.2" fill="#e369a2"/>
+<circle cx="167.1" cy="268.0" r="4.2" fill="#e74840"/>
+<circle cx="175.6" cy="226.8" r="4.2" fill="#bdc42d"/>
+<circle cx="184.1" cy="176.2" r="4.2" fill="#1fdd52"/>
+<circle cx="192.5" cy="66.6" r="4.2" fill="#9514a0"/>
+<circle cx="201.0" cy="40.2" r="4.2" fill="#945973"/>
+<circle cx="209.5" cy="262.9" r="4.2" fill="#c29288"/>
+<circle cx="218.0" cy="226.5" r="4.2" fill="#dde54b"/>
+<circle cx="226.4" cy="169.4" r="4.2" fill="#318d59"/>
+<circle cx="234.9" cy="59.2" r="4.2" fill="#d873ce"/>
+<circle cx="243.4" cy="36.9" r="4.2" fill="#be8c9e"/>
+<circle cx="251.9" cy="261.1" r="4.2" fill="#a03d22"/>
+<circle cx="260.3" cy="226.6" r="4.2" fill="#d3d873"/>
+<circle cx="268.8" cy="161.1" r="4.2" fill="#42b88d"/>
+<circle cx="277.3" cy="58.7" r="4.2" fill="#7e1c73"/>
+<circle cx="285.8" cy="35.8" r="4.2" fill="#ce1754"/>
+<circle cx="294.2" cy="257.8" r="4.2" fill="#e3784b"/>
+<circle cx="302.7" cy="223.2" r="4.2" fill="#76812e"/>
+<circle cx="311.2" cy="153.8" r="4.2" fill="#63c3b1"/>
+<circle cx="319.7" cy="57.1" r="4.2" fill="#ca11ae"/>
+<circle cx="328.1" cy="33.4" r="4.2" fill="#6d2c3e"/>
+<circle cx="336.6" cy="251.3" r="4.2" fill="#ec7513"/>
+<circle cx="345.1" cy="218.9" r="4.2" fill="#5b6831"/>
+<circle cx="353.6" cy="110.6" r="4.2" fill="#5a65a7"/>
+<circle cx="362.0" cy="55.1" r="4.2" fill="#e467cb"/>
+<circle cx="370.5" cy="28.7" r="4.2" fill="#d77484"/>
+<circle cx="379.0" cy="249.6" r="4.2" fill="#d3a578"/>
+<circle cx="387.5" cy="215.6" r="4.2" fill="#a7d446"/>
+<circle cx="395.9" cy="95.9" r="4.2" fill="#968bbf"/>
+<circle cx="404.4" cy="51.9" r="4.2" fill="#71295d"/>
+<circle cx="412.9" cy="26.7" r="4.2" fill="#e45666"/>
+<circle cx="421.4" cy="248.4" r="4.2" fill="#6e4e2b"/>
+<circle cx="429.8" cy="214.9" r="4.2" fill="#b2cb80"/>
+<circle cx="438.3" cy="87.6" r="4.2" fill="#6b45a1"/>
+<circle cx="446.8" cy="50.2" r="4.2" fill="#eb61bf"/>
+<circle cx="455.3" cy="26.1" r="4.2" fill="#eb2236"/>
+<circle cx="463.7" cy="247.5" r="4.2" fill="#644f36"/>
+<circle cx="472.2" cy="205.1" r="4.2" fill="#88d54e"/>
+<circle cx="480.7" cy="85.2" r="4.2" fill="#9b6ad2"/>
+<circle cx="489.2" cy="46.0" r="4.2" fill="#f158b1"/>
+<circle cx="497.6" cy="24.7" r="4.2" fill="#b7202a"/>
+<circle cx="506.1" cy="244.5" r="4.2" fill="#c58011"/>
+<circle cx="514.6" cy="194.3" r="4.2" fill="#4ec935"/>
+<circle cx="523.1" cy="78.5" r="4.2" fill="#8137ac"/>
+<circle cx="531.5" cy="45.4" r="4.2" fill="#ed2496"/>
+<circle cx="540.0" cy="23.3" r="4.2" fill="#d57679"/>
+</svg>

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forse Agents &middot; Temuujin (Temo) Batbold</title>
+<meta name="description" content="A short UX audit of a grants platform that had been built end to end without a designer.">
+<meta name="color-scheme" content="light dark">
+<script>try{if(localStorage.getItem('fx')==='on'){var d=document.documentElement;d.dataset.fx='';var n=performance.getEntriesByType('navigation')[0];if(sessionStorage.getItem('fxsnap')==='1'||(n&&n.type==='back_forward'))d.dataset.fxSnap=''}}catch(e){}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
+<link rel="stylesheet" href="../styles.css?v=42ec7a49">
+<link rel="stylesheet" href="../article.css?v=7e8ee6ff">
+<link rel="stylesheet" href="../effects.css?v=0bc3862c">
+</head>
+<body class="article-page">
+
+<nav class="side">
+  <a class="side-back" href="../index.html#work">Index</a>
+  <ol class="side-index">
+    <li><a href="#no-designer">A product nobody had designed</a></li>
+    <li><a href="#subtract">What to take away</a></li>
+    <li><a href="#direct">What to add</a></li>
+    <li><a href="#the-pattern">The pattern underneath</a></li>
+  </ol>
+</nav>
+
+<article class="article">
+
+  <header class="article-head">
+    <h1 class="article-title">Forse Agents</h1>
+    <p class="article-date">2026</p>
+  </header>
+
+  <p class="article-lead">Forse Grants Management runs a grant programme with agents, from intake
+  and scoring to milestone checks and payout, with a person approving each step. It had been built
+  end to end, shipped to real programmes, and never once looked at by a designer. This is the first
+  pass.<a class="note-ref" id="ref-1" href="#note-1">1</a></p>
+
+  <dl class="meta">
+    <dt>Role</dt><dd>UX audit</dd>
+    <dt>Company</dt><dd>StableLab, a governance operator working across 30+ ecosystems including Sky, Uniswap, Aave, Optimism, Arbitrum and Polygon</dd>
+    <dt>Product</dt><dd>Forse Grants Management, the agent layer of the Forse platform</dd>
+    <dt>Scope</dt><dd>Sign-in, onboarding and the agent conversation</dd>
+    <dt>Output</dt><dd>Six findings, each with the screen it came from</dd>
+    <dt>Year</dt><dd>2026</dd>
+    <dt>Reference</dt><dd><a href="https://stablelab.gitbook.io/forse-grants-handbook/6.-grants-intelligence">Forse Grants Handbook</a>, chapter six, on what the agents are for</dd>
+  </dl>
+
+  <hr>
+
+  <h2 id="no-designer">A product nobody had designed</h2>
+
+  <p>The core idea was good. You tell the agent what you want, it proposes the thing, and nothing
+  happens until you approve it. Create a programme called Cat friendly environment fund. Build an
+  application form with ten fields across four steps. Decline or Allow.</p>
+
+  <figure class="figure">
+    <div class="figure-frame"><img src="../images/work/forse-agents/agent.jpg" alt="The agent panel. A list of completed steps reading got form templates, listing programs and creating program, then a confirmation block headed allow to create form Infrastructure Grant Application, showing a form of four steps and ten fields with each field mapped to a section, and Decline and Allow buttons underneath." loading="lazy" decoding="async"></div>
+    <figcaption>The agent proposes, the human approves. That part was already right.</figcaption>
+  </figure>
+
+  <p>I did not touch that gate, and I wrote down why. The handbook StableLab published for these
+  programmes states it as a rule: human judgment stays in the loop, repetitive triage becomes
+  automatic. It also separates the people who run a programme from the people who judge
+  applications and the people who approve capital, because programmes where one group does all
+  three are, in its words, decentralised in name only. An agent that acted without an Allow button
+  would fold those three roles into one prompt. Grant programmes here move real money, around $150
+  million across Arbitrum&rsquo;s alone since 2023, so the button
+  stays.<a class="note-ref" id="ref-2" href="#note-2">2</a></p>
+
+  <p>What was missing is the layer a designer would have added on the way past: the small decisions
+  about what to ask for, what to say, and when to say it. So I went through sign-in, onboarding and
+  the agent conversation and wrote down six.</p>
+
+  <h2 id="subtract">What to take away</h2>
+
+  <p>Sign-in asked you to pick your organisation from a dropdown before it would take your email.
+  Nearly everyone here belongs to exactly one organisation, and nearly everyone arrives through a
+  whitelisted email invitation, so the system already knew the answer it was asking for. I
+  recommended removing the field.</p>
+
+  <figure class="figure figure-duo">
+    <div class="figure-frame">
+      <img src="../images/work/forse-agents/signin.jpg" alt="The Forse sign-in card. An organisation dropdown reading select organization sits above the email field, followed by a send code button." loading="lazy" decoding="async">
+      <img src="../images/work/forse-agents/empty.jpg" alt="The agent's empty state. A heading reading what do you want to know, a line of grey helper text, and an input at the bottom of an otherwise blank screen." loading="lazy" decoding="async">
+    </div>
+    <figcaption>Left, a question the system can already answer. Right, a blank page and a cursor.</figcaption>
+  </figure>
+
+  <p>The completed agent steps carried a tick and the word DONE. The tick already says done, so I cut
+  the word. And on the branding step, a plain rectangle stood in for a full colour picker, so the
+  control looked like a swatch you choose from rather than a wheel you open. I swapped the
+  icon.</p>
+
+  <h2 id="direct">What to add</h2>
+
+  <p>The screen on the right above is where a new user meets the agent for the first time. It said
+  &ldquo;What do you want to know?&rdquo; and then left them with an empty input. Anybody who has
+  not used a product like this before has no idea what it can be asked, so I wrote a few starter
+  prompts to turn the blank page into a menu.</p>
+
+  <figure class="figure">
+    <div class="figure-frame"><img src="../images/work/forse-agents/followup.jpg" alt="An agent message saying we are currently at the Welcome step, zero percent complete, are you ready to begin setting up your organization, followed by three follow-up questions the user can pick." loading="lazy" decoding="async"></div>
+    <figcaption>Three things you could ask, and nothing telling you what to do.</figcaption>
+  </figure>
+
+  <p>After each agent turn you got follow-up questions, which are things you could ask. What you did
+  not get was the next step, which is the thing you should do. I added it. Both are worth having
+  and they do different jobs: one keeps a conversation going, the other finishes a task.</p>
+
+  <p>And the ten step setup checklist, the single clearest picture of how much work is left, only
+  appeared once the organisation details step was complete. I moved it to the start, when the user
+  has no idea what they have signed up for and needs it most.</p>
+
+  <figure class="figure figure-phone">
+    <div class="figure-frame"><img src="../images/work/forse-agents/setup.jpg" alt="The setup checklist showing two of ten steps complete at twenty percent, with Welcome and Organization Details ticked, Branding current, and seven later steps greyed out." loading="lazy" decoding="async"></div>
+    <figcaption>Ten steps, and you only meet the list once you are two of them in.</figcaption>
+  </figure>
+
+  <h2 id="the-pattern">The pattern underneath</h2>
+
+  <figure class="figure figure-bare">
+    <img src="../images/work/forse-agents/findings.svg" alt="The six findings sorted into two columns. Taking away: the organisation picker, the DONE label, and the colour picker icon. Adding direction: prompts in the empty state, a next step alongside follow-up questions, and the checklist from step one." loading="lazy" decoding="async">
+    <figcaption>Six findings, two shapes.</figcaption>
+  </figure>
+
+  <p>When I sorted the six, they stopped being a list of nitpicks. Three of them take away something
+  that carries no information: a question the system can answer itself, a word that repeats an
+  icon, an icon that misdescribes a control. Three of them add direction at the exact moment the
+  user is deciding what to do next.</p>
+
+  <p class="pull">The platform was fluent at reporting what it had just finished and quiet about
+  what to do next. That is what software built without a designer usually sounds like, because the
+  people building it always already know.</p>
+
+  <p>None of these were expensive. Removing a dropdown, writing four prompts, moving a component
+  earlier in a sequence. That is what I find useful about looking at a product late rather than
+  never: the cheapest fixes are still sitting there, and somebody just has to notice them.</p>
+
+  <hr class="notes-rule">
+  <ol class="notes">
+    <li id="note-1"><span class="note-body">A short audit rather than a redesign. The screenshots
+    here are the ones in the audit itself, taken from the live product. <a class="note-back" href="#ref-1" aria-label="Back to reference 1"></a></span></li>
+    <li id="note-2"><span class="note-body">The role separation and the figure are from the
+    <a href="https://stablelab.gitbook.io/forse-grants-handbook/3.-architecture-roles-and-rules">architecture</a>
+    and <a href="https://stablelab.gitbook.io/forse-grants-handbook/1.-grants-in-web3-context-evolution-and-market-data">context</a>
+    chapters of the Forse Grants Handbook. What the agents do across intake, evaluation, monitoring
+    and reporting is chapter six. <a class="note-back" href="#ref-2" aria-label="Back to reference 2"></a></span></li>
+  </ol>
+
+  <footer class="article-foot">
+    <h2 class="foot-heading">Similar</h2>
+    <ul class="related-list">
+      <li><a href="forse-insights.html">Forse Insights, new version<span>2025</span></a></li>
+      <li><a href="core-flow-audit-in-tino-go.html">Core flow audit &amp; update in Tino Go<span>2026</span></a></li>
+      <li><a href="tino-onboarding-improvement.html">Tino onboarding improvement<span>2026</span></a></li>
+    </ul>
+
+    <nav class="pager">
+      <a class="pager-prev" href="money-market-fund.html"><span class="pager-label">Previous</span>Money Market Fund</a>
+    </nav>
+  </footer>
+
+</article>
+
+<script src="../article.js?v=c5c2e37a" defer></script>
+<script src="../effects.js?v=92f0cab3" defer></script>
+</body>
+</html>

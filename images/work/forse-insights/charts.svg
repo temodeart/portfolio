@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 552 216" width="552" height="216" role="img" aria-label="Eight chart types drawn in the product's own palette: stacked bars, stacked area, multi-series line, scatter, donut gauges, a Sankey flow, a heat grid, and a ranked funnel. Each is a distinct job rather than a decorative variant.">
+  <style>
+    .ink { fill: #111111 } .mid { fill: #888888 } .dim { fill: #a3a3a3 }
+    .panel { fill: #1b1533; stroke: #2a2350; stroke-width: 1 }
+    .grid { stroke: #35306a; stroke-width: 0.75 }
+    @media (prefers-color-scheme: dark) {
+      .ink { fill: #ededed } .mid { fill: #9e9e9e } .dim { fill: #7c7c7c }
+    }
+    text { font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif }
+    .l { font-size: 10px; letter-spacing: 0.09em }
+    .c { font-size: 9.5px }
+  </style>
+  <text class="l mid" x="0" y="10">THE CHART VOCABULARY</text>
+  <rect class="panel" x="0" y="26" width="126" height="66" rx="5"/>
+  <rect x="10" y="70" width="11" height="14" fill="#00d3c7"/>
+  <rect x="10" y="59" width="11" height="11" fill="#7b5cff"/>
+  <rect x="10" y="50" width="11" height="9" fill="#ff4fa3"/>
+  <rect x="28" y="70" width="11" height="14" fill="#00d3c7"/>
+  <rect x="28" y="59" width="11" height="11" fill="#7b5cff"/>
+  <rect x="28" y="50" width="11" height="9" fill="#ff4fa3"/>
+  <rect x="46" y="70" width="11" height="14" fill="#00d3c7"/>
+  <rect x="46" y="59" width="11" height="11" fill="#7b5cff"/>
+  <rect x="46" y="50" width="11" height="9" fill="#ff4fa3"/>
+  <rect x="64" y="70" width="11" height="14" fill="#00d3c7"/>
+  <rect x="64" y="59" width="11" height="11" fill="#7b5cff"/>
+  <rect x="64" y="50" width="11" height="9" fill="#ff4fa3"/>
+  <rect x="82" y="70" width="11" height="14" fill="#00d3c7"/>
+  <rect x="82" y="59" width="11" height="11" fill="#7b5cff"/>
+  <rect x="82" y="50" width="11" height="9" fill="#ff4fa3"/>
+  <rect x="100" y="70" width="11" height="14" fill="#00d3c7"/>
+  <rect x="100" y="59" width="11" height="11" fill="#7b5cff"/>
+  <rect x="100" y="50" width="11" height="9" fill="#ff4fa3"/>
+  <text class="c mid" x="0" y="108">Stacked bars</text>
+  <rect class="panel" x="138" y="26" width="126" height="66" rx="5"/>
+  <path d="M146 84 L146 66 L183 56 L220 46 L256 42 L256 84 Z" fill="#00d3c7" opacity="0.9"/>
+  <path d="M146 84 L146 78 L183 72 L220 64 L256 60 L256 84 Z" fill="#7b5cff" opacity="0.85"/>
+  <text class="c mid" x="138" y="108">Stacked area</text>
+  <rect class="panel" x="276" y="26" width="126" height="66" rx="5"/>
+  <polyline points="286,76 313,60 340,66 367,48 392,44" fill="none" stroke="#ff4fa3" stroke-width="1.8"/>
+  <polyline points="286,82 313,74 340,56 367,66 392,56" fill="none" stroke="#00d3c7" stroke-width="1.8"/>
+  <text class="c mid" x="276" y="108">Multi-series line</text>
+  <rect class="panel" x="414" y="26" width="126" height="66" rx="5"/>
+  <circle cx="459" cy="44" r="4.0" fill="#00d3c7" opacity="0.85"/>
+  <circle cx="433" cy="61" r="3.1" fill="#7b5cff" opacity="0.85"/>
+  <circle cx="432" cy="59" r="2.1" fill="#ff4fa3" opacity="0.85"/>
+  <circle cx="470" cy="41" r="2.3" fill="#ffb020" opacity="0.85"/>
+  <circle cx="469" cy="73" r="2.4" fill="#00d3c7" opacity="0.85"/>
+  <circle cx="449" cy="64" r="4.8" fill="#7b5cff" opacity="0.85"/>
+  <circle cx="485" cy="55" r="4.9" fill="#ff4fa3" opacity="0.85"/>
+  <circle cx="431" cy="74" r="2.9" fill="#ffb020" opacity="0.85"/>
+  <circle cx="441" cy="43" r="2.9" fill="#00d3c7" opacity="0.85"/>
+  <circle cx="509" cy="46" r="3.7" fill="#7b5cff" opacity="0.85"/>
+  <circle cx="491" cy="54" r="3.6" fill="#ff4fa3" opacity="0.85"/>
+  <circle cx="432" cy="41" r="2.6" fill="#ffb020" opacity="0.85"/>
+  <circle cx="495" cy="56" r="2.9" fill="#00d3c7" opacity="0.85"/>
+  <circle cx="486" cy="57" r="2.9" fill="#7b5cff" opacity="0.85"/>
+  <circle cx="507" cy="67" r="2.7" fill="#ff4fa3" opacity="0.85"/>
+  <circle cx="485" cy="60" r="4.6" fill="#ffb020" opacity="0.85"/>
+  <text class="c mid" x="414" y="108">Scatter</text>
+  <rect class="panel" x="0" y="132" width="126" height="66" rx="5"/>
+  <circle cx="26" cy="165" r="15" fill="none" stroke="#2f2a5c" stroke-width="5"/>
+  <path d="M26.0 150.0 A15 15 0 1 1 11.3 167.8" fill="none" stroke="#00d3c7" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="63" cy="165" r="15" fill="none" stroke="#2f2a5c" stroke-width="5"/>
+  <path d="M63.0 150.0 A15 15 0 0 1 67.6 179.3" fill="none" stroke="#7b5cff" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="100" cy="165" r="15" fill="none" stroke="#2f2a5c" stroke-width="5"/>
+  <path d="M100.0 150.0 A15 15 0 1 1 89.7 154.1" fill="none" stroke="#ff4fa3" stroke-width="5" stroke-linecap="round"/>
+  <text class="c mid" x="0" y="214">Donut gauges</text>
+  <rect class="panel" x="138" y="132" width="126" height="66" rx="5"/>
+  <path d="M146 146 C198 146 198 162 256 162 L256 178 C198 178 198 158 146 158 Z" fill="#00d3c7" opacity="0.8"/>
+  <path d="M146 164 C198 164 198 182 256 182 L256 190 C198 190 198 176 146 176 Z" fill="#7b5cff" opacity="0.8"/>
+  <text class="c mid" x="138" y="214">Flow</text>
+  <rect class="panel" x="276" y="132" width="126" height="66" rx="5"/>
+  <rect x="286" y="142" width="10" height="10" fill="#00d3c7" opacity="0.25"/>
+  <rect x="298" y="142" width="10" height="10" fill="#00d3c7" opacity="0.43"/>
+  <rect x="310" y="142" width="10" height="10" fill="#00d3c7" opacity="0.61"/>
+  <rect x="322" y="142" width="10" height="10" fill="#ffb020" opacity="0.79"/>
+  <rect x="334" y="142" width="10" height="10" fill="#ffb020" opacity="0.97"/>
+  <rect x="346" y="142" width="10" height="10" fill="#00d3c7" opacity="0.25"/>
+  <rect x="358" y="142" width="10" height="10" fill="#00d3c7" opacity="0.43"/>
+  <rect x="370" y="142" width="10" height="10" fill="#00d3c7" opacity="0.61"/>
+  <rect x="382" y="142" width="10" height="10" fill="#ffb020" opacity="0.79"/>
+  <rect x="286" y="155" width="10" height="10" fill="#ffb020" opacity="0.97"/>
+  <rect x="298" y="155" width="10" height="10" fill="#00d3c7" opacity="0.25"/>
+  <rect x="310" y="155" width="10" height="10" fill="#00d3c7" opacity="0.43"/>
+  <rect x="322" y="155" width="10" height="10" fill="#00d3c7" opacity="0.61"/>
+  <rect x="334" y="155" width="10" height="10" fill="#ffb020" opacity="0.79"/>
+  <rect x="346" y="155" width="10" height="10" fill="#ffb020" opacity="0.97"/>
+  <rect x="358" y="155" width="10" height="10" fill="#00d3c7" opacity="0.25"/>
+  <rect x="370" y="155" width="10" height="10" fill="#00d3c7" opacity="0.43"/>
+  <rect x="382" y="155" width="10" height="10" fill="#00d3c7" opacity="0.61"/>
+  <rect x="286" y="168" width="10" height="10" fill="#ffb020" opacity="0.79"/>
+  <rect x="298" y="168" width="10" height="10" fill="#ffb020" opacity="0.97"/>
+  <rect x="310" y="168" width="10" height="10" fill="#00d3c7" opacity="0.25"/>
+  <rect x="322" y="168" width="10" height="10" fill="#00d3c7" opacity="0.43"/>
+  <rect x="334" y="168" width="10" height="10" fill="#00d3c7" opacity="0.61"/>
+  <rect x="346" y="168" width="10" height="10" fill="#ffb020" opacity="0.79"/>
+  <rect x="358" y="168" width="10" height="10" fill="#ffb020" opacity="0.97"/>
+  <rect x="370" y="168" width="10" height="10" fill="#00d3c7" opacity="0.25"/>
+  <rect x="382" y="168" width="10" height="10" fill="#00d3c7" opacity="0.43"/>
+  <rect x="286" y="181" width="10" height="10" fill="#00d3c7" opacity="0.61"/>
+  <rect x="298" y="181" width="10" height="10" fill="#ffb020" opacity="0.79"/>
+  <rect x="310" y="181" width="10" height="10" fill="#ffb020" opacity="0.97"/>
+  <rect x="322" y="181" width="10" height="10" fill="#00d3c7" opacity="0.25"/>
+  <rect x="334" y="181" width="10" height="10" fill="#00d3c7" opacity="0.43"/>
+  <rect x="346" y="181" width="10" height="10" fill="#00d3c7" opacity="0.61"/>
+  <rect x="358" y="181" width="10" height="10" fill="#ffb020" opacity="0.79"/>
+  <rect x="370" y="181" width="10" height="10" fill="#ffb020" opacity="0.97"/>
+  <rect x="382" y="181" width="10" height="10" fill="#00d3c7" opacity="0.25"/>
+  <text class="c mid" x="276" y="214">Heat grid</text>
+  <rect class="panel" x="414" y="132" width="126" height="66" rx="5"/>
+  <rect x="424" y="142" width="104" height="8" rx="2" fill="#00d3c7"/>
+  <rect x="424" y="153" width="86" height="8" rx="2" fill="#7b5cff"/>
+  <rect x="424" y="164" width="66" height="8" rx="2" fill="#ff4fa3"/>
+  <rect x="424" y="175" width="44" height="8" rx="2" fill="#ffb020"/>
+  <rect x="424" y="186" width="24" height="8" rx="2" fill="#38bdf8"/>
+  <text class="c mid" x="414" y="214">Ranked funnel</text>
+</svg>

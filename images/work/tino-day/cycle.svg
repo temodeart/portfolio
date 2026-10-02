@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 552 420" width="552" height="420" role="img" aria-label="Diagram of the thirty day cycle. Available, then a confirmation sheet that states the day cannot be paused once started, then twenty four hours running with an hours minutes seconds countdown, then a sheet confirming the day is spent, then a twenty nine day wait counted in days rather than seconds, then available again.">
+  <style>
+    .ink  { fill: #111111 }
+    .mid  { fill: #888888 }
+    .dim  { fill: #a3a3a3 }
+    .box  { fill: none; stroke: #e4e4e4; stroke-width: 1.25 }
+    .boxf { fill: #fafafa; stroke: #e4e4e4; stroke-width: 1.25 }
+    .on   { fill: #2a3fdb; stroke: #2a3fdb; stroke-width: 1.25 }
+    .line { stroke: #d2d2d2; stroke-width: 1.25; fill: none }
+    .head { fill: #d2d2d2 }
+    .white{ fill: #ffffff }
+    @media (prefers-color-scheme: dark) {
+      .ink  { fill: #ededed }
+      .mid  { fill: #9e9e9e }
+      .dim  { fill: #7c7c7c }
+      .box  { stroke: #262626 }
+      .boxf { fill: #131313; stroke: #262626 }
+      .on   { fill: #4054f0; stroke: #4054f0 }
+      .line { stroke: #383838 }
+      .head { fill: #383838 }
+    }
+    text { font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif }
+    .t { font-size: 13px; font-weight: 500 }
+    .s { font-size: 11.5px }
+    .l { font-size: 10px; letter-spacing: 0.09em }
+  </style>
+
+  <marker id="c" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+    <path class="head" d="M0 0 L8 4 L0 8 Z"/>
+  </marker>
+
+  <rect class="boxf" x="76" y="8" width="330" height="54" rx="9"/>
+  <text class="t ink" x="241" y="32" text-anchor="middle">Available</text>
+  <text class="s dim" x="241" y="50" text-anchor="middle">the chip sits quiet above the shift button</text>
+  <path class="line" d="M241 62 L241 88" marker-end="url(#c)"/>
+
+  <rect class="box" x="76" y="88" width="330" height="72" rx="9"/>
+  <text class="t ink" x="241" y="112" text-anchor="middle">&#8220;Cannot be stopped once started&#8221;</text>
+  <text class="s dim" x="241" y="130" text-anchor="middle">the sheet says so plainly, and the confirm</text>
+  <text class="s dim" x="241" y="147" text-anchor="middle">button repeats the length: 24 hours</text>
+  <path class="line" d="M241 160 L241 186" marker-end="url(#c)"/>
+
+  <rect class="on" x="76" y="186" width="330" height="58" rx="9"/>
+  <text class="t white" x="241" y="211" text-anchor="middle">24 hours at 0% commission</text>
+  <text class="s white" x="241" y="230" text-anchor="middle" opacity="0.82">counted down in hours, minutes, seconds</text>
+  <path class="line" d="M241 244 L241 270" marker-end="url(#c)"/>
+
+  <rect class="box" x="76" y="270" width="330" height="54" rx="9"/>
+  <text class="t ink" x="241" y="294" text-anchor="middle">Spent</text>
+  <text class="s dim" x="241" y="312" text-anchor="middle">a sheet, not an error. Nothing went wrong</text>
+  <path class="line" d="M241 324 L241 350" marker-end="url(#c)"/>
+
+  <rect class="boxf" x="76" y="350" width="330" height="58" rx="9"/>
+  <text class="t ink" x="241" y="374" text-anchor="middle">29 days of waiting</text>
+  <text class="s dim" x="241" y="393" text-anchor="middle">now counted in days, because seconds would be cruel</text>
+
+  <path class="line" d="M76 379 L34 379 L34 35 L76 35" marker-end="url(#c)"/>
+  <text class="s mid" x="14" y="200" text-anchor="middle" transform="rotate(-90 14 200)">once a month</text>
+
+  <text class="s dim" x="418" y="212">the only</text>
+  <text class="s dim" x="418" y="228">day that</text>
+  <text class="s dim" x="418" y="244">pays</text>
+  <path class="line" d="M414 218 L406 215"/>
+</svg>

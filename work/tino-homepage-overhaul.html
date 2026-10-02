@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tino homepage overhaul &middot; Temuujin (Temo) Batbold</title>
+<meta name="description" content="Rebuilding the top of the Tino home screen so that booking a ride stops being one icon among eight.">
+<meta name="color-scheme" content="light dark">
+<script>try{if(localStorage.getItem('fx')==='on'){var d=document.documentElement;d.dataset.fx='';var n=performance.getEntriesByType('navigation')[0];if(sessionStorage.getItem('fxsnap')==='1'||(n&&n.type==='back_forward'))d.dataset.fxSnap=''}}catch(e){}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
+<link rel="stylesheet" href="../styles.css?v=42ec7a49">
+<link rel="stylesheet" href="../article.css?v=7e8ee6ff">
+<link rel="stylesheet" href="../effects.css?v=0bc3862c">
+</head>
+<body class="article-page">
+
+<nav class="side">
+  <a class="side-back" href="../index.html#work">Index</a>
+  <ol class="side-index">
+    <li><a href="#one-of-eight">One of eight</a></li>
+    <li><a href="#making-room">Making room</a></li>
+    <li><a href="#size-is-the-argument">Size is the argument</a></li>
+    <li><a href="#a-noun-becomes-an-offer">A noun becomes an offer</a></li>
+    <li><a href="#what-it-costs">What it costs</a></li>
+  </ol>
+</nav>
+
+<article class="article">
+
+  <header class="article-head">
+    <h1 class="article-title">Tino homepage overhaul</h1>
+    <p class="article-date">2026</p>
+  </header>
+
+
+  <p class="article-lead">The brief was one sentence. More people should book a ride. Everything
+  below is what that sentence did to the first screen of a superapp that also sells groceries,
+  eSIMs, power banks and coffee.<a class="note-ref" id="ref-1" href="#note-1">1</a></p>
+
+  <dl class="meta">
+    <dt>Role</dt><dd>Product design, the top half of the home screen</dd>
+    <dt>Platform</dt><dd>iOS and Android, inside the Tino superapp</dd>
+    <dt>Goal</dt><dd>Raise conversion into Tino Go, the ride hailing service</dd>
+    <dt>Year</dt><dd>2026</dd>
+    <dt>Design files</dt><dd><a href="https://www.figma.com/design/DC8d9JtufwBqC6PuB019y4/Tino-Phase-2?node-id=20347-43472" target="_blank" rel="noopener noreferrer">New home</a> and <a href="https://www.figma.com/design/DC8d9JtufwBqC6PuB019y4/Tino-Phase-2?node-id=16963-13396" target="_blank" rel="noopener noreferrer">old home</a></dd>
+  </dl>
+
+  <hr>
+
+  <h2 id="one-of-eight">One of eight</h2>
+
+  <p>Here is the old home screen. A blue header with a search field, a row of five tabs, then eight
+  icons in a four by two grid. Taxi is the second one.</p>
+
+  <p>Nothing on that screen said a ride matters more than a fridge. Every cell was 90 by 108 points.
+  Every icon was 64 by 64. They shared a shape, a background, a corner radius and a type size. The
+  grid treated eight services as eight equal options, which is a reasonable thing to do right up
+  until somebody tells you that one of them pays for the others.</p>
+
+  <figure class="figure figure-duo">
+    <div class="figure-frame">
+      <img src="../images/work/tino-homepage-overhaul/before.jpg" alt="The old Tino home screen. A blue header with the logo, a translate button, a notification bell and an avatar, then a white search field. Below it a row of five tabs, then eight identically sized service icons in a four by two grid with page dots underneath, then a verification prompt." loading="lazy" decoding="async">
+      <img src="../images/work/tino-homepage-overhaul/after.jpg" alt="The new Tino home screen. A white background with the logo and four small buttons, then a large blue Go tile beside two smaller tiles for Fridge and Grocery, a second row with Powerbank, eSIM and See all, then the same verification prompt and a flight card." loading="lazy" decoding="async">
+    </div>
+    <figcaption>Before and after, both at the same scale. The entire change is in the first 400
+    points.</figcaption>
+  </figure>
+
+  <p>Two more things were working against a ride booking. The grid carries page dots, so some
+  services live on a second page that most people never swipe to. And the five tabs above it,
+  Tino, Go, Activity, travel and payments, ask you to pick a category before you pick a thing.
+  That is two decisions standing between opening the app and getting a car.</p>
+
+  <h2 id="making-room">Making room</h2>
+
+  <p>Before anything could get bigger, something had to go. I cut the search field first. It asked
+  &ldquo;do you need help?&rdquo;, which is a support question, and it was eating the widest strip
+  of the most valuable screen in the product. I cut the tab row next.</p>
+
+  <p>That freed enough space for me to move the whole service grid up. The old taxi cell sat at
+  y271, underneath a 193 point header. My new Go tile starts at y163, which is higher up the screen
+  than the old header even reached.</p>
+
+  <figure class="figure figure-bare">
+    <img src="../images/work/tino-homepage-overhaul/hierarchy.svg" alt="Diagram comparing the two service grids. Before, eight identical cells in a four by two grid with the taxi cell highlighted second from the left, plus page dots. After, one large highlighted Go tile beside two medium tiles, with three smaller tiles below." loading="lazy" decoding="async">
+    <figcaption>Same services, redistributed. The tile that matters is the one that got bigger, and
+    everything it displaced went behind &ldquo;See all&rdquo;.</figcaption>
+  </figure>
+
+  <h2 id="size-is-the-argument">Size is the argument</h2>
+
+  <p>I made the Go tile 173 by 169 points. The cell it replaced was 90 by 108. That is three times
+  the area, and I put a hand reaching down to pick up a car inside it instead of a 46 point
+  icon.<a class="note-ref" id="ref-2" href="#note-2">2</a></p>
+
+  <figure class="figure">
+    <div class="figure-frame compare">
+      <div class="compare-item" style="--w: 90">
+        <img src="../images/work/tino-homepage-overhaul/cell-before.jpg" alt="The old taxi cell. A small blue car icon on a white rounded square, with the Mongolian word for taxi underneath.">
+        <span>Before<br>90 &#215; 108</span>
+      </div>
+      <div class="compare-item" style="--w: 173">
+        <img src="../images/work/tino-homepage-overhaul/tile-after.jpg" alt="The new Go tile. A deep blue card with a map pattern, the word Go in large white type, the line grab a taxi for free, a hand lowering a white car onto the card, and the line just one minute at the bottom.">
+        <span>After<br>173 &#215; 169</span>
+      </div>
+    </div>
+    <figcaption>Shown at one scale, so the jump is the figure rather than a claim in the
+    caption.</figcaption>
+  </figure>
+
+  <p>I let colour do the other half of the work. The old header was blue, the old tabs were blue,
+  the old search field sat on blue. When the whole top of the screen is brand colour, brand colour
+  stops pointing at anything. I made the new home white, which leaves the Go tile as the only
+  saturated block above the fold. It is the same blue. It just got its meaning back.</p>
+
+  <h2 id="a-noun-becomes-an-offer">A noun becomes an offer</h2>
+
+  <p>The old cell said <em>&#1058;&#1072;&#1082;&#1089;&#1080;</em>. Taxi. It named a category and
+  stopped.</p>
+
+  <p>I made the new tile say three things in sequence. <strong>Go</strong>, which is the product name
+  and the thing we actually want people to remember. <strong>Grab a taxi for free</strong>, which is
+  an offer. <strong>Just 1 min</strong>, which answers the question that stops most people from
+  opening a ride app at all, that being how long they will stand outside waiting.</p>
+
+  <p class="pull">An icon grid asks you to recognise a service. A tile like this one asks you to
+  accept a deal. Those are different jobs, and only one of them converts.</p>
+
+  <p>The free ride and the one minute wait are business decisions rather than mine, and both of
+  them make a promise the operations side has to keep.<a class="note-ref" id="ref-3" href="#note-3">3</a>
+  If a car takes eleven minutes, this tile has done real damage.</p>
+
+  <h2 id="what-it-costs">What it costs</h2>
+
+  <p>This is the part I made sure to put in front of the team, because promoting one service is
+  arithmetic. The screen did not get bigger. Go took its three times area from somewhere.</p>
+
+  <p>I dropped Fridge and Grocery to half tiles. Power bank, eSIM and coffee fell to the small row
+  or behind &ldquo;See all&rdquo;. InvestX, which was a full cell on the old grid, is not on the
+  first screen any more at all. Every one of those services has a team, a target and somebody who
+  will notice.</p>
+
+  <p>So the redesign is a bet, and I named it as one rather than dressing it up. Promoting one
+  service on a shared home screen is arithmetic, not decoration, and my case for making it was that
+  a ride is the habit the rest of the app is built on. Get somebody opening Tino twice a day for a
+  car and the fridge and the power bank are one tile away. Leave Go as the second icon in a grid of
+  eight and nothing else gets a chance.</p>
+
+  <hr class="notes-rule">
+  <ol class="notes">
+    <li id="note-1"><span class="note-body">These are design files, not production screenshots.
+    Balances, flight numbers and merchant names are placeholder data. This page only covers the top
+    half of the screen, which is where the ride booking decision gets made. <a class="note-back" href="#ref-1" aria-label="Back to reference 1"></a></span></li>
+    <li id="note-2"><span class="note-body">Every measurement on this page is in design points,
+    read straight off the two Figma files rather than paced out by eye. The old cell is 90.25 by
+    108, which I have rounded. <a class="note-back" href="#ref-2" aria-label="Back to reference 2"></a></span></li>
+    <li id="note-3"><span class="note-body">Designers hand out promises like this more casually
+    than they should. A number in a tile is a contract, and the person who has to honour it is
+    usually in a different building. <a class="note-back" href="#ref-3" aria-label="Back to reference 3"></a></span></li>
+  </ol>
+
+  <footer class="article-foot">
+    <h2 class="foot-heading">Similar</h2>
+    <ul class="related-list">
+      <li><a href="tino-streamers.html">Tino Streamers<span>2026</span></a></li>
+      <li><a href="fresh-look-for-tino-mn.html">Fresh look for Tino.mn<span>2026</span></a></li>
+    </ul>
+
+    <nav class="pager">
+      <a class="pager-prev" href="tino-streamers.html"><span class="pager-label">Previous</span>Tino Streamers</a>
+      <a class="pager-next" href="tino-day-in-tino-driver.html"><span class="pager-label">Next</span>Tino Day feature in Tino Driver</a>
+    </nav>
+  </footer>
+
+</article>
+
+<script src="../article.js?v=c5c2e37a" defer></script>
+<script src="../effects.js?v=92f0cab3" defer></script>
+</body>
+</html>

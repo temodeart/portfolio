@@ -21,7 +21,7 @@ plenty even on a retina screen.
 Wire a row to its image with `data-preview` in `index.html`:
 
 ```html
-<a class="row-link" href="/work/today-in-tino" data-preview="images/work/today-in-tino.jpg">
+<a class="row-link" href="/work/tino-streamers" data-preview="images/work/tino-streamers.jpg">
 ```
 
 A row whose `data-preview` is missing or fails to load simply shows no preview

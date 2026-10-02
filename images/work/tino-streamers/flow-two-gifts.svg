@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 552 668" width="552" height="668" role="img" aria-label="Diagram. A fan picks either an amount of money or a physical object. Both pass through one Tino Pay checkout. Money settles into the streamer's balance in seconds; a present settles at their door in days. Both then feed the same leaderboard and tier.">
+  <style>
+    .ink  { fill: #111111 }
+    .mid  { fill: #888888 }
+    .dim  { fill: #a3a3a3 }
+    .box  { fill: none; stroke: #e4e4e4; stroke-width: 1.25 }
+    .boxf { fill: #fafafa; stroke: #e4e4e4; stroke-width: 1.25 }
+    .line { stroke: #d2d2d2; stroke-width: 1.25; fill: none }
+    .dash { stroke: #d2d2d2; stroke-width: 1.25; fill: none; stroke-dasharray: 4 4 }
+    .head { fill: #d2d2d2 }
+    @media (prefers-color-scheme: dark) {
+      .ink  { fill: #ededed }
+      .mid  { fill: #9e9e9e }
+      .dim  { fill: #7c7c7c }
+      .box  { stroke: #262626 }
+      .boxf { fill: #131313; stroke: #262626 }
+      .line, .dash { stroke: #383838 }
+      .head { fill: #383838 }
+    }
+    text { font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif }
+    .t { font-size: 13px; font-weight: 500 }
+    .s { font-size: 11.5px }
+    .l { font-size: 10px; letter-spacing: 0.09em }
+  </style>
+
+  <marker id="a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+    <path class="head" d="M0 0 L8 4 L0 8 Z"/>
+  </marker>
+
+  <!-- 1. start -->
+  <rect class="boxf" x="156" y="8" width="240" height="56" rx="9"/>
+  <text class="t ink" x="276" y="32" text-anchor="middle">A fan, mid-stream</text>
+  <text class="s dim" x="276" y="51" text-anchor="middle">wants to say thanks</text>
+
+  <path class="line" d="M276 64 L276 88 L128 88 L128 124" marker-end="url(#a)"/>
+  <path class="line" d="M276 64 L276 88 L424 88 L424 124" marker-end="url(#a)"/>
+
+  <!-- 2. the fork -->
+  <text class="l mid" x="128" y="148" text-anchor="middle">МӨНГӨ &#183; MONEY</text>
+  <rect class="box" x="18" y="160" width="220" height="62" rx="9"/>
+  <text class="t ink" x="128" y="186" text-anchor="middle">Pick an amount</text>
+  <text class="s dim" x="128" y="206" text-anchor="middle">50,000₮</text>
+
+  <text class="l mid" x="424" y="148" text-anchor="middle">БЭЛЭГ &#183; A PRESENT</text>
+  <rect class="box" x="314" y="160" width="220" height="62" rx="9"/>
+  <text class="t ink" x="424" y="186" text-anchor="middle">Pick an object</text>
+  <text class="s dim" x="424" y="206" text-anchor="middle">cake &#183; flowers &#183; a keyboard</text>
+
+  <path class="line" d="M128 222 L128 252 L276 252 L276 278" marker-end="url(#a)"/>
+  <path class="line" d="M424 222 L424 252 L276 252"/>
+
+  <!-- 3. shared checkout -->
+  <rect class="boxf" x="126" y="290" width="300" height="86" rx="9"/>
+  <text class="l mid" x="276" y="314" text-anchor="middle">ONE CHECKOUT</text>
+  <text class="t ink" x="276" y="338" text-anchor="middle">Tino Pay</text>
+  <text class="s dim" x="276" y="360" text-anchor="middle">wallet balance, or Pay Later credit</text>
+
+  <path class="line" d="M276 376 L276 404 L128 404 L128 434" marker-end="url(#a)"/>
+  <path class="line" d="M276 376 L276 404 L424 404 L424 434" marker-end="url(#a)"/>
+
+  <!-- 4. two arrivals -->
+  <rect class="box" x="18" y="434" width="220" height="74" rx="9"/>
+  <text class="t ink" x="128" y="462" text-anchor="middle">Streamer&#8217;s balance</text>
+  <text class="s dim" x="128" y="482" text-anchor="middle">settles in seconds</text>
+  <text class="s dim" x="128" y="499" text-anchor="middle">nothing to ship</text>
+
+  <rect class="box" x="314" y="434" width="220" height="74" rx="9"/>
+  <text class="t ink" x="424" y="462" text-anchor="middle">Streamer&#8217;s door</text>
+  <text class="s dim" x="424" y="482" text-anchor="middle">settles in days</text>
+  <text class="s dim" x="424" y="499" text-anchor="middle">stock, courier, address</text>
+
+  <path class="dash" d="M128 508 L128 544 L276 544 L276 574" marker-end="url(#a)"/>
+  <path class="dash" d="M424 508 L424 544 L276 544"/>
+
+  <!-- 5. converge -->
+  <rect class="boxf" x="126" y="586" width="300" height="62" rx="9"/>
+  <text class="t ink" x="276" y="612" text-anchor="middle">The same leaderboard, the same tier</text>
+  <text class="s dim" x="276" y="632" text-anchor="middle">both count, whatever they cost to deliver</text>
+
+</svg>

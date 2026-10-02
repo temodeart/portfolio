@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forse Insights, new version &middot; Temuujin (Temo) Batbold</title>
+<meta name="description" content="Rebuilding an analytics product for DAO incentive programmes: dark terminal to light system, card by card, across fifteen terminals.">
+<meta name="color-scheme" content="light dark">
+<script>try{if(localStorage.getItem('fx')==='on'){var d=document.documentElement;d.dataset.fx='';var n=performance.getEntriesByType('navigation')[0];if(sessionStorage.getItem('fxsnap')==='1'||(n&&n.type==='back_forward'))d.dataset.fxSnap=''}}catch(e){}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
+<link rel="stylesheet" href="../styles.css?v=42ec7a49">
+<link rel="stylesheet" href="../article.css?v=7e8ee6ff">
+<link rel="stylesheet" href="../effects.css?v=0bc3862c">
+</head>
+<body class="article-page">
+
+<nav class="side">
+  <a class="side-back" href="../index.html#work">Index</a>
+  <ol class="side-index">
+    <li><a href="#what-it-is">What the product measures</a></li>
+    <li><a href="#dark-to-light">Out of the dark</a></li>
+    <li><a href="#the-card">One card, and where the controls went</a></li>
+    <li><a href="#the-palette">Two jobs, two colours</a></li>
+    <li><a href="#the-home">A front door for fifteen terminals</a></li>
+    <li><a href="#six-files">Six files, one programme</a></li>
+    <li><a href="#the-charts">Eight shapes, eight questions</a></li>
+  </ol>
+</nav>
+
+<article class="article">
+
+  <header class="article-head">
+    <h1 class="article-title">Forse Insights, new version</h1>
+    <p class="article-date">2025</p>
+  </header>
+
+  <p class="article-lead">DAOs hand out millions in incentives and then struggle to say whether it
+  worked. Forse Insights answers that. For version two I took the product out of a dark crypto
+  terminal and rebuilt it as a light system, one chart card at a time.</p>
+
+  <dl class="meta">
+    <dt>Role</dt><dd>Product design and design system</dd>
+    <dt>Company</dt><dd>StableLab, a governance operator working across 30+ ecosystems including Sky, Uniswap, Aave, Optimism, Arbitrum and Polygon</dd>
+    <dt>Product</dt><dd>Forse Insights, analytics for web3 incentive programmes</dd>
+    <dt>Scope</dt><dd>Brand refinement, design system 2.0, the Insights component library, and the terminal rebuild</dd>
+    <dt>Year</dt><dd>2025</dd>
+    <dt>Reference</dt><dd><a href="https://stablelab.gitbook.io/forse-grants-handbook/">Forse Grants Handbook</a>, the methodology the product was built to serve</dd>
+  </dl>
+
+  <hr>
+
+  <h2 id="what-it-is">What the product measures</h2>
+
+  <p>A DAO votes to spend treasury money on growth. Liquidity incentives, grants, integrator
+  rewards. Months later somebody has to stand up and say what came back. That is the question this
+  product exists to answer, and the answer is never one number.</p>
+
+  <p>The sums are not small. Arbitrum&rsquo;s STIP alone put out more than $175 million in ARB, and
+  Arbitrum has spent around $150 million across programmes since 2023. Across the industry, about
+  40 percent of grant-funded projects are still active a year later. Most of the money goes to
+  things that quietly stop, and nobody can say which until somebody measures.<a class="note-ref" id="ref-1" href="#note-1">1</a></p>
+
+  <p>Three kinds of people read the answer. Operations staff who run the pipeline, reviewers who
+  judge applications, and the council or tokenholders who hold the capital. StableLab&rsquo;s own
+  handbook separates those three roles on purpose, so that nobody both evaluates and pays. The
+  terminals have to serve all three from the same chart.</p>
+
+  <p>So I organised the app around programmes rather than around charts. Uniswap incentives.
+  Arbitrum STIP. Gitcoin grants. Sky integrator boost. Solana accessibility rewards. Each one gets
+  its own terminal, and I grouped the terminals by the DAO that paid for the programme.</p>
+
+  <h2 id="dark-to-light">Out of the dark</h2>
+
+  <figure class="figure figure-duo figure-crop">
+    <div class="figure-frame">
+      <img src="../images/work/forse-insights/stip-v1.jpg" alt="Version one of the Arbitrum STIP terminal, a full page scroll on a near black background. A left sidebar, then stacked bars, a cumulative line, donut gauges, paired area charts and a long timeline, all in saturated purple, cyan, amber, crimson and green." loading="lazy" decoding="async">
+      <img src="../images/work/forse-insights/stip-v2.jpg" alt="Version two of the same terminal on a pale background. White chart cards on warm off-white, blue and green and violet bars, filter pills across each card header and a data range line along each card footer." loading="lazy" decoding="async">
+    </div>
+    <figcaption>The Arbitrum STIP terminal, both versions cropped to the same scroll depth
+    at the same scale. Same programme, same questions.</figcaption>
+  </figure>
+
+  <p>Version one, which I had also designed, looked the way analytics products in this market always
+  look. Near black at <code>#0D0C23</code>, five series colours at full saturation, a lot of glow.
+  It read as serious to people already inside crypto. It read as impenetrable to everybody else, and
+  I knew the audience included foundation staff and delegates who have to vote on these numbers
+  without trading for a living.</p>
+
+  <p class="pull">A dark terminal signals that you belong to the industry. A light one signals that
+  you expect people from outside it to read your numbers.</p>
+
+  <p>I treated version two as a rebuild, not a recolour. White cards on a warm off-white page, three
+  series colours instead of five, and every card carrying the same header, the same controls and
+  the same footer as every other card. I converted STIP first, then Gitcoin, Jokerace and Spark,
+  card by card rather than redrawing from nothing, so the terminals stayed comparable to each other
+  while the rebuild was still half finished.<a class="note-ref" id="ref-2" href="#note-2">2</a></p>
+
+  <h2 id="the-card">One card, and where the controls went</h2>
+
+  <figure class="figure figure-stack">
+    <div class="figure-frame">
+      <img src="../images/work/forse-insights/card-v1.jpg" alt="Version one of the Network Activity card. An all caps title, a permanently open filter column down the left inside the card listing User, Transaction Type, Cyclic and Source as expanded radio lists, and a dense stacked bar chart in five saturated colours filling what is left." loading="lazy" decoding="async">
+      <img src="../images/work/forse-insights/card-v2.jpg" alt="Version two of the same card. A sentence case title with an information icon, sort and expand controls at the top right, four dropdown pills reading Users, Transaction Type, Cyclic and Source, a full width bar chart in blue, green and violet, an axis labelled Time in weeks, and a footer reading data from January 1 to May 25 2025 with a note that the asterisk means partial data." loading="lazy" decoding="async">
+    </div>
+    <figcaption>The Network Activity card in both versions, at the same width.</figcaption>
+  </figure>
+
+  <p>Every terminal is a stack of chart cards, so the card was the real unit of the product and
+  redesigning it was most of my job.</p>
+
+  <p>In version one I had put the filter panel inside the card, permanently open, holding a column
+  against the left edge with User, Transaction Type, Cyclic and Source each expanded into a radio
+  list. The chart took whatever was left. In version two I collapsed those same four filters into
+  four labelled dropdowns across the top and gave the plot the full width of the card. The controls
+  are still one click away. They no longer charge every card a column of space whether the reader
+  touches them or not.</p>
+
+  <p>Two smaller changes did more than they look. I brought the title out of all caps into sentence
+  case, which is the difference between a dashboard shouting section names and a document with
+  headings. And I gave the x axis a unit, <code>Time (Weeks)</code>, which version one had left the
+  reader to work out.</p>
+
+  <p>Then I added the line along the bottom. <code>Data from Jan 1 to May 25, 2025*</code>, and
+  beside it a sentence saying the asterisk means that data is partial.</p>
+
+  <p class="pull">A chart without a date range is a picture. A chart that states its window, and
+  admits the last of it is incomplete, is evidence.</p>
+
+  <p>I put that row on every card in the system. StableLab&rsquo;s handbook draws a hard line
+  between self-reported updates, independently verifiable evidence and signals fit only for
+  directional learning, and warns that dashboards which blur them create false confidence. I wanted
+  the footer to be that line, printed on the chart. This product&rsquo;s output gets quoted in
+  governance forums, where somebody screenshots one chart and argues a treasury decision with it. If
+  the window travels with the screenshot, the argument is at least about the same data. Of
+  everything in the redesign, that row is the one I am surest about.</p>
+
+  <h2 id="the-palette">Two jobs, two colours</h2>
+
+  <p>I took the tokens from the brand refinement file and made the Insights library read from them
+  rather than keep its own copies.</p>
+
+  <div class="swatches">
+    <div class="swatch" style="--c:#0a1516"><b>Primary black</b><span>#0A1516 &middot; ink, and not quite black</span></div>
+    <div class="swatch" style="--c:#ebeae7;--ink:#0a1516"><b>Secondary background</b><span>#EBEAE7 &middot; the page under the cards</span></div>
+    <div class="swatch" style="--c:#39007a"><b>Insights purple</b><span>#39007A &middot; wordmark, connect wallet, active nav</span></div>
+    <div class="swatch" style="--c:#014ca2"><b>Insights blue</b><span>#014CA2 &middot; data, and only data</span></div>
+    <div class="swatch" style="--c:#3d3f4b"><b>Dark grey</b><span>#3D3F4B &middot; chart labels and axis text</span></div>
+    <div class="swatch" style="--c:#7c8491"><b>Grey</b><span>#7C8491 &middot; secondary text</span></div>
+  </div>
+
+  <p class="swatch-role">Rules and card borders sit on <em>#D0D1D6</em>. Spacing runs on a four
+  pixel step, space-100 at 4 through space-500 at 24.</p>
+
+  <p>The split I cared most about is the third and fourth swatch. The purple is the product&rsquo;s
+  colour and I never let it appear inside a chart. The blue is the data colour and I never let it
+  appear in the chrome. Use one colour for both and a reader cannot tell a brand flourish from a
+  value, which in an analytics product is not a style problem. It is a reading error.</p>
+
+  <p>I took the series palette the same way, from five hues to three.</p>
+
+  <div class="series">
+    <div class="series-row" style="--bg:#0d0c23">
+      <span style="--c:#700fa4"></span>
+      <span style="--c:#0999a4"></span>
+      <span style="--c:#9c6511"></span>
+      <span style="--c:#852a3e"></span>
+      <span style="--c:#2a991c"></span>
+    </div>
+    <p class="series-cap">Version one, sampled off the terminal. #700FA4, #0999A4, #9C6511,
+    #852A3E, #2A991C, on #0D0C23.</p>
+  </div>
+
+  <div class="series">
+    <div class="series-row" style="--bg:#ffffff">
+      <span style="--c:#477dbc"></span>
+      <span style="--c:#27c9a7"></span>
+      <span style="--c:#a17ef8"></span>
+    </div>
+    <p class="series-cap">Version two. #477DBC, #27C9A7, #A17EF8, on white.</p>
+  </div>
+
+  <p>Five series was more than most of these charts asked for, and in a stacked bar forty pixels
+  tall the fifth band and the first were the hardest to hold apart. I settled on three, set at
+  close enough lightness that none of them jumps forward, which covers the comparisons the
+  terminals actually make.<a class="note-ref" id="ref-3" href="#note-3">3</a></p>
+
+  <h2 id="the-home">A front door for fifteen terminals</h2>
+
+  <figure class="figure">
+    <div class="figure-frame"><img src="../images/work/forse-insights/home.jpg" alt="The new Insights home. A collapsed icon rail of DAO logos down the left, a wallet connect banner headed unlock your personalised Forse experience, a row of space cards for Uniswap, Sky, Polygon and Arbitrum, a row of recently added terminal cards, and a gradient banner introducing Forse Agents." loading="lazy" decoding="async"></div>
+    <figcaption>Home. Who you are, then where you belong, then what changed since you last looked.</figcaption>
+  </figure>
+
+  <p>Version one dropped you straight into a dashboard. That worked while a client had one terminal.
+  It stopped working at fifteen, spread across Uniswap, Polygon, Arbitrum DAO, Sky, Spark, Optimism
+  and Swell, with Oxcart and PolyMatch alongside them in the ecosystem list.</p>
+
+  <p>So I gave version two a home. The wallet connect offer sits at the top, then Available Spaces
+  as a row of DAO cards, then Recently Added Terminals, then the Forse Agents banner. Expanding the
+  side nav turns the icon rail into named spaces with their terminals nested underneath, so the
+  same structure is there whether you browse or hunt.</p>
+
+  <figure class="figure">
+    <div class="figure-frame"><img src="../images/work/forse-insights/terminals.jpg" alt="The All Terminals page. A fifteen card grid, each card carrying a chain logo and name, a category tag reading user growth, a terminal title, a description and a view terminal link. The expanded side nav lists spaces for Uniswap, Polygon, Arbitrum DAO, Sky, Spark, Optimism and Swell." loading="lazy" decoding="async"></div>
+    <figcaption>All Terminals, with the side nav expanded. Every card says which chain, which
+    category, and what the terminal answers.</figcaption>
+  </figure>
+
+  <p>The terminal card was the piece I worked hardest on. It carries the chain logo, a category tag,
+  the title, and a description long enough to be useful to somebody who has never seen this
+  programme before. That last part was my whole argument for the card. <em>Short Term Incentives
+  Program</em> is a name and it tells a newcomer nothing. <em>A one-time community-driven initiative
+  to distribute 50M $ARB from the DAO treasury to qualifying protocols</em> is something a person
+  can decide from before they click.</p>
+
+  <h2 id="six-files">Six files, one programme</h2>
+
+  <figure class="figure figure-bare">
+    <img src="../images/work/forse-insights/programme.svg" alt="A map of six Figma files. The old design library is retired. Brand refinement and design system 2.0 sit as the foundation, the Insights design library is rebuilt on top of them, and three surfaces come out of that library: the terminals, the website redesign and the CMS." loading="lazy" decoding="async">
+    <figcaption>The order matters more than the count. Foundation, then library, then surfaces.</figcaption>
+  </figure>
+
+  <p>I retired the old design library rather than patching it. I settled brand refinement and the
+  design system foundation first, rebuilt the Insights component library on top of them, and only
+  then drew the surfaces. The terminals are the product and they took most of the effort. The
+  website and its CMS are separate files and a separate job.</p>
+
+  <p>Doing it in that order is what made the terminal conversion a sequence of card swaps instead of
+  fifteen redesigns. By the time I rebuilt STIP, the chart card existed as a component, so Gitcoin
+  and Jokerace inherited every decision I had already argued out.</p>
+
+  <h2 id="the-charts">Eight shapes, eight questions</h2>
+
+  <figure class="figure figure-bare">
+    <img src="../images/work/forse-insights/charts.svg" alt="Eight chart types: stacked bars, stacked area, multi-series line, scatter, donut gauges, a flow diagram, a heat grid and a ranked funnel." loading="lazy" decoding="async">
+    <figcaption>Redrawn here rather than screenshotted, so the shapes can be read at this size.</figcaption>
+  </figure>
+
+  <p>Stacked bars for composition over time. Stacked area for cumulative share. Lines for trend
+  against a comparison. Scatter for the outlier wallet. Gauges for a single ratio against a target.
+  Flow for where the money actually went. A heat grid for density across two dimensions. A ranked
+  funnel for who received the most.</p>
+
+  <p>I kept the chart vocabulary intact through the rebuild, because it was never the problem. Eight
+  shapes, each answering a question the others cannot, is more disciplined than the four shapes
+  used eleven ways that most analytics products settle for. What I changed was the card they sit in
+  and the surface that card sits on.</p>
+
+  <hr class="notes-rule">
+  <ol class="notes">
+    <li id="note-1"><span class="note-body">Figures from chapter one of StableLab&rsquo;s
+    <a href="https://stablelab.gitbook.io/forse-grants-handbook/1.-grants-in-web3-context-evolution-and-market-data">Forse Grants Handbook</a>,
+    which cites academic research for the survival rate. The handbook is the one public Forse
+    document that outlived the company. <a class="note-back" href="#ref-1" aria-label="Back to reference 1"></a></span></li>
+    <li id="note-2"><span class="note-body">Converting card by card has a cost worth naming. For a
+    stretch of the rebuild a client could open two terminals and find two different products. The
+    alternative is a long freeze and one big release, which is worse in a product people quote in
+    live governance votes. <a class="note-back" href="#ref-2" aria-label="Back to reference 2"></a></span></li>
+    <li id="note-3"><span class="note-body">The hex values in both palette rows are sampled from the
+    rendered charts rather than read off a token list, so they are what a reader actually sees, tints
+    and overlays included. <a class="note-back" href="#ref-3" aria-label="Back to reference 3"></a></span></li>
+  </ol>
+
+  <footer class="article-foot">
+    <h2 class="foot-heading">Similar</h2>
+    <ul class="related-list">
+      <li><a href="forse-agents.html">Forse Agents<span>2026</span></a></li>
+      <li><a href="money-market-fund.html">Money Market Fund<span>2026</span></a></li>
+    </ul>
+
+    <nav class="pager">
+      <a class="pager-prev" href="nordic-health-club.html"><span class="pager-label">Previous</span>Nordic Health Club</a>
+      <a class="pager-next" href="forse-charts-colour-system.html"><span class="pager-label">Next</span>Colour system for the Forse charts library</a>
+    </nav>
+  </footer>
+
+</article>
+
+<script src="../article.js?v=c5c2e37a" defer></script>
+<script src="../effects.js?v=92f0cab3" defer></script>
+</body>
+</html>

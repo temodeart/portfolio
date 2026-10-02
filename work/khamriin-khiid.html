@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khamriin Khiid web design &middot; Temuujin (Temo) Batbold</title>
+<meta name="description" content="A website for a Gobi monastery that sells sutra readings online, where the thing being bought happens six hundred kilometres away and cannot be watched.">
+<meta name="color-scheme" content="light dark">
+<script>try{if(localStorage.getItem('fx')==='on'){var d=document.documentElement;d.dataset.fx='';var n=performance.getEntriesByType('navigation')[0];if(sessionStorage.getItem('fxsnap')==='1'||(n&&n.type==='back_forward'))d.dataset.fxSnap=''}}catch(e){}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
+<link rel="stylesheet" href="../styles.css?v=42ec7a49">
+<link rel="stylesheet" href="../article.css?v=7e8ee6ff">
+<link rel="stylesheet" href="../effects.css?v=0bc3862c">
+</head>
+<body class="article-page">
+
+<nav class="side">
+  <a class="side-back" href="../index.html#work">Index</a>
+  <ol class="side-index">
+    <li><a href="#the-place">A monastery in the Gobi</a></li>
+    <li><a href="#ordering">Selling something nobody can watch</a></li>
+    <li><a href="#the-receipt">The receipt is the product</a></li>
+    <li><a href="#the-life">Nine chapters of a life</a></li>
+    <li><a href="#two-calendars">Two calendars at once</a></li>
+    <li><a href="#brown">Brown, cream, three bank accounts</a></li>
+  </ol>
+</nav>
+
+<article class="article">
+
+  <header class="article-head">
+    <h1 class="article-title">Khamriin Khiid web design</h1>
+    <p class="article-date">2025</p>
+  </header>
+
+  <p class="article-lead">A Buddhist monastery in the Gobi, selling sutra readings online. You choose
+  from a catalogue, pay by scanning a QR code with your bank app, and a monk reads them on your
+  behalf six hundred kilometres away. You will never see it happen. That was the design problem I
+  was handed.</p>
+
+  <dl class="meta">
+    <dt>Role</dt><dd>Web design, desktop and mobile</dd>
+    <dt>Client</dt><dd>Khamriin Khiid, the monastery of Noyon Khutagt Danzanravjaa, Dornogovi province</dd>
+    <dt>Product</dt><dd>A site that takes prayer requests, donations and visitors</dd>
+    <dt>Scope</dt><dd>Landing page, the ordering flow, a life of the founder, article template, donations, mobile</dd>
+    <dt>Year</dt><dd>2025</dd>
+  </dl>
+
+  <hr>
+
+  <h2 id="the-place">A monastery in the Gobi</h2>
+
+  <p>Khamriin Khiid stands in Dornogovi province, 38 kilometres south of Sainshand, open 8:00 to
+  17:30 every day of the year.<a class="note-ref" id="ref-1" href="#note-1">1</a> It calls itself
+  <span lang="mn">Дэлхийн энергийн төв</span>, the world&rsquo;s energy centre, and the ring of
+  white stupas out on the red gravel is what people drive into the desert to see.</p>
+
+  <figure class="figure">
+    <div class="figure-frame"><img src="../images/work/khamriin-khiid/hero.jpg" alt="The site's opening screen. A photograph of the Gobi at sunset with a gilded monument, the Buddha eyes drawn in cream above the monastery's name in Cyrillic, a single brass button, and a verse set in italics below it, all over a deep brown masthead carrying an emblem and the word for menu." loading="lazy" decoding="async"></div>
+    <figcaption>Sunset, the eyes, the founder&rsquo;s verse, and one button.</figcaption>
+  </figure>
+
+  <p>I opened the page on that at sunset, with the monastery&rsquo;s eyes over it and a verse by its
+  founder set in italics underneath. I kept the masthead to two things: the emblem, and the word
+  <span lang="mn">Цэс</span>. Menu. Nothing else.</p>
+
+  <p>Under the title I put one button, <span lang="mn">Цахим айлтгал захиалах</span>. Order an
+  online petition. That is the product, and I put it above the fold on a page about a
+  nineteenth-century monastery because that is what the site is really for.</p>
+
+  <h2 id="ordering">Selling something nobody can watch</h2>
+
+  <p>I built ordering as three panels.</p>
+
+  <figure class="figure">
+    <div class="figure-frame"><img src="../images/work/khamriin-khiid/order.jpg" alt="Three ordering panels side by side. The first is a searchable catalogue of sutras, each with a name, a price in tugrik and a paragraph of explanation, with pagination to twenty-four pages and a second list of themed packages. The second collects a phone number, a name and a note, and shows the order back. The third displays a QR code for payment with continue and cancel buttons." loading="lazy" decoding="async"></div>
+    <figcaption>Catalogue, details, payment. The running total follows you through all three.</figcaption>
+  </figure>
+
+  <p>The first is a catalogue: twenty-four pages of sutras, each with a name, a price and a
+  paragraph saying what it is for. <span lang="mn">Цагаан шүхэрт</span>, 1500₮, against slander,
+  curses, illness, fire and water. <span lang="mn">Цэнд-Аюуш</span>, 1500₮, for long life.
+  <span lang="mn">Улаан Юм</span>, 5000₮, sixteen volumes, with a note on why the Buddha taught it.
+  Below them I grouped eleven packages at 17,000₮ by the part of a life they cover: health, travel,
+  work, prosperity, family, livestock, schooling, the next life.</p>
+
+  <figure class="figure figure-narrow">
+    <div class="figure-frame"><img src="../images/work/khamriin-khiid/catalogue.jpg" alt="The catalogue panel in detail. Tabs for the yearly remedy and all books, a search field, then a heading reading sutras suitable to be read, and beneath it checkbox rows. Each row carries a sutra name, a price in tugrik and a paragraph explaining what it is for." loading="lazy" decoding="async"></div>
+    <figcaption>Every line is a checkbox, a price, and a paragraph explaining what it protects
+    against.</figcaption>
+  </figure>
+
+  <p>The second panel takes a phone number, a name and an optional note, then repeats the order back
+  in full. I also wrote in that an SMS confirmation adds 50₮, because I wanted the person paying to
+  see every cost before they reached the QR code. The third panel shows that code, to scan with any
+  bank app.</p>
+
+  <p>None of that is unusual as e-commerce. What is unusual is the thing being bought. It cannot be
+  inspected before, delivered after, or returned. A monk will read a text at a monastery in the
+  Gobi, and the customer will not be in the room. That was the part I kept coming back to.</p>
+
+  <p class="pull">Most checkouts end in a tracking number because the buyer wants to know where the
+  parcel is. This one ends in a record because the buyer needs to believe it happened at all.</p>
+
+  <h2 id="the-receipt">The receipt is the product</h2>
+
+  <figure class="figure figure-narrow">
+    <div class="figure-frame"><img src="../images/work/khamriin-khiid/receipt.jpg" alt="The check-order panel. A field for an order number, then the order read back: name, note, phone number, total of forty thousand five hundred tugrik, payment status showing paid, the date in Mongolian, and beneath it the full list of sutras commissioned with their descriptions." loading="lazy" decoding="async"></div>
+    <figcaption><span lang="mn">Захиалга шалгах</span>. The only thing the customer ever holds.</figcaption>
+  </figure>
+
+  <p>So I built a page for checking an order. Type the number and it returns the name, the phone
+  number, the total, the word <span lang="mn">Төлсөн</span>, paid, the date, and the full list of
+  what was commissioned, each sutra still carrying the paragraph that explains it.</p>
+
+  <p>I treated that screen as the real deliverable, because it does the job a delivery van does
+  everywhere else. I made each line carry its description again rather than a bare title, because
+  six weeks on nobody remembers which of the seven sutras was the one for travelling.</p>
+
+  <h2 id="the-life">Nine chapters of a life</h2>
+
+  <p>One of the site&rsquo;s four sections is a biography, and it was the part most likely to end up
+  as a wall of text.</p>
+
+  <p>Danzanravjaa was a lama, a poet, a playwright and a teacher who built a theatre and a school in
+  the Gobi. The monastery&rsquo;s own account says he was honoured at five, that the Manchu emperor
+  sent three senior figures to test him at seven, and that he died at
+  fifty-four.<a class="note-ref" id="ref-2" href="#note-2">2</a></p>
+
+  <figure class="figure">
+    <div class="figure-frame"><img src="../images/work/khamriin-khiid/life.jpg" alt="The biography section. A photograph of the bronze statue of Danzanravjaa on the left. On the right, numbered chapters with a small date, a large serif Cyrillic title and a large numeral, separated by hairlines. The first chapter is open and carries three paragraphs." loading="lazy" decoding="async"></div>
+    <figcaption>One chapter open at a time, with the portrait changing alongside it.</figcaption>
+  </figure>
+
+  <p>I built it as nine numbered chapters. <span lang="mn">Бага нас</span>, childhood.
+  <span lang="mn">Идэр нас</span>, his prime. <span lang="mn">Түүний үхэл</span>, his death. Then his
+  doctrine, his teaching, what he built, his philosophy, and a chapter on drink. One opens at a
+  time, and I made the portrait beside it change with the chapter, so the statue gives way to the
+  painting of him at his writing desk.</p>
+
+  <p>Numbering a life is a small move and it did a lot for me here. It turns a biography into
+  something a reader can enter in the middle, which is how people actually read about a saint they
+  have just heard of.</p>
+
+  <h2 id="two-calendars">Two calendars at once</h2>
+
+  <figure class="figure figure-bare">
+    <img src="../images/work/khamriin-khiid/cal.jpg" alt="The events module. A centred heading reading activities, under it a line naming the year in the traditional lunar system, then arrows and a row of four dates in Gregorian form with their years above them, then the teaching for the selected day and a marker naming its auspicious days." loading="lazy" decoding="async">
+    <figcaption>The lunar year on top, Gregorian dates underneath, the day&rsquo;s teaching below.</figcaption>
+  </figure>
+
+  <p>The events module carries a line I could have quietly dropped and chose to keep:
+  <span lang="mn">XVII жарны &ldquo;хөхөгчин&rdquo; хэмээх модон могой жил</span>. It comes apart
+  like this.</p>
+
+  <dl class="gloss">
+    <div><dt lang="mn">XVII жарны</dt><dd>of the seventeenth sixty-year cycle, which began in 1987</dd></div>
+    <div><dt lang="mn">хөхөгчин</dt><dd>blue, in its female polarity</dd></div>
+    <div><dt lang="mn">хэмээх</dt><dd>called, or by the name of</dd></div>
+    <div><dt lang="mn">модон</dt><dd>wood, the element</dd></div>
+    <div><dt lang="mn">могой</dt><dd>snake, the animal</dd></div>
+    <div><dt lang="mn">жил</dt><dd>year</dd></div>
+  </dl>
+
+  <p>Beneath it I ran a strip of ordinary Gregorian dates you can arrow through, and beneath those,
+  the teaching for the day and a marker naming which auspicious days it falls on.</p>
+
+  <p>A monastery&rsquo;s year does not run on months. It runs on a sixty-year cycle, an element, a
+  colour that carries a gender, and an animal, and on days that are favourable for particular
+  things. A date picker that only offered 2025 would have named the wrong year, so I put both
+  systems on screen at once and let neither be a translation of the other.</p>
+
+  <h2 id="brown">Brown, cream, three bank accounts</h2>
+
+  <p>I kept it to four colours.</p>
+
+  <div class="swatches">
+    <div class="swatch" style="--c:#312206"><b>Temple brown</b><span>#312206 &middot; masthead, menu, footer</span></div>
+    <div class="swatch" style="--c:#a78036;--ink:#312206"><b>Brass</b><span>#A78036 &middot; the one button, rules, numerals</span></div>
+    <div class="swatch" style="--c:#f4eadd;--ink:#312206"><b>Cream</b><span>#F4EADD &middot; type and the eyes, on brown</span></div>
+    <div class="swatch" style="--c:#f8f7f6;--ink:#312206"><b>Page</b><span>#F8F7F6 &middot; everything that is not brown</span></div>
+  </div>
+
+  <p>The brown is the monastery&rsquo;s own, the colour of the temple interiors and the robes. I let
+  brass do the work a brand colour usually does, and spent it on the one button, the hairlines and
+  the numerals. Cream is type on brown. Everything else is an off-white page.</p>
+
+  <p>I washed the photographs back under a warm veil so they sit behind the type instead of shouting
+  past it, and where a section had no photograph I drew pale line illustrations instead: hills
+  behind the founding story, a camel caravan behind the quotation.</p>
+
+  <figure class="figure">
+    <div class="figure-frame"><img src="../images/work/khamriin-khiid/donate.jpg" alt="The donation block and footer. Three cards naming Khan Bank, Trade and Development Bank and State Bank with account numbers, over a washed photograph of the stupa ring. Below, a numbered list of the six site sections in cream on deep brown, beside a large drawing of the Buddha eyes, with email, phone, address, opening hours and coordinates." loading="lazy" decoding="async"></div>
+    <figcaption>Three account numbers, and nothing to click.</figcaption>
+  </figure>
+
+  <p>For donations I set three bank accounts. Khan Bank, Trade and Development Bank, State Bank,
+  numbers printed, no card form and no gateway taking a percentage of a gift to a monastery. In
+  Mongolia you copy the number into your banking app, which is the same app that scanned the QR
+  code two screens earlier.</p>
+
+  <figure class="figure">
+    <div class="figure-frame"><img src="../images/work/khamriin-khiid/mobile.jpg" alt="Two phone screens. The menu overlay listing six numbered sections in cream serif capitals on deep brown, and the home screen with the sunset photograph, the eyes, the monastery name, the brass button and the founder's verse." loading="lazy" decoding="async"></div>
+    <figcaption>The same two controls, the same one button.</figcaption>
+  </figure>
+
+  <p>I drew all of it for the phone as well, and on this project that was not a courtesy. The people
+  buying a sutra reading are going to scan that QR code with a bank app, on the device they are
+  reading the page on.</p>
+
+  <hr class="notes-rule">
+  <ol class="notes">
+    <li id="note-1"><span class="note-body">Address, hours and contact details are the
+    monastery&rsquo;s own, taken from the site footer: Urgun sum, Dornogovi province, 38 km south of
+    Sainshand. <a class="note-back" href="#ref-1" aria-label="Back to reference 1"></a></span></li>
+    <li id="note-2"><span class="note-body">The biography on the site is the monastery&rsquo;s text,
+    not mine. The account of the emperor&rsquo;s test and the age at death are theirs; my work was
+    deciding it should arrive as nine chapters rather than one. <a class="note-back" href="#ref-2" aria-label="Back to reference 2"></a></span></li>
+  </ol>
+
+  <footer class="article-foot">
+    <h2 class="foot-heading">Similar</h2>
+    <ul class="related-list">
+      <li><a href="itrader.html">iTrader landing page design<span>2025</span></a></li>
+      <li><a href="nordic-health-club.html">Nordic Health Club brand exploration<span>2026</span></a></li>
+    </ul>
+
+    <nav class="pager">
+      <a class="pager-prev" href="itrader.html"><span class="pager-label">Previous</span>iTrader landing page design</a>
+      <a class="pager-next" href="forse-insights-2024.html"><span class="pager-label">Next</span>Forse Insights</a>
+    </nav>
+  </footer>
+
+</article>
+
+<script src="../article.js?v=c5c2e37a" defer></script>
+<script src="../effects.js?v=92f0cab3" defer></script>
+</body>
+</html>

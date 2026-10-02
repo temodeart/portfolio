@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 552 224" width="552" height="224" role="img" aria-label="The three destination modes as stacked bars, split into address, pay, wait, ride and end stages, with segment widths taken from the real screen counts. No destination is 19 screens with 7 in the address stage. Destination is 20 with 7. Multi-stop is 25 with 12. Paying is four screens in all three, waiting is one, ending is four.">
+  <style>
+    .ink { fill: #111111 } .mid { fill: #888888 } .dim { fill: #a3a3a3 }
+    .a { fill: #e9e9e9 } .b { fill: #d4d4d4 } .key { fill: #2a3fdb }
+    @media (prefers-color-scheme: dark) {
+      .ink { fill: #ededed } .mid { fill: #9e9e9e } .dim { fill: #7c7c7c }
+      .a { fill: #242424 } .b { fill: #303030 } .key { fill: #4054f0 }
+    }
+    text { font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif }
+    .l { font-size: 10px; letter-spacing: 0.09em }
+    .s { font-size: 10.5px } .n { font-size: 11px; font-weight: 500 }
+  </style>
+  <text class="l mid" x="0" y="10">ONE JOURNEY, THREE WAYS TO START IT</text>
+  <text class="s ink" x="0" y="39">No destination</text>
+  <rect class="key" x="118" y="28" width="107" height="14" rx="2"/>
+  <rect class="a" x="226" y="28" width="61" height="14" rx="2"/>
+  <rect class="b" x="288" y="28" width="15" height="14" rx="2"/>
+  <rect class="a" x="304" y="28" width="46" height="14" rx="2"/>
+  <rect class="b" x="351" y="28" width="61" height="14" rx="2"/>
+  <text class="n ink" x="420" y="39">19</text>
+  <text class="s ink" x="0" y="65">Destination</text>
+  <rect class="key" x="118" y="54" width="107" height="14" rx="2"/>
+  <rect class="a" x="226" y="54" width="61" height="14" rx="2"/>
+  <rect class="b" x="288" y="54" width="15" height="14" rx="2"/>
+  <rect class="a" x="304" y="54" width="61" height="14" rx="2"/>
+  <rect class="b" x="366" y="54" width="61" height="14" rx="2"/>
+  <text class="n ink" x="435" y="65">20</text>
+  <text class="s ink" x="0" y="91">Multi-stop</text>
+  <rect class="key" x="118" y="80" width="183" height="14" rx="2"/>
+  <rect class="a" x="302" y="80" width="61" height="14" rx="2"/>
+  <rect class="b" x="364" y="80" width="15" height="14" rx="2"/>
+  <rect class="a" x="380" y="80" width="61" height="14" rx="2"/>
+  <rect class="b" x="442" y="80" width="61" height="14" rx="2"/>
+  <text class="n ink" x="511" y="91">25</text>
+  <rect class="key" x="118" y="118" width="11" height="11" rx="2"/>
+  <text class="s mid" x="134" y="128">address</text>
+  <rect class="a" x="191.2" y="118" width="11" height="11" rx="2"/>
+  <text class="s mid" x="207.2" y="128">pay</text>
+  <rect class="b" x="242.0" y="118" width="11" height="11" rx="2"/>
+  <text class="s mid" x="258.0" y="128">wait</text>
+  <rect class="a" x="298.4" y="118" width="11" height="11" rx="2"/>
+  <text class="s mid" x="314.4" y="128">ride</text>
+  <rect class="b" x="354.79999999999995" y="118" width="11" height="11" rx="2"/>
+  <text class="s mid" x="370.79999999999995" y="128">end</text>
+  <text class="s dim" x="0" y="128">stages</text>
+  <text class="s mid" x="0" y="154">Paying is four screens in all three. Waiting is one. Ending is four.</text>
+  <text class="s dim" x="0" y="174">The address stage goes seven, seven, twelve, and that is the whole difference.</text>
+  <text class="s dim" x="0" y="192">Every screen multi-stop costs over a plain trip is spent on adding, reordering</text>
+  <text class="s dim" x="0" y="210">and removing a stop. Counted off the file rather than estimated.</text>
+</svg>

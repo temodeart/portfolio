@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Minu Merchant, version two &middot; Temuujin (Temo) Batbold</title>
+<meta name="description" content="Redesigning Minu Merchant, the app Mongolian merchants use with their Minu POS terminals: a 312-screen version one mapped into eight sections, a new token system, and the first three sections rebuilt.">
+<meta name="color-scheme" content="light dark">
+<script>try{if(localStorage.getItem('fx')==='on'){var d=document.documentElement;d.dataset.fx='';var n=performance.getEntriesByType('navigation')[0];if(sessionStorage.getItem('fxsnap')==='1'||(n&&n.type==='back_forward'))d.dataset.fxSnap=''}}catch(e){}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
+<link rel="stylesheet" href="../styles.css?v=42ec7a49">
+<link rel="stylesheet" href="../article.css?v=7e8ee6ff">
+<link rel="stylesheet" href="../effects.css?v=0bc3862c">
+</head>
+<body class="article-page">
+
+<nav class="side">
+  <a class="side-back" href="../index.html#work">Index</a>
+  <ol class="side-index">
+    <li><a href="#the-app">A shop&rsquo;s whole money life in one app</a></li>
+    <li><a href="#the-map">Eight sections before a single screen</a></li>
+    <li><a href="#home">A home screen that starts with the balance</a></li>
+    <li><a href="#auth">Signing in, with every state drawn</a></li>
+    <li><a href="#statement">Statements a shopkeeper can actually filter</a></li>
+    <li><a href="#tokens">Tokens first, so the rest goes fast</a></li>
+    <li><a href="#where-it-stands">Where it stands</a></li>
+  </ol>
+</nav>
+
+<article class="article">
+
+  <header class="article-head">
+    <h1 class="article-title">Minu Merchant app, version 2 redesign</h1>
+    <p class="article-date">2023 to 2025</p>
+  </header>
+
+  <p class="article-lead">Minu Merchant is the app a Mongolian shop owner uses alongside their Minu
+  POS terminal: accounts, cards, POS and SoftPOS statements, transfers, and ten kinds of business
+  loan. Version one had grown to 312 screens. I mapped all of it into eight sections, built a token
+  system on top, and rebuilt the first three sections, authentication, home, and account, as the
+  pattern for the rest.<a class="note-ref" id="ref-1" href="#note-1">1</a></p>
+
+  <dl class="meta">
+    <dt>Role</dt><dd>Product design, information architecture, design system</dd>
+    <dt>Company</dt><dd>Minu, a Mongolian payments company, with Mongol ID and 360 Finance behind sign-in</dd>
+    <dt>Product</dt><dd>Minu Merchant (MinuPlus), iOS and Android</dd>
+    <dt>Scope</dt><dd>Version one at 312 screens; version two map, tokens, component kit, and 24 rebuilt screens so far</dd>
+    <dt>Years</dt><dd>2023 to 2025, version two from late 2024</dd>
+  </dl>
+
+  <hr>
+
+  <h2 id="the-app">A shop&rsquo;s whole money life in one app</h2>
+
+  <figure class="figure figure-bare">
+    <img src="../images/work/minu-merchant/terminal.jpg" alt="A hand holds a phone showing a green bank card on screen and taps it against a rose gold Minu POS terminal lying on a white desk. The terminal's screen shows a QR code and an amount." loading="lazy" decoding="async">
+    <figcaption>A tap payment landing on a Minu terminal. Everything that money does next lives in the app.</figcaption>
+  </figure>
+
+  <p>Taking payments is the smallest part of what a merchant on Minu does. They read yesterday&rsquo;s POS statement,
+  move money between their own accounts, order a debit or credit card, top up a working-capital
+  loan, and, if they are small enough, take payments on their phone with SoftPOS instead of a
+  terminal. Version one covered all of that, in Mongolian, across iOS and Android, and I had to know every corner of it before I could change any.</p>
+
+  <figure class="figure figure-bare">
+    <img src="../images/work/minu-merchant/v1-screens.jpg" alt="Ten version one screens in a row on dark grey: a SoftPOS keypad reading zero tugrik, a POS statement, the loans hub with two product cards on photographic backgrounds, my loans, a repayment schedule, a loan detail with a confirmation sheet, a repayment keypad, a repayment amount screen, and a micro loan product page with rate and limits." loading="lazy" decoding="async">
+    <figcaption>Version one, the set the marketing team used. Loans alone had ten product flows behind these screens.</figcaption>
+  </figure>
+
+  <p>The loan area is where I understood the scale. Micro loans, consumer loans, mortgages, working capital,
+  auto loans, POS leasing, investment loans, car-collateral and home-collateral loans, trade
+  loans. Each had its own request flow, its own detail screen, its own repayment path. Cards had
+  order, invoice, statement, PIN, deactivate, close and extend. By the time I sat down for version
+  two there were 312 phone screens in the file and nothing that held them together.</p>
+
+  <h2 id="the-map">Eight sections before a single screen</h2>
+
+  <p>I started version two by refusing to draw. The first thing in the redesign area is a row of
+  numbered section titles, and under each one the list of screens it would need. Some of those
+  sections still have nothing under them but the list. I left them that way on purpose, because
+  the map is the deliverable that makes the next designer&rsquo;s week shorter.</p>
+
+  <dl class="gloss">
+    <div><dt>Authentication</dt><dd>Splash, sign in, sign up, forgot password in five steps, verification in five states. <em class="planned">Built.</em></dd></div>
+    <div><dt>Home</dt><dd>One screen: balance, two shortcuts, transactions, a slot for a chart or banner. <em class="planned">Built.</em></dd></div>
+    <div><dt>Account and transfer</dt><dd>Account, statement in two versions plus empty state and calendar, transfer in three versions. <em class="planned">Built.</em></dd></div>
+    <div><dt>Wallet (card)</dt><dd>Default, statement. <em class="planned">Planned.</em></dd></div>
+    <div><dt>POS</dt><dd>Default, statement, info. <em class="planned">Planned.</em></dd></div>
+    <div><dt>SoftPOS</dt><dd>Default, statement, void. <em class="planned">Planned.</em></dd></div>
+    <div><dt>User</dt><dd>Security, biometrics, accessed devices log, user info, about with terms and Q&amp;A, feedback with transaction dispute and issue reporting. <em class="planned">Planned.</em></dd></div>
+    <div><dt>Admin</dt><dd>Role management and user registration, for shops with more than one person on the till. <em class="planned">Planned.</em></dd></div>
+  </dl>
+
+  <p>Two of those sections did not exist in version one at all. An accessed-devices log and a
+  transaction dispute path belong in any app that holds a business&rsquo;s money, and an admin
+  area with roles is what turns a one-owner app into one a shop with three cashiers can use. I put
+  them on the map first so nobody could later call them scope creep.</p>
+
+  <p class="pull">A redesign that starts with screens produces prettier screens. One that starts
+  with a map produces a product the team can finish without you.</p>
+
+  <h2 id="home">A home screen that starts with the balance</h2>
+
+  <figure class="figure figure-duo">
+    <div class="figure-frame">
+      <img src="../images/work/minu-merchant/v1home.png" alt="Version one home. A greeting with the owner's name, a row of story circles with photos, then four large tiles on a pale teal gradient: Account, POS, Loan with the next repayment date, and Card. A dark green pill tab bar at the bottom with Home selected." loading="lazy" decoding="async">
+      <img src="../images/work/minu-merchant/home.png" alt="Version two home. Welcome back and the user's name, a bell. A balance card reading 50,469,550 tugrik with a Visa mark, a masked card number, an eye toggle, copy and scan buttons. Two tiles, Account and POS. A transactions card with an All filter and three dated rows, two POS credits and one Auchan debit. A placeholder reading banner or chart graphic. A tab bar with Home, SoftPOS and Transfer." loading="lazy" decoding="async">
+    </div>
+    <figcaption>Version one on the left, version two on the right. Same owner, same four things to do, and the balance moved from two taps away to the first thing on screen.</figcaption>
+  </figure>
+
+  <p>Version one&rsquo;s home was a menu. Four tiles, a row of stories, a greeting, and no money on
+  it anywhere. A merchant opening the app at closing time wants one number, and I made version two
+  lead with it: available balance, the card it sits on, an eye to hide it when a customer is
+  looking over the counter, and copy and scan buttons on the same card so paying in and paying out
+  start from the balance itself.</p>
+
+  <p>I changed the tab bar too. Version one had home, wallet and profile. Version two has home,
+  SoftPOS and transfer, because those are the two actions a merchant performs many times a day and
+  the profile is something they open twice a year. SoftPOS in the centre is the product bet made
+  visible: the phone is the terminal now.</p>
+
+  <p>The grey box at the bottom is labelled &ldquo;banner or chart graphic&rdquo; in my own hand.
+  I left the question open rather than filling it, because the answer depends on what the business
+  team wants that space to do, and a designer&rsquo;s guess there costs a sprint.</p>
+
+  <h2 id="auth">Signing in, with every state drawn</h2>
+
+  <figure class="figure figure-grid" style="--n:4">
+    <div class="figure-frame">
+      <img src="../images/work/minu-merchant/signin.png" alt="Sign in. The Minu logo, the heading Welcome in Mongolian, a phone number field, a password field with an eye, a remember-me checkbox, a forgot password link, a teal sign in button, a sign up link, and a Powered by line with the Mongol ID and 360 Finance marks." loading="lazy" decoding="async">
+      <img src="../images/work/minu-merchant/ver-default.png" alt="Verification. Six empty code boxes under a line saying which phone number the code went to, a resend timer, a numeric keyboard." loading="lazy" decoding="async">
+      <img src="../images/work/minu-merchant/ver-error.png" alt="Verification with a wrong code. The six boxes outlined in red with digits typed, a red line reading the code is wrong, please check again, the resend timer at 59 seconds." loading="lazy" decoding="async">
+      <img src="../images/work/minu-merchant/success.png" alt="Success. A green blob with a white tick and a smaller blob beside it, the line Password changed successfully, and a sign in button." loading="lazy" decoding="async">
+    </div>
+    <figcaption>Sign in, verification at rest, verification with a wrong code, and the success screen that ends the forgot-password flow.</figcaption>
+  </figure>
+
+  <p>Authentication is where I set the rules everything else would follow, so I drew it
+  completely. Verification alone has five frames: empty, filled, loading, resend, and error. Forgot
+  password has five steps ending in a success screen that exists in two versions because I was not
+  sure how much celebration a password change deserves. I settled on a little.</p>
+
+  <p>The Powered by line at the foot of sign in matters more than it looks. Mongol ID is the
+  national identity provider and 360 Finance is the licensed lender behind the loans. A merchant
+  handing over their phone number wants to know who is on the other end, and I wanted both names
+  on the first screen rather than buried in terms.</p>
+
+  <h2 id="statement">Statements a shopkeeper can actually filter</h2>
+
+  <figure class="figure figure-grid" style="--n:3">
+    <div class="figure-frame">
+      <img src="../images/work/minu-merchant/statement.png" alt="Statement. A date range chip reading 09/27/2024 to 09/28/2024, a segmented control with Today, Last week and Last month, a second one with All transactions, Income and Expense, then dated groups of rows with amounts." loading="lazy" decoding="async">
+      <img src="../images/work/minu-merchant/calendar.png" alt="A calendar bottom sheet over the statement. Start and end date fields, quick picks for today, seven days and one month in green, a month grid with the 27th and 29th selected and the range between them shaded, cancel and choose buttons." loading="lazy" decoding="async">
+      <img src="../images/work/minu-merchant/statement-empty.png" alt="The statement with the same filters and an empty card reading, in Mongolian, there are no transactions." loading="lazy" decoding="async">
+    </div>
+    <figcaption>The second version of the statement, its calendar sheet, and its empty state.</figcaption>
+  </figure>
+
+  <p>A merchant&rsquo;s statement is a tax document and a daily sanity check at the same time, so I
+  gave it two rows of filters. Period first, because &ldquo;today&rdquo; and &ldquo;last
+  month&rdquo; cover most of what anyone asks. Direction second, income or expense, because
+  reconciling a till means looking at one side at a time. The calendar sheet repeats the quick
+  picks so nobody has to count days on a grid.</p>
+
+  <p>I took transfer through three versions. The recipient picker started as square
+  tiles, became a scrolling row of bank marks with the Minu companion account first, and in the
+  third pass I took the tab bar off the screen, because a transfer is a task with an end and the
+  tab bar was an invitation to leave halfway through.</p>
+
+  <figure class="figure figure-grid" style="--n:3">
+    <div class="figure-frame">
+      <img src="../images/work/minu-merchant/transfer1.png" alt="Transfer, first version. Account and card tabs, the source account with its balance, an amount field, a row of four square recipient tiles with the Minu companion mark first, then account number, account holder and description fields, three suggestion chips, a continue button and the tab bar." loading="lazy" decoding="async">
+      <img src="../images/work/minu-merchant/transfer2.png" alt="Transfer, second version. The same screen with the recipients as a scrolling row of round bank marks." loading="lazy" decoding="async">
+      <img src="../images/work/minu-merchant/transfer3.png" alt="Transfer, third version. The round recipient row kept, the fields lightened, and the bottom tab bar removed." loading="lazy" decoding="async">
+    </div>
+    <figcaption>Three passes at transfer. The note beside them in the file reminds me to ask the bank what the description field really carries.<a class="note-ref" id="ref-2" href="#note-2">2</a></figcaption>
+  </figure>
+
+  <h2 id="tokens">Tokens first, so the rest goes fast</h2>
+
+  <p>Version one had a lovely teal gradient and no variables. Version two starts from tokens. I
+  set the brand greens as <code>Minu/Primary/Green</code> and <code>Lightgreen</code>, took the
+  grey, error and text scales from a published Untitled UI base so I would not invent a
+  fourteenth grey, and set type in Inter. Then I built the two components every screen would
+  need, with every state, before drawing screen four.</p>
+
+  <div class="kit" aria-label="Button and field states rebuilt from the file's tokens">
+    <div class="kit-row">
+      <span class="kb kb-primary">Нэвтрэх <svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+      <span class="kb kb-primary is-hover">Нэвтрэх <svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+      <span class="kb kb-primary is-disabled">Нэвтрэх <svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+    </div>
+    <div class="kit-row">
+      <span class="kb kb-outline">Нэвтрэх <svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+      <span class="kb kb-soft">Нэвтрэх <svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+      <span class="kb kb-ghost">Нэвтрэх <svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+    </div>
+    <div class="kit-row fields">
+      <span class="kf">Утасны дугаар <svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+      <span class="kf is-focus"><small>Label</small><i></i> <svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+      <span class="kf is-error">Text <svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+      <span class="kf is-disabled">Text <svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+    </div>
+  </div>
+  <p class="kit-cap">Primary, hover and disabled; outline, soft and ghost; a field at rest, focused, in error and disabled. Rebuilt here from the tokens, not screenshotted.</p>
+
+  <p class="swatch-role">Brand tokens <em>as named in the file</em></p>
+  <div class="swatches four">
+    <div class="swatch" style="--c:#136459"><b>Primary Green</b><span>#136459</span></div>
+    <div class="swatch" style="--c:#219888"><b>Primary Lightgreen</b><span>#219888</span></div>
+    <div class="swatch" style="--c:#29ab87"><b>Button primary</b><span>#29AB87</span></div>
+    <div class="swatch" style="--c:#e54b4b"><b>System Error</b><span>#E54B4B</span></div>
+  </div>
+
+  <p class="swatch-role">Green ramp <em>ten steps, kept in the file as a strip of chips</em></p>
+  <div class="palette ramp" style="--cols:10" aria-label="Ten green steps from pale mint to deep teal">
+    <span style="--c:#99e2b4" data-light></span><span style="--c:#88d4ab" data-light></span><span style="--c:#78c6a3" data-light></span><span style="--c:#67b99a" data-light></span><span style="--c:#56ab91" data-light></span><span style="--c:#469d89"></span><span style="--c:#358f80"></span><span style="--c:#248277"></span><span style="--c:#14746f"></span><span style="--c:#036666"></span>
+  </div>
+
+  <p>I kept the ramp so charts, tags and the SoftPOS screens can lean greener or deeper without
+  anyone picking a colour by eye. The disabled button is grey, not pale green, because a merchant
+  should never wonder whether a payment button is loading or off.</p>
+
+  <h2 id="where-it-stands">Where it stands</h2>
+
+  <p>Three of eight sections are built, and I chose them because they are the three every user passes through. The
+  remaining five have their screen lists written and their component kit waiting. That is a
+  deliberate order. Authentication set the rules, home set the tone, and account and transfer
+  proved the kit could handle a dense, form-heavy flow. Wallet, POS and SoftPOS are variations on
+  the statement pattern I have already drawn.</p>
+
+  <p>What I would want a hiring manager to take from this project is not the screens. It is that
+  when I inherited 312 of them I did not start by redrawing the prettiest one. I counted them, named
+  what they were for, found the two sections that were missing, and built the smallest set of
+  pieces that would let anyone finish the rest.</p>
+
+  <hr class="notes-rule">
+  <ol class="notes">
+    <li id="note-1"><span class="note-body">The counts come from the Figma file: 312 phone-sized
+    frames in the version one area, and 24 built screens across the three completed version two
+    sections, not counting component and title frames. <a class="note-back" href="#ref-1" aria-label="Back to reference 1"></a></span></li>
+    <li id="note-2"><span class="note-body">The note reads, in Mongolian, ask how the description
+    field looks and what information it carries. I leave questions like that in the file rather
+    than resolving them with a guess. <a class="note-back" href="#ref-2" aria-label="Back to reference 2"></a></span></li>
+  </ol>
+
+  <footer class="article-foot">
+    <h2 class="foot-heading">Similar</h2>
+    <ul class="related-list">
+      <li><a href="itrader.html">iTrader landing page design<span>2025</span></a></li>
+      <li><a href="tino-homepage-overhaul.html">Tino homepage overhaul<span>2026</span></a></li>
+    </ul>
+
+    <nav class="pager">
+      <a class="pager-prev" href="pawlovers.html"><span class="pager-label">Previous</span>PawLovers brand identity</a>
+      <a class="pager-next" href="nadad-oir.html"><span class="pager-label">Next</span>Nadad Oir brand identity</a>
+    </nav>
+  </footer>
+
+</article>
+
+<script src="../article.js?v=c5c2e37a" defer></script>
+<script src="../effects.js?v=92f0cab3" defer></script>
+</body>
+</html>

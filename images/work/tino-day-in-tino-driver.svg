@@ -9,5 +9,5 @@
   <rect class="bg" width="1200" height="1600"/>
   <rect class="fr" x="20" y="20" width="1160" height="1560" rx="8" fill="none" stroke-width="2"/>
   <text class="t" x="600" y="796" text-anchor="middle" font-size="74" font-weight="500">Tino Day feature in Tino Driver</text>
-  <text class="s" x="600" y="904" text-anchor="middle" font-size="46">Placeholder — swap in the real image</text>
+  <text class="s" x="600" y="904" text-anchor="middle" font-size="46">Placeholder, swap in the real image</text>
 </svg>

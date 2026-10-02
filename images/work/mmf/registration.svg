@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 552 262" width="552" height="262" role="img" aria-label="The thirteen steps of account registration in order: onboarding, phone, email, bank account verification, link a card, password, PIN, biometrics, DAN authorisation, MONPEP, terms, master agreement, signature, and then an empty home screen. Four of the steps are identity and consent obligations rather than product decisions.">
+  <style>
+    .ink { fill: #111111 } .mid { fill: #888888 } .dim { fill: #a3a3a3 }
+    .a { fill: #e6e6e6 } .key { fill: #4b3fd6 } .end { fill: #111111 }
+    @media (prefers-color-scheme: dark) {
+      .ink { fill: #ededed } .mid { fill: #9e9e9e } .dim { fill: #7c7c7c }
+      .a { fill: #2b2b2b } .key { fill: #6255e8 } .end { fill: #ededed }
+    }
+    text { font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif }
+    .l { font-size: 10px; letter-spacing: 0.09em }
+    .s { font-size: 10px } .t { font-size: 11px; font-weight: 500 }
+  </style>
+  <text class="l mid" x="0" y="10">SIGNING UP TAKES THIRTEEN STEPS</text>
+  <rect class="a" x="0" y="26" width="100" height="34" rx="6"/>
+  <text class="s" x="9" y="40" fill="#888888">01</text>
+  <text class="t ink" x="9" y="54">Onboarding</text>
+  <rect class="a" x="112" y="26" width="100" height="34" rx="6"/>
+  <text class="s" x="121" y="40" fill="#888888">02</text>
+  <text class="t ink" x="121" y="54">Phone</text>
+  <rect class="a" x="224" y="26" width="100" height="34" rx="6"/>
+  <text class="s" x="233" y="40" fill="#888888">03</text>
+  <text class="t ink" x="233" y="54">Email</text>
+  <rect class="key" x="336" y="26" width="100" height="34" rx="6"/>
+  <text class="s" x="345" y="40" fill="#ffffff">04</text>
+  <text class="t" x="345" y="54" fill="#ffffff">Bank account</text>
+  <rect class="a" x="448" y="26" width="100" height="34" rx="6"/>
+  <text class="s" x="457" y="40" fill="#888888">05</text>
+  <text class="t ink" x="457" y="54">Link a card</text>
+  <rect class="a" x="0" y="84" width="100" height="34" rx="6"/>
+  <text class="s" x="9" y="98" fill="#888888">06</text>
+  <text class="t ink" x="9" y="112">Password</text>
+  <rect class="a" x="112" y="84" width="100" height="34" rx="6"/>
+  <text class="s" x="121" y="98" fill="#888888">07</text>
+  <text class="t ink" x="121" y="112">PIN</text>
+  <rect class="a" x="224" y="84" width="100" height="34" rx="6"/>
+  <text class="s" x="233" y="98" fill="#888888">08</text>
+  <text class="t ink" x="233" y="112">Biometrics</text>
+  <rect class="key" x="336" y="84" width="100" height="34" rx="6"/>
+  <text class="s" x="345" y="98" fill="#ffffff">09</text>
+  <text class="t" x="345" y="112" fill="#ffffff">DAN consent</text>
+  <rect class="key" x="448" y="84" width="100" height="34" rx="6"/>
+  <text class="s" x="457" y="98" fill="#ffffff">10</text>
+  <text class="t" x="457" y="112" fill="#ffffff">MONPEP</text>
+  <rect class="a" x="0" y="142" width="100" height="34" rx="6"/>
+  <text class="s" x="9" y="156" fill="#888888">11</text>
+  <text class="t ink" x="9" y="170">Terms</text>
+  <rect class="key" x="112" y="142" width="100" height="34" rx="6"/>
+  <text class="s" x="121" y="156" fill="#ffffff">12</text>
+  <text class="t" x="121" y="170" fill="#ffffff">Master agreement</text>
+  <rect class="key" x="224" y="142" width="100" height="34" rx="6"/>
+  <text class="s" x="233" y="156" fill="#ffffff">13</text>
+  <text class="t" x="233" y="170" fill="#ffffff">Signature</text>
+  <rect class="a" x="336" y="142" width="130" height="34" rx="6"/>
+  <text class="t ink" x="345" y="163">&#8594; Empty home</text>
+  <text class="s dim" x="0" y="212">Blue steps are the regulated ones. A bank account checked before you can</text>
+  <text class="s dim" x="0" y="230">trade, the national ID system, the pension registry, and a master agreement</text>
+  <text class="s dim" x="0" y="248">you sign with your finger. None of them are product decisions.</text>
+</svg>

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 552 236" width="552" height="236" role="img" aria-label="The eight week roadmap. Week 1 research and audit and week 2 information architecture sit in the Discover phase. Weeks 3, 4 and 5 cover wireframes, UI direction and system, and core mobile screens, in the Design phase. Weeks 6 and 7 are refinement, QA, usability and iteration, in Refine. Week 8 is the web revamp and handoff, the entire Ship phase.">
+  <style>
+    .ink { fill: #111111 } .mid { fill: #888888 } .dim { fill: #a3a3a3 }
+    .d1 { fill: #1e1b57 } .d2 { fill: #1668e3 } .d3 { fill: #e8701a } .d4 { fill: #17a06a }
+    .rule { stroke: #e0e0e0; stroke-width: 1.25 }
+    .white { fill: #ffffff }
+    @media (prefers-color-scheme: dark) {
+      .ink { fill: #ededed } .mid { fill: #9e9e9e } .dim { fill: #7c7c7c }
+      .rule { stroke: #2a2a2a }
+    }
+    text { font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif }
+    .l { font-size: 10px; letter-spacing: 0.09em }
+    .s { font-size: 9.5px } .t { font-size: 10px; font-weight: 500 }
+    .w { font-size: 10px; font-weight: 600 }
+  </style>
+  <text class="l mid" x="0" y="10">EIGHT WEEKS, AND THE WEB GETS THE LAST ONE</text>
+  <line class="rule" x1="26" y1="46" x2="526" y2="46"/>
+  <circle class="d1" cx="26" cy="46" r="15"/>
+  <text class="w white" x="26" y="50" text-anchor="middle">W1</text>
+  <text class="s mid" x="26" y="76" text-anchor="middle">Research</text>
+  <text class="s mid" x="26" y="88" text-anchor="middle">&amp; audit</text>
+  <circle class="d1" cx="97" cy="46" r="15"/>
+  <text class="w white" x="97" y="50" text-anchor="middle">W2</text>
+  <text class="s mid" x="97" y="76" text-anchor="middle">IA &amp; UX</text>
+  <text class="s mid" x="97" y="88" text-anchor="middle">direction</text>
+  <circle class="d2" cx="169" cy="46" r="15"/>
+  <text class="w white" x="169" y="50" text-anchor="middle">W3</text>
+  <text class="s mid" x="169" y="76" text-anchor="middle">Wireframes</text>
+  <circle class="d2" cx="240" cy="46" r="15"/>
+  <text class="w white" x="240" y="50" text-anchor="middle">W4</text>
+  <text class="s mid" x="240" y="76" text-anchor="middle">UI direction</text>
+  <text class="s mid" x="240" y="88" text-anchor="middle">&amp; system</text>
+  <circle class="d2" cx="312" cy="46" r="15"/>
+  <text class="w white" x="312" y="50" text-anchor="middle">W5</text>
+  <text class="s mid" x="312" y="76" text-anchor="middle">Core mobile</text>
+  <text class="s mid" x="312" y="88" text-anchor="middle">screens</text>
+  <circle class="d3" cx="383" cy="46" r="15"/>
+  <text class="w white" x="383" y="50" text-anchor="middle">W6</text>
+  <text class="s mid" x="383" y="76" text-anchor="middle">Refinement</text>
+  <text class="s mid" x="383" y="88" text-anchor="middle">&amp; QA</text>
+  <circle class="d3" cx="454" cy="46" r="15"/>
+  <text class="w white" x="454" y="50" text-anchor="middle">W7</text>
+  <text class="s mid" x="454" y="76" text-anchor="middle">Usability</text>
+  <text class="s mid" x="454" y="88" text-anchor="middle">&amp; iteration</text>
+  <circle class="d4" cx="526" cy="46" r="15"/>
+  <text class="w white" x="526" y="50" text-anchor="middle">W8</text>
+  <text class="s ink" x="526" y="76" text-anchor="middle">Web revamp</text>
+  <text class="s ink" x="526" y="88" text-anchor="middle">&amp; handoff</text>
+  <rect class="d1" x="0" y="120" width="4" height="34" rx="2"/>
+  <text class="t ink" x="12" y="132">Discover</text>
+  <text class="s dim" x="12" y="147">W1-W2</text>
+  <rect class="d2" x="160" y="120" width="4" height="34" rx="2"/>
+  <text class="t ink" x="172" y="132">Design</text>
+  <text class="s dim" x="172" y="147">W3-W5</text>
+  <rect class="d3" x="348" y="120" width="4" height="34" rx="2"/>
+  <text class="t ink" x="360" y="132">Refine</text>
+  <text class="s dim" x="360" y="147">W6-W7</text>
+  <rect class="d4" x="470" y="120" width="4" height="34" rx="2"/>
+  <text class="t ink" x="482" y="132">Ship</text>
+  <text class="s dim" x="482" y="147">W8</text>
+  <text class="s mid" x="0" y="184">The mobile app gets weeks 1 to 7. The existing web platform gets week 8,</text>
+  <text class="s mid" x="0" y="200">shared with developer handoff, which is the week least able to absorb a surprise.</text>
+  <text class="s dim" x="0" y="224">Read off the roadmap deck. Phase labels are the deck’s own.</text>
+</svg>

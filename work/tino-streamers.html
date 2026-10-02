@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tino Streamers &middot; Temuujin (Temo) Batbold</title>
+<meta name="description" content="A donation layer inside the Tino superapp, where a fan can send a streamer money or a chocolate cake and both of them arrive.">
+<meta name="color-scheme" content="light dark">
+<script>try{if(localStorage.getItem('fx')==='on'){var d=document.documentElement;d.dataset.fx='';var n=performance.getEntriesByType('navigation')[0];if(sessionStorage.getItem('fxsnap')==='1'||(n&&n.type==='back_forward'))d.dataset.fxSnap=''}}catch(e){}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
+<link rel="stylesheet" href="../styles.css?v=42ec7a49">
+<link rel="stylesheet" href="../article.css?v=7e8ee6ff">
+<link rel="stylesheet" href="../effects.css?v=0bc3862c">
+</head>
+<body class="article-page">
+
+<nav class="side">
+  <a class="side-back" href="../index.html#work">Index</a>
+  <ol class="side-index">
+    <li><a href="#two-ways-to-give">Two ways to give</a></li>
+    <li><a href="#finding-someone">Finding someone to give to</a></li>
+    <li><a href="#what-a-profile-does">What a profile has to do</a></li>
+    <li><a href="#rank-and-the-switch">Rank, and the switch that turns it off</a></li>
+    <li><a href="#paying-for-it">Paying with money you don&rsquo;t have yet</a></li>
+    <li><a href="#a-dark-room">A dark room inside a light app</a></li>
+    <li><a href="#letting-streamers-in">Letting streamers in</a></li>
+  </ol>
+</nav>
+
+<article class="article">
+
+  <header class="article-head">
+    <h1 class="article-title">Tino Streamers</h1>
+    <p class="article-date">2026</p>
+  </header>
+
+
+  <p class="article-lead">Tino already knew how to move money, and it already knew how to get a
+  parcel across Ulaanbaatar. Tino Streamers points both of those at one person, whoever you happen
+  to be watching right now. You can send them 50,000₮, or you can send them a chocolate cake. Same
+  checkout either way. Very different journey after that.<a class="note-ref" id="ref-1" href="#note-1">1</a></p>
+
+  <dl class="meta">
+    <dt>Role</dt><dd>Product design: flows, interface, the component set</dd>
+    <dt>Platform</dt><dd>iOS and Android, inside the Tino superapp</dd>
+    <dt>Scope</dt><dd>Discovery, streamer profiles, two donation paths, a gift catalogue, history, creator onboarding</dd>
+    <dt>Year</dt><dd>2026</dd>
+    <dt>Design file</dt><dd><a href="https://www.figma.com/design/DC8d9JtufwBqC6PuB019y4/Tino-Phase-2?node-id=20516-44834" target="_blank" rel="noopener noreferrer">Tino Phase 2, Streamer Donation</a></dd>
+  </dl>
+
+  <hr>
+
+  <h2 id="two-ways-to-give">Two ways to give</h2>
+
+  <p>Most donation features are a text field and a button. This one has a second half that was much
+  harder for me to build. An actual catalogue of actual objects.</p>
+
+  <p>You can send money, which lands in the streamer&rsquo;s Tino balance within seconds. Or you
+  can send a <em>thing</em>. A bouquet, a cake, a mechanical keyboard, a tray of energy drinks.
+  That one turns up at their door a few days later, carried by the same couriers Tino already has
+  out on the road.</p>
+
+  <p>Both start in the same place and go through the same checkout. After that they stop having
+  anything in common. Money is a number moving between two accounts. A present has stock, a cart, a
+  courier, an address, and about a dozen ways to go wrong that a number never has.</p>
+
+  <figure class="figure figure-bare">
+    <img src="../images/work/tino-streamers/flow-two-gifts.svg" alt="Diagram. A fan picks either an amount or an object. Both go through one Tino Pay checkout. Money settles into the streamer's balance in seconds, while a present settles at their door in days. Both then feed the same leaderboard." loading="lazy" decoding="async">
+    <figcaption>The two paths share a wallet and a leaderboard and nothing else. That gap between
+    seconds and days is what the history screen had to absorb.</figcaption>
+  </figure>
+
+  <p>The catalogue is where the idea stops being a slide and turns into a shelf. The filters are
+  category first, flowers and food and toys, then price. Every card shows how many are left,
+  and the wording shifts as that number drops: a plain count at twelve, amber at five, red once
+  it&rsquo;s gone.<a class="note-ref" id="ref-2" href="#note-2">2</a> Watching a gift sell out
+  while you&rsquo;re still deciding is its own kind of pressure, and I didn&rsquo;t try to hide
+  that.</p>
+
+  <figure class="figure figure-phone">
+    <div class="figure-frame"><img src="../images/work/tino-streamers/presents.jpg" alt="The gift catalogue. Category and price filters across the top, then a two-column grid of real products: a bouquet, a chocolate cake, a teddy bear, a coffee set, a mechanical keyboard, a pack of energy drinks. Each card shows a price in tugrik and a stock count." loading="lazy" decoding="async"></div>
+    <figcaption>A shelf, not a tip jar. Prices in tugrik, stock on every card, and a cart that
+    follows you down the page.</figcaption>
+  </figure>
+
+  <h2 id="finding-someone">Finding someone to give to</h2>
+
+  <p>Discovery had an awkward job here, because most people arrive already knowing exactly whose
+  name they&rsquo;re looking for. So search sits at the top, and nothing else competes with it.</p>
+
+  <p>Everything under it is for the other visitor, the one who&rsquo;s just browsing. The category
+  rail carries live viewer counts, which turns it into a map of what the country is
+  watching tonight. Below that, one list. Live streamers first, each row carrying the handle, the
+  game, and whatever the stream happens to be called right now.</p>
+
+  <p>Offline streamers stay in that list. Taking them out would have looked tidier and it would
+  have been the wrong call. If you want to send someone a gift on a Tuesday afternoon, you
+  shouldn&rsquo;t have to wait for them to go live before the app lets you.</p>
+
+  <figure class="figure figure-phone">
+    <div class="figure-frame"><img src="../images/work/tino-streamers/discover.jpg" alt="The Tino Streamers home screen. A search field, a horizontal rail of categories with live viewer counts, then a list of streamers with avatars, live or offline badges, handles, games and stream titles." loading="lazy" decoding="async"></div>
+    <figcaption>Search first, because most people turn up with a name already in mind. The category
+    rail is there for everyone else.</figcaption>
+  </figure>
+
+  <h2 id="what-a-profile-does">What a profile has to do</h2>
+
+  <p>The profile is four screens wearing a trench coat.</p>
+
+  <p>It has to introduce a streamer to someone who has never seen them, so there&rsquo;s a banner,
+  a handle, a bio, the game they&rsquo;re known for. It has to prove they&rsquo;re real, which is
+  what the links out to Kick, Twitch and YouTube are doing. It has to show you where <em>you
+  personally</em> stand, hence the tier, the progress bar and the exact amount still owing to the
+  next rung. And it has to answer the one question every fan has. <em>When are you next on?</em></p>
+
+  <figure class="figure figure-duo">
+    <div class="figure-frame">
+      <img src="../images/work/tino-streamers/profile-status.jpg" alt="The upper half of a streamer profile. Banner artwork, an avatar with a live ring, follower count, bio, a follow button, two stat tiles for lifetime donations and streamer ranking, a supporter tier card with a progress bar, and the week's top three supporters with gold, silver and bronze badges." loading="lazy" decoding="async">
+      <img src="../images/work/tino-streamers/profile-schedule.jpg" alt="The lower half of the same profile. Outbound links to Kick, Twitch and YouTube, then a week of scheduled streams with dates, titles and times in GMT, including two days drawn as no stream scheduled, and the two action buttons for sending a present or sending money." loading="lazy" decoding="async">
+    </div>
+    <figcaption>One screen, two halves. Status on the left, the practical week on the right.</figcaption>
+  </figure>
+
+  <p>The schedule is the part I kept going back to. A week at a time, times in GMT, and the empty
+  days drawn just as carefully as the full ones. &ldquo;No stream scheduled, Discord still
+  open&rdquo; tells you something. A blank space in a list doesn&rsquo;t.</p>
+
+  <h2 id="rank-and-the-switch">Rank, and the switch that turns it off</h2>
+
+  <p>Underneath all of this sits a ladder. You give, your position moves, and you pick up a badge:
+  bronze, silver, gold, platinum. From then on that badge follows your name everywhere it shows
+  up.</p>
+
+  <figure class="figure figure-phone">
+    <div class="figure-frame"><img src="../images/work/tino-streamers/leaderboard.jpg" alt="The top supporters screen. A podium for the first three places, then a ranked list down to tenth. Each row shows a name or a hidden name, a tier badge, and an amount in tugrik. The viewer's own row is marked as theirs." loading="lazy" decoding="async"></div>
+    <figcaption>The podium, the list, and the viewer&rsquo;s own row marked <em>(&thinsp;та&thinsp;)</em>,
+    meaning you. Several people up there have hidden their names and kept their rank.</figcaption>
+  </figure>
+
+  <p>Two decisions I made shaped how it behaves. The board runs weekly rather than lifetime, because
+  a lifetime board hands the podium to the same three people forever and leaves everybody else
+  quietly competing for fourth.<a class="note-ref" id="ref-3" href="#note-3">3</a> A week is short
+  enough that turning up on a Monday still counts for something.</p>
+
+  <p>The other decision is that I let you switch the whole thing off. <em>Нэр нуусан</em>, hide my
+  name. Your money still lands, your rank still counts, your name never appears.</p>
+
+  <p class="pull">A public ladder motivates the people it motivates and stops everyone else cold.
+  In a country of three million, &ldquo;everyone can see what I spent&rdquo; is a genuine reason
+  not to spend.</p>
+
+  <figure class="figure figure-bare">
+    <img src="../images/work/tino-streamers/loop-status.svg" alt="Diagram. Giving moves your weekly rank, which attaches a tier badge, which gets your name read out on stream, which prompts you to give again. A dashed branch shows the hide my name switch leaving the loop while the money and the rank still count." loading="lazy" decoding="async">
+    <figcaption>The loop, and the way out of it. The money still lands and the rank still counts.
+    Only the name comes off.</figcaption>
+  </figure>
+
+  <h2 id="paying-for-it">Paying with money you don&rsquo;t have yet</h2>
+
+  <p>Checkout is the one moment where the feature takes off its own clothes and puts on
+  Tino&rsquo;s. The sheet is Tino Pay, unchanged. Light, plain, the same one
+  you&rsquo;d use to pay for a ride.</p>
+
+  <p>That was deliberate. Everything up to this point is entertainment. This part is money, and
+  money should look like the rest of the bank.</p>
+
+  <figure class="figure figure-phone">
+    <div class="figure-frame"><img src="../images/work/tino-streamers/pay.jpg" alt="The Tino Pay checkout sheet in light theme, offering two funding sources: a wallet balance of 500,000 tugrik and a Pay Later credit line of 150,000 tugrik, with the line item Tino Streamers 50,000 tugrik and a pay button." loading="lazy" decoding="async"></div>
+    <figcaption>Two funding sources, the amount, and nothing else. The wallet is preselected.</figcaption>
+  </figure>
+
+  <p>The second option is the one worth sitting with. It means you can donate on credit. Tino Pay
+  already offers Pay Later everywhere else in the app, so I put the limit in plain sight, next to
+  the real balance, with the amount you are about to spend on the same screen. I could have buried
+  it one tap deeper. It would have converted better
+  there.<a class="note-ref" id="ref-4" href="#note-4">4</a></p>
+
+  <h2 id="a-dark-room">A dark room inside a light app</h2>
+
+  <p>Tino is white and blue. Tino Streamers is almost black.</p>
+
+  <p>Thumbnails run at full saturation, the live rings glow, and body text drops to grey so it
+  stops competing with people&rsquo;s faces. What I was after is the feeling of walking out of a
+  bank lobby into a room where something is happening.</p>
+
+  <p>The cost is the join between the two worlds, and it shows up in three places. The header, the
+  tab bar, and the moment the payment sheet rises in full daylight. I kept the header as a glass
+  layer floating over the artwork rather than a solid bar, so the first thing you meet on the way
+  in is content instead of chrome.</p>
+
+  <h2 id="letting-streamers-in">Letting streamers in</h2>
+
+  <p>Anyone can watch. Not just anyone can receive.</p>
+
+  <p>I made becoming a streamer a request rather than a signup. You give a display name, a phone
+  number, the categories you play, and then the part that does the actual work, links to the
+  accounts you already stream from. Someone on the team checks that whoever is asking for a
+  donation button is the person behind that channel.</p>
+
+  <figure class="figure figure-phone">
+    <div class="figure-frame"><img src="../images/work/tino-streamers/onboarding.jpg" alt="The creator request form. An explanation that an admin will verify the request through the applicant's social links, then fields for display name, phone number, category chips, a repeatable list of streaming platform links for YouTube, Kick and Twitch, and a second list for social accounts." loading="lazy" decoding="async"></div>
+    <figcaption>The links are the verification. Everything above them is just a name.</figcaption>
+  </figure>
+
+  <p>I gave the three outcomes a screen each, which sounds obvious and usually is not done. Plenty of
+  products design the approval properly and then hand the rejection to a generic error message. The
+  rejected creator is the one who most needs to know what happened and what to try next.</p>
+
+  <hr class="notes-rule">
+  <ol class="notes">
+    <li id="note-1"><span class="note-body">Everything on this page is design work, not production
+    screenshots. The names, amounts, ranks and viewer counts are placeholder data, picked to put
+    some stress on the layout. No real people and no real money. <a class="note-back" href="#ref-1" aria-label="Back to reference 1"></a></span></li>
+    <li id="note-2"><span class="note-body">Colour is doing a lot of work across those three
+    states, so the count is always spelled out in words as well. Nobody should lose a purchase
+    because they couldn&rsquo;t tell amber from grey. <a class="note-back" href="#ref-2" aria-label="Back to reference 2"></a></span></li>
+    <li id="note-3"><span class="note-body">The profile does keep a lifetime total, on the
+    streamer&rsquo;s side of things. It just isn&rsquo;t what the competition runs on. <a class="note-back" href="#ref-3" aria-label="Back to reference 3"></a></span></li>
+    <li id="note-4"><span class="note-body">This is the decision on the project I&rsquo;d most want
+    a second opinion on. Credit funded tipping is legal and the platform already supports it. It
+    still probably needs a spending limit and a cooling off rule on top of a clear label. <a class="note-back" href="#ref-4" aria-label="Back to reference 4"></a></span></li>
+  </ol>
+
+  <footer class="article-foot">
+    <h2 class="foot-heading">Similar</h2>
+    <ul class="related-list">
+      <li><a href="tino-day-in-tino-driver.html">Tino Day feature in Tino Driver<span>2026</span></a></li>
+      <li><a href="fresh-look-for-tino-mn.html">Fresh look for Tino.mn<span>2026</span></a></li>
+    </ul>
+
+    <nav class="pager">
+      <a class="pager-next" href="tino-day-in-tino-driver.html"><span class="pager-label">Next</span>Tino Day feature in Tino Driver</a>
+    </nav>
+  </footer>
+
+</article>
+
+<script src="../article.js?v=c5c2e37a" defer></script>
+<script src="../effects.js?v=92f0cab3" defer></script>
+</body>
+</html>

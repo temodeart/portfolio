@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 552 300" width="552" height="300" role="img" aria-label="Six Figma files as one programme. Brand refinement and design system foundation sit at the base. The Insights design library is rebuilt on top of them. From that library come three applied surfaces: the product terminals, the marketing website, and a CMS. An older design library sits to one side, replaced.">
+  <style>
+    .ink { fill: #111111 } .mid { fill: #888888 } .dim { fill: #a3a3a3 }
+    .box { fill: none; stroke: #e4e4e4; stroke-width: 1.25 }
+    .base { fill: #0d3b4a; stroke: #0d3b4a; stroke-width: 1.25 }
+    .lib { fill: #f5c518; stroke: #f5c518; stroke-width: 1.25 }
+    .old { fill: none; stroke: #d6d6d6; stroke-width: 1.25; stroke-dasharray: 4 3 }
+    .line { stroke: #d2d2d2; stroke-width: 1.25; fill: none }
+    .head { fill: #d2d2d2 } .white { fill: #ffffff }
+    @media (prefers-color-scheme: dark) {
+      .ink { fill: #ededed } .mid { fill: #9e9e9e } .dim { fill: #7c7c7c }
+      .box { stroke: #262626 } .base { fill: #11556b; stroke: #11556b }
+      .lib { fill: #c79f10; stroke: #c79f10 }
+      .old { stroke: #3a3a3a } .line { stroke: #383838 } .head { fill: #383838 }
+    }
+    text { font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif }
+    .l { font-size: 10px; letter-spacing: 0.09em }
+    .t { font-size: 11.5px; font-weight: 500 } .s { font-size: 10px }
+  </style>
+  <marker id="e" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+    <path class="head" d="M0 0 L8 4 L0 8 Z"/>
+  </marker>
+
+
+  <rect class="old" x="0" y="8" width="132" height="44" rx="8"/>
+  <text class="t dim" x="12" y="27">Design Library</text>
+  <text class="s dim" x="12" y="42">the old one</text>
+  <path class="line" d="M132 48 L172 48" marker-end="url(#e)" stroke-dasharray="4 3"/>
+
+  <rect class="base" x="188" y="8" width="168" height="44" rx="8"/>
+  <text class="t white" x="200" y="27">Brand Refinement</text>
+  <text class="s white" x="200" y="42" opacity="0.72">colour, type, the mark</text>
+
+  <rect class="base" x="372" y="8" width="180" height="44" rx="8"/>
+  <text class="t white" x="384" y="27">Design System 2.0</text>
+  <text class="s white" x="384" y="42" opacity="0.72">foundation, tokens</text>
+
+  <path class="line" d="M272 70 L272 96 L276 96"/>
+  <path class="line" d="M462 70 L462 96 L276 96"/>
+  <path class="line" d="M276 96 L276 112" marker-end="url(#e)"/>
+
+  <rect class="lib" x="150" y="94" width="252" height="48" rx="8"/>
+  <text class="t ink" x="164" y="114">Insights Design Library</text>
+  <text class="s ink" x="164" y="130" opacity="0.72">rebuilt on the new foundation</text>
+
+  <path class="line" d="M276 160 L276 182 L92 182 L92 206" marker-end="url(#e)"/>
+  <path class="line" d="M276 160 L276 206" marker-end="url(#e)"/>
+  <path class="line" d="M276 182 L460 182 L460 206" marker-end="url(#e)"/>
+
+  <rect class="box" x="0" y="188" width="184" height="52" rx="8"/>
+  <text class="t ink" x="12" y="208">The terminals</text>
+  <text class="s dim" x="12" y="224">one per incentive programme</text>
+
+  <rect class="box" x="196" y="188" width="160" height="52" rx="8"/>
+  <text class="t ink" x="208" y="208">Website redesign</text>
+  <text class="s dim" x="208" y="224">the marketing site</text>
+
+  <rect class="box" x="368" y="188" width="184" height="52" rx="8"/>
+  <text class="t ink" x="380" y="208">Forse CMS</text>
+  <text class="s dim" x="380" y="224">who edits all of it after</text>
+
+  <text class="s mid" x="0" y="272">The brand and the system come first, the library is rebuilt on them, and three</text>
+  <text class="s mid" x="0" y="290">surfaces are then built out of the same parts. The old library is retired, not patched.</text>
+</svg>
