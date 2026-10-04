@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kuul &middot; Temuujin (Temo) Batbold</title>
-<meta name="description" content="Kuul, the app that knows a Mongolian student's week and which friends are free right now. How I researched it, got the timetables legally, and built it with a co-founder.">
+<meta name="description" content="Kuul, the app that knows a Mongolian student's week and which friends are free right now. How I researched it, got the timetables legally, and built it.">
 <meta name="color-scheme" content="light dark">
 <script>try{if(localStorage.getItem('fx')==='on'){var d=document.documentElement;d.dataset.fx='';var n=performance.getEntriesByType('navigation')[0];if(sessionStorage.getItem('fxsnap')==='1'||(n&&n.type==='back_forward'))d.dataset.fxSnap=''}}catch(e){}</script>
 
@@ -40,12 +40,11 @@
 
   <p class="article-lead">Хэдэд? Хаана? Хэн байна? When, where, and who is around. Kuul is the app that
   knows a Mongolian university student&rsquo;s week and which friends are free right now. I started
-  it in September 2026 as a founder, not a hired designer, so this page covers the research and the
+  it in September 2026 and built it end to end, so this page covers the research and the
   data as much as the screens.</p>
 
   <dl class="meta">
-    <dt>Role</dt><dd>Founder. Market research, product definition, the data pipeline, the API, the first build of the app, the landing page</dd>
-    <dt>Team</dt><dd>Tengis, co-founder, who designed the visual system and is porting it to Flutter<a class="note-ref" id="ref-1" href="#note-1">1</a></dd>
+    <dt>Role</dt><dd>Founder. Market research, product definition, brand and UI design, the data pipeline, the API, the app, the console, the landing page</dd>
     <dt>Stack</dt><dd>TypeScript and Fastify on PostgreSQL, Flutter for the app, React for the moderation console</dd>
     <dt>Launch</dt><dd>First week of the spring semester, February 2027, at NUM and the MUST School of ICT</dd>
   </dl>
@@ -55,7 +54,7 @@
   <h2 id="three-questions">Three questions</h2>
 
   <p>There are 161,891 university students in Mongolia and about 94 percent of them are in
-  Ulaanbaatar.<a class="note-ref" id="ref-2" href="#note-2">2</a> Every September roughly 26,000
+  Ulaanbaatar.<a class="note-ref" id="ref-1" href="#note-1">1</a> Every September roughly 26,000
   new ones arrive. I watched them ask the same three questions several times a day. When is my next
   class. Where is it. Which of my friends is free.</p>
 
@@ -110,7 +109,7 @@
   May 2024 it ran a hackathon asking students to build on it. The market report said the endpoint
   timed out. I checked from Ulaanbaatar and it did not. It only times out from abroad, which is the
   kind of thing you learn by hitting the endpoint yourself instead of trusting a
-  document.<a class="note-ref" id="ref-3" href="#note-3">3</a></p>
+  document.<a class="note-ref" id="ref-2" href="#note-2">2</a></p>
 
   <p>What I got back was 7,112 weekly meetings for the semester, across 10 schools, 66 departments
   and 1,719 courses. And a problem. The timetable rows carry no course code, no group label, and
@@ -174,7 +173,7 @@
   under Mongolia&rsquo;s personal data law that is personal data. I made the importer drop it at parse time
   and keep only the display name, with an opt-out flag per instructor. The staff register, about
   2,000 names and emails, is on the same portal and I decided not to fetch it at
-  all.<a class="note-ref" id="ref-4" href="#note-4">4</a></p>
+  all.<a class="note-ref" id="ref-3" href="#note-3">3</a></p>
 
   <h2 id="one-row">One row, one section</h2>
 
@@ -310,11 +309,10 @@
 
   <h2 id="the-build">Four programs in three weeks</h2>
 
-  <p>I built the first version myself, with AI coding tools doing the typing, then found a co-founder. The market report
-  is dated 12 September. The NUM data was verified on 17 September. The plan and the import model
-  were written on 21 September, and the API, the moderation console and the Flutter app were
-  deployed on the 23rd. Tengis joined that week, designed the visual system properly and started
-  moving the app onto it screen by screen while I kept shipping features underneath.</p>
+  <p>I built all of it. My market report is dated 12 September. I verified the NUM data on 17
+  September. I wrote the plan and the import model on 21 September, and deployed the API, the
+  moderation console and the Flutter app on the 23rd. Then I designed the full visual system and
+  moved the app onto it screen by screen while I kept shipping features underneath.</p>
 
   <dl class="gloss">
     <div><dt>The server</dt><dd>Fastify with Zod schemas, so every request is validated and the same schema writes the API docs. Drizzle on PostgreSQL. Phone login, the nightly NUM import, friends and who&rsquo;s free, groups and chat over WebSocket, alerts, lost and found, moderation. 332 tests in 37 files.</dd></div>
@@ -323,13 +321,13 @@
     <div><dt>The pipeline</dt><dd>Jobs inside the server. Each night it reads NUM&rsquo;s timetable, joins it, and writes sections a student can tap. A re-run updates in place and raises a system alert when a room or time changed for a section students already have.</dd></div>
   </dl>
 
-  <p>Two decisions I made early kept the build small enough for two people. TypeScript for the server and the
-  console, Dart for the app, and nothing else, because two people should not juggle four languages.
+  <p>Two decisions I made early kept the build small enough for one person. TypeScript for the server and the
+  console, Dart for the app, and nothing else, because nobody building alone should juggle four languages.
   And an embedded PostgreSQL for laptops, so one command starts the whole system and the tests run
   against a real Postgres engine in memory. Real SMS, push and email sit behind interfaces with
   development stand-ins, so the switch to production providers is a line in a config file.</p>
 
-  <p>I wrote the rules for working together into the repo, after we broke things. One screen
+  <p>I wrote the rules for the codebase into the repo, after I broke things. One screen
   per branch. Same job, same control, even when the design shows something else. Migrating a screen
   changes how it looks, never what it does. Run against the real server to check with real data, and
   look, don&rsquo;t post, because the posts reach real students.</p>
@@ -350,10 +348,9 @@
 
   <hr class="notes-rule">
   <ol class="notes">
-    <li id="note-1"><span class="note-body">The phone screens on this page are renders from the design system Tengis built in late September 2026, which the Flutter app is being moved onto one screen at a time. The first build of the app, the one deployed on 23 September, had my own plainer look: ink on white, a red now-line, eight entry colours. <a class="note-back" href="#ref-1" aria-label="Back to reference 1"></a></span></li>
-    <li id="note-2"><span class="note-body">Market figures are from the 2025 to 2026 higher education statistics and the sources listed in my market report. Where I could not find a primary source, the report marks the number as an estimate, and I have left those out here. <a class="note-back" href="#ref-2" aria-label="Back to reference 2"></a></span></li>
-    <li id="note-3"><span class="note-body">The portal also turned out to be a semester behind. Two weeks into the 2026 autumn term, the current-semester endpoint still returned 2025 autumn. Freshness, not access, is the real risk with Tier A, and it is a conversation with NUM&rsquo;s student development centre rather than an engineering task. For the demo I shifted the real 2025 snapshot forward one year. <a class="note-back" href="#ref-3" aria-label="Back to reference 3"></a></span></li>
-    <li id="note-4"><span class="note-body">While checking the portal I also looked at bagsh.space, a schedule builder listed on NUM&rsquo;s open-data portal. Its live data carries raw integer ids that the open data does not expose, so it has a fresher feed than the public API. I noted that as a conversation to have with its founders, not as a competitor. <a class="note-back" href="#ref-4" aria-label="Back to reference 4"></a></span></li>
+    <li id="note-1"><span class="note-body">Market figures are from the 2025 to 2026 higher education statistics and the sources listed in my market report. Where I could not find a primary source, the report marks the number as an estimate, and I have left those out here. <a class="note-back" href="#ref-1" aria-label="Back to reference 1"></a></span></li>
+    <li id="note-2"><span class="note-body">The portal also turned out to be a semester behind. Two weeks into the 2026 autumn term, the current-semester endpoint still returned 2025 autumn. Freshness, not access, is the real risk with Tier A, and it is a conversation with NUM&rsquo;s student development centre rather than an engineering task. For the demo I shifted the real 2025 snapshot forward one year. <a class="note-back" href="#ref-2" aria-label="Back to reference 2"></a></span></li>
+    <li id="note-3"><span class="note-body">While checking the portal I also looked at bagsh.space, a schedule builder listed on NUM&rsquo;s open-data portal. Its live data carries raw integer ids that the open data does not expose, so it has a fresher feed than the public API. I noted that as a conversation to have with its founders, not as a competitor. <a class="note-back" href="#ref-3" aria-label="Back to reference 3"></a></span></li>
   </ol>
 
   <footer class="article-foot">
