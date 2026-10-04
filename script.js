@@ -81,7 +81,7 @@
         if (animate) {
           // Index each entry so the stagger reads top-to-bottom.
           panel
-            .querySelectorAll('.row, .writing-row, .bento > li, .prose > *')
+            .querySelectorAll(':is(.row, .writing-row, .bento > li, .prose > *):not([hidden])')
             .forEach((item, i) => item.style.setProperty('--i', i));
           void panel.offsetWidth; // restart the animation
           panel.setAttribute('data-enter', '');
@@ -360,7 +360,7 @@
     /* ----- warm the cache so the first hover is never an empty frame ----- */
 
     const preload = () => {
-      for (const link of workPanel.querySelectorAll('.row-link[data-preview]')) {
+      for (const link of workPanel.querySelectorAll('.row:not([hidden]) .row-link[data-preview]')) {
         new Image().src = link.dataset.preview;
       }
     };

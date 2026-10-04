@@ -340,6 +340,9 @@ a[target="_blank"]::after {
   display: flex; /* makes the link shrink-wrap without an inline line box */
 }
 
+/* A row with hidden stays in the markup but off the list. */
+.row[hidden] { display: none; }
+
 /* The row hugs its title rather than spanning the column — that empty
    right-hand half is what the preview needs. */
 .row-link {
