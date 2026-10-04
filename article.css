@@ -890,6 +890,15 @@ body.article-page {
 
 .rules td { color: var(--text); font-variant-numeric: tabular-nums; }
 
+/* Tables of sentences rather than scores: every cell left-aligned and
+   allowed to wrap, with the first column held to a fixed share so the
+   pairs line up. */
+.rules.wrap th,
+.rules.wrap td { text-align: left; white-space: normal; }
+
+.rules.wrap thead th:first-child { width: 42%; }
+.rules.wrap.tiers thead th:first-child { width: 10%; }
+
 /* The cells where this product actually differs. Tinted rather than set in
    the brand green, which is unreadable as text at this size. */
 .rules td[data-win] {

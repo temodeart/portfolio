@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kuul &middot; Temuujin (Temo) Batbold</title>
+<meta name="description" content="Kuul, the app that knows a Mongolian student's week and which friends are free right now. How I researched it, got the timetables legally, and built it with a co-founder.">
+<meta name="color-scheme" content="light dark">
+<script>try{if(localStorage.getItem('fx')==='on'){var d=document.documentElement;d.dataset.fx='';var n=performance.getEntriesByType('navigation')[0];if(sessionStorage.getItem('fxsnap')==='1'||(n&&n.type==='back_forward'))d.dataset.fxSnap=''}}catch(e){}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap">
+<link rel="stylesheet" href="../styles.css?v=42ec7a49">
+<link rel="stylesheet" href="../article.css?v=4a05138a">
+<link rel="stylesheet" href="../effects.css?v=1fda6fae">
+</head>
+<body class="article-page">
+
+<nav class="side">
+  <a class="side-back" href="../index.html#apps">Index</a>
+  <ol class="side-index">
+    <li><a href="#three-questions">Three questions</a></li>
+    <li><a href="#the-data">Timetables without a password</a></li>
+    <li><a href="#one-row">One row, one section</a></li>
+    <li><a href="#whos-free">Who is free right now</a></li>
+    <li><a href="#trust">Trust without a wall</a></li>
+    <li><a href="#the-brand">Cool, with sunglasses</a></li>
+    <li><a href="#the-build">Four programs in three weeks</a></li>
+    <li><a href="#where-it-stands">Where it stands</a></li>
+  </ol>
+</nav>
+
+<article class="article">
+
+  <header class="article-head">
+    <h1 class="article-title">Kuul</h1>
+    <p class="article-date">Side project, 2026</p>
+  </header>
+
+  <p class="article-lead">Хэдэд? Хаана? Хэн байна? When, where, and who is around. Kuul is the app that
+  knows a Mongolian university student&rsquo;s week and which friends are free right now. I started
+  it in September 2026 as a founder, not a hired designer, so this page covers the research and the
+  data as much as the screens.</p>
+
+  <dl class="meta">
+    <dt>Role</dt><dd>Founder. Market research, product definition, the data pipeline, the API, the first build of the app, the landing page</dd>
+    <dt>Team</dt><dd>Tengis, co-founder, who designed the visual system and is porting it to Flutter<a class="note-ref" id="ref-1" href="#note-1">1</a></dd>
+    <dt>Stack</dt><dd>TypeScript and Fastify on PostgreSQL, Flutter for the app, React for the moderation console</dd>
+    <dt>Launch</dt><dd>First week of the spring semester, February 2027, at NUM and the MUST School of ICT</dd>
+  </dl>
+
+  <hr>
+
+  <h2 id="three-questions">Three questions</h2>
+
+  <p>There are 161,891 university students in Mongolia and about 94 percent of them are in
+  Ulaanbaatar.<a class="note-ref" id="ref-2" href="#note-2">2</a> Every September roughly 26,000
+  new ones arrive. I watched them ask the same three questions several times a day. When is my next
+  class. Where is it. Which of my friends is free.</p>
+
+  <p>Today those questions go to a Facebook group and a Messenger chat, and I have sat in enough of those groups to know how the answers arrive. NUM&rsquo;s official student
+  app has a 3.2 star rating and the review I kept coming back to said nothing works when it is time
+  to use it. No school app knows your friends. No Facebook group knows your timetable. The gap I
+  wanted to fill was the one thing a group cannot do, which is to know who is a student, where, and
+  when they are free.</p>
+
+  <figure class="figure">
+    <div class="figure-frame"><img src="../images/apps/kuul/landing.jpg" alt="The kuul.mn landing page. Хэдэд? Хаана? in white and Хэн байна? in lime, set in heavy type over a photo of the National University of Mongolia's main building under a blue sky, with green hills in the foreground and a pill-shaped notify-me button at the bottom." loading="lazy" decoding="async"></div>
+    <figcaption>kuul.mn. The three questions are the headline, and the university is the picture.</figcaption>
+  </figure>
+
+  <p>I wrote the market report first, before any screen. It made six decisions and the one that
+  shaped everything else was the wedge. The timetable is useful to one student alone, and it gets
+  better with every friend who adds theirs. That is a referral loop built into the product rather
+  than bolted on. Chat, groups, campus news, a marketplace, all of it sits on top of the timetable and
+  in that order.</p>
+
+  <p>I also looked hard at what happened elsewhere. Everytime in Korea reached 3.4 million
+  monthly users in a country with 3 million students and spent nothing on marketing. Super Timetable
+  in China imported timetables with students&rsquo; portal passwords, got banned by universities and
+  was delisted. Saturn in the US let strangers see minors&rsquo; schedules and paid a $650,000
+  settlement. I wanted the first path and I designed the rules to make the other two impossible.</p>
+
+  <p class="pull">A campus app at 5 percent penetration is dead. At 60 percent it is infrastructure.
+  So the launch plan is one faculty at a time, never the whole country at once.</p>
+
+  <h2 id="the-data">Timetables without a password</h2>
+
+  <p>The hardest problem in the plan is getting a student&rsquo;s timetable into the app legally. The
+  tempting shortcut is to ask for their portal login and scrape it. I ruled that out on the first
+  page. Mongolia&rsquo;s Criminal Code treats unauthorised access to information systems as a crime,
+  and it is exactly how Super Timetable died. So I built a ladder of sources instead, from the one
+  that works today to the ones that need a partnership.</p>
+
+  <div class="table-wrap">
+    <table class="rules wrap tiers">
+      <thead><tr><th>Tier</th><th>Source</th><th>Who it covers</th><th>State</th></tr></thead>
+      <tbody>
+        <tr><th>A</th><td>NUM open data, a CKAN portal with a live WebAPI, CC-BY-SA</td><td>NUM, 10 schools</td><td>Importing nightly</td></tr>
+        <tr><th>B</th><td>Public weekly grids and workbooks that need no login</td><td>MUST School of ICT, UFE</td><td>UFE file import built</td></tr>
+        <tr><th>C</th><td>The student&rsquo;s own hand: a course picker, or a screenshot of their own timetable</td><td>Every school, day one</td><td>Picker built, OCR waiting on a vendor</td></tr>
+        <tr><th>D</th><td>A share button inside the three vendors&rsquo; portals, exporting the student&rsquo;s own data</td><td>30 or more private schools</td><td>Conversations</td></tr>
+        <tr><th>E</th><td>University and ministry data agreements</td><td>Everyone</td><td>Year two</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Tier A is why I put the pilot at NUM. The university publishes its timetable as open data, and in
+  May 2024 it ran a hackathon asking students to build on it. The market report said the endpoint
+  timed out. I checked from Ulaanbaatar and it did not. It only times out from abroad, which is the
+  kind of thing you learn by hitting the endpoint yourself instead of trusting a
+  document.<a class="note-ref" id="ref-3" href="#note-3">3</a></p>
+
+  <p>What I got back was 7,112 weekly meetings for the semester, across 10 schools, 66 departments
+  and 1,719 courses. And a problem. The timetable rows carry no course code, no group label, and
+  every identifier is an MD5 hash. On its own a row says a course with a hashed id meets on Tuesday
+  at 11:00 in a hashed room. To make it mean anything I had to find the sibling datasets and join
+  them.</p>
+
+  <figure class="figure figure-bare">
+    <svg viewBox="0 0 560 260" role="img" aria-label="A join diagram. A timetable row in the centre connects to three other open datasets: courses on the left, giving the course code and names with a 94 percent match; rooms on the right, giving building and seats with a 97 percent match; and the organisation tree below, giving the school and department." style="display:block;width:100%;height:auto">
+      <defs>
+        <style>
+          .jg-box{fill:var(--glass-bg);stroke:var(--rule);stroke-width:1}
+          .jg-main{fill:#5B4BFF;stroke:none}
+          .jg-t{font:600 12px Inter,system-ui,sans-serif;fill:var(--text)}
+          .jg-s{font:400 10.5px Inter,system-ui,sans-serif;fill:var(--text-3)}
+          .jg-w{font:600 12px Inter,system-ui,sans-serif;fill:#fff}
+          .jg-ws{font:400 10.5px Inter,system-ui,sans-serif;fill:#fff;fill-opacity:.8}
+          .jg-l{stroke:var(--text-3);stroke-width:1.2;fill:none}
+          .jg-pct{font:600 10.5px Inter,system-ui,sans-serif;fill:var(--text-2)}
+        </style>
+      </defs>
+      <rect x="190" y="88" width="180" height="84" rx="12" class="jg-main"/>
+      <text x="206" y="112" class="jg-w">hicheeliin-huvaari</text>
+      <text x="206" y="130" class="jg-ws">7,112 rows, one per weekly slot</text>
+      <text x="206" y="146" class="jg-ws">weekday, start, end, type</text>
+      <text x="206" y="162" class="jg-ws">frequency, capacity, enrolled</text>
+
+      <rect x="8" y="96" width="150" height="68" rx="12" class="jg-box"/>
+      <text x="22" y="118" class="jg-t">course</text>
+      <text x="22" y="135" class="jg-s">13,820 definitions</text>
+      <text x="22" y="150" class="jg-s">code, MN and EN name, credits</text>
+
+      <rect x="402" y="96" width="150" height="68" rx="12" class="jg-box"/>
+      <text x="416" y="118" class="jg-t">uruunii-medeelel</text>
+      <text x="416" y="135" class="jg-s">1,020 rooms</text>
+      <text x="416" y="150" class="jg-s">building, number, seats</text>
+
+      <rect x="205" y="200" width="150" height="52" rx="12" class="jg-box"/>
+      <text x="219" y="222" class="jg-t">baiguullagiin-butets</text>
+      <text x="219" y="239" class="jg-s">160 units, school to department</text>
+
+      <path d="M158 130 H190" class="jg-l"/>
+      <path d="M370 130 H402" class="jg-l"/>
+      <path d="M280 172 V200" class="jg-l"/>
+
+      <text x="174" y="122" text-anchor="middle" class="jg-pct">94%</text>
+      <text x="386" y="122" text-anchor="middle" class="jg-pct">97%</text>
+
+      <text x="280" y="40" text-anchor="middle" class="jg-s">Every id is an MD5 hash. The course code only exists after the join.</text>
+      <text x="280" y="58" text-anchor="middle" class="jg-s">The instructor&rsquo;s personal identifier is dropped before anything is stored.</text>
+    </svg>
+    <figcaption>Four open datasets, one join graph. The percentages are how many timetable rows found their course and their room.</figcaption>
+  </figure>
+
+  <p>The course package gave me the code and the names, and 94 percent of rows matched. The rooms
+  package gave me buildings and seats, 97 percent. The organisation tree gave me the school and the
+  department a row belongs to, which is what the picker is organised by. The rows that did not
+  match keep the timetable&rsquo;s own course name and a generated code, so nothing is thrown away.</p>
+
+  <p>One field never made it in. Each row carries the instructor&rsquo;s personal identifier, and
+  under Mongolia&rsquo;s personal data law that is personal data. I made the importer drop it at parse time
+  and keep only the display name, with an opt-out flag per instructor. The staff register, about
+  2,000 names and emails, is on the same portal and I decided not to fetch it at
+  all.<a class="note-ref" id="ref-4" href="#note-4">4</a></p>
+
+  <h2 id="one-row">One row, one section</h2>
+
+  <p>The second problem I hit was structural. My data model, written in the product requirements before I
+  saw the real data, had a Course, a Section with a group label, and Meetings belonging to the
+  section. NUM publishes no group labels. A course with one lecture and two seminar rows shows the
+  same enrolled count on all three, so I could not even infer the groups from the numbers.</p>
+
+  <p>I could have guessed. I decided guessing would be wrong more often than right, and wrote the
+  decision down. One timetable row becomes one section with exactly one meeting. The section&rsquo;s
+  label is generated from what the row does know.</p>
+
+  <div class="table-wrap">
+    <table class="rules wrap">
+      <thead><tr><th>The row says</th><th>The section becomes</th></tr></thead>
+      <tbody>
+        <tr><th>Семинар, Мягмар, 11:00 to 12:30</th><td>Семинар · Мя 11:00</td></tr>
+        <tr><th>Лекц, Даваа, 08:00 to 09:30</th><td>Лекц · Да 08:00</td></tr>
+        <tr><th>frequency: 2 долоо хоног тутам, first date in week 3</th><td>week parity odd</td></tr>
+        <tr><th>frequency: 7 хоног тутам</th><td>every week</td></tr>
+        <tr><th>same row next semester, new room</th><td>version bumped, a system alert to everyone who has it</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The picker then groups sections by course, then by type, and nudges a student to choose one
+  lecture plus one of each other type. Auto-groups form per section, so the lecture group holds the
+  whole cohort and a seminar group holds its twenty people, which is how classes feel in real life.
+  The cost is honest too. Two seminar rows that are really the same group show up as two sections.
+  If NUM ever adds a group field, merging them is a migration, not a redesign.</p>
+
+  <p>The same model took a very different source without changing. A student at the University of
+  Finance and Economics sent me the university&rsquo;s semester workbook, one spreadsheet for the
+  whole bachelor day programme. The importer read 741 classes, 236 courses and 724 groups out of it
+  and rejected nothing. That was the moment I trusted the model.</p>
+
+  <h2 id="whos-free">Who is free right now</h2>
+
+  <figure class="figure figure-grid" style="--n:2">
+    <div class="figure-frame">
+      <img src="../images/apps/kuul/phone-timetable.png" alt="The Хуваарь tab for week 3, odd. A five-day grid from 08:00 with each class as a tinted card with a coloured left bar, course name and room, such as Мат-101 in Б-210. A dark 12:30 marker shows the time now. One Wednesday class is greyed and struck through, and on Thursday a dashed outline reads Цонхтой, 3 найз. A sheet below headed Найзууд says 2 чөлөөтэй, with a search field and the first friend." loading="lazy" decoding="async">
+      <img src="../images/apps/kuul/phone-group.png" alt="The Групп tab with two tabs, groups and private chat. Under Хичээл, course groups formed from the timetable, each with a letter avatar, the course and section, the latest message, the next meeting, and a line such as 18 / 42 оюутан апп-д. Under Групп, a programming club and the verified NUM student union." loading="lazy" decoding="async">
+    </div>
+    <figcaption>The week and the groups it creates. The struck-through class is a confirmed cancellation, and the dashed box is a slot when three friends are free.</figcaption>
+  </figure>
+
+  <p>I made the timetable the home screen, and the one button on it that matters is Хэн чөлөөтэй вэ,
+  who is free. I query friends&rsquo; meetings for a window, now or a chosen time, and list them
+  sorted by how long they stay free. Чөлөөтэй 14:30 хүртэл. Tap one and you get a message with a
+  suggested place. The slot finder does the same for a group, two to eight friends, thirty to a
+  hundred and eighty minutes, and one tap turns the slot into a group with the time pinned.</p>
+
+  <p>I made privacy a setting, not a policy page. A student chooses whether friends see their full
+  timetable, only the busy blocks, or nothing. Custom private entries always render as Завгүй, busy,
+  whatever the setting. Blocked people never appear in a who&rsquo;s free result, and I wrote a
+  security test to make sure a blocker&rsquo;s schedule cannot be inferred from any endpoint.</p>
+
+  <p>The rule I like most is that a cancelled class counts as free time. When three classmates confirm the
+  08:00 lecture is off, it is struck through on everyone&rsquo;s week and those ninety minutes show
+  up in who&rsquo;s free, labelled so you know why.</p>
+
+  <p>Each course group also says how many classmates are already in the app. 18 / 42 оюутан апп-д.
+  That line is the launch plan made visible. A student sees real local proof of who is here, never a
+  national download count, and an invite to the other 24 has an obvious reason.</p>
+
+  <h2 id="trust">Trust without a wall</h2>
+
+  <p>Saturn&rsquo;s settlement taught me that a timetable app with weak student verification is a
+  safety problem, and Everytime&rsquo;s anonymous boards taught me where a campus feed goes when
+  nobody is accountable. My answer is a ladder of trust that starts open and tightens with
+  each social action.</p>
+
+  <dl class="gloss">
+    <div><dt>Guest</dt><dd>Pick a university and a school and you are on the timetable builder in ten seconds. No account. Public alerts and lost and found are readable too.</dd></div>
+    <div><dt>Registered</dt><dd>The first social action, adding a friend or sending a message, opens the sign-up sheet. Phone, code, name, birth date, a three-bullet consent screen. Under sixty seconds.</dd></div>
+    <div><dt>Verified</dt><dd>A university email and a magic link, or a photo of the student ID reviewed by a person within a day. The badge reads Баталгаажсан оюутан · МУИС · 2027 хүртэл.</dd></div>
+    <div><dt>Official</dt><dd>Faculty offices and the student union, created by us after a signed agreement. Their alerts push immediately with a blue badge.</dd></div>
+  </dl>
+
+  <p>I treat verification as a badge, never a wall. Every empty state says in one line what verifying
+  unlocks, and that is all it says. Kuul is 16 and over and the server refuses an earlier birth
+  date. Under 18, a guardian ticks the consent as well. The consent names where the data lives,
+  because the server is in Japan and the law says a student should know that.</p>
+
+  <figure class="figure figure-grid" style="--n:2">
+    <div class="figure-frame">
+      <img src="../images/apps/kuul/phone-campus.png" alt="The Кампус tab. A violet banner says 23 things found their owners this month. Filter chips for all, news, found items and only mine. A red official safety alert about a water leak in building 2, a found-keys post from the library, and a class-cancelled card marked Баталгаажсан, with a violet Мэдээлэх button floating over the feed." loading="lazy" decoding="async">
+      <img src="../images/apps/kuul/phone-me.png" alt="The Би tab. A cover photo of a campus with a round portrait, playful stickers of a coffee cup, a map pin, a smiley and a pencil around it, the student's name with a green verified tick, a one-line bio, chips for school, department and year, friend and group counts, then settings rows including blocked users and a locked school field." loading="lazy" decoding="async">
+    </div>
+    <figcaption>Campus and profile. The feed replaces the Facebook group, so it has to look full on day one.</figcaption>
+  </figure>
+
+  <p>I gave the campus feed the same shape. Anyone in scope can report that a class is cancelled or a
+  room has changed. The report sits in the feed with a grey Баталгаажаагүй label and sends no push.
+  When three verified students in that section tap Үнэн, it is confirmed, everyone in scope gets
+  the push, and the timetable overlay appears. Three Худал votes outnumbering confirmations two to
+  one mark it false and retract the push with a correction. A reporter&rsquo;s score goes up with
+  confirmed alerts and down three with false ones, and below minus five their alerts wait for a
+  moderator. I did not want to build a rumour machine, and the status ladder is how I avoided it.</p>
+
+  <h2 id="the-brand">Cool, with sunglasses</h2>
+
+  <p>Күүл is student slang for cool, and the double uu in the middle is a pair of sunglasses. The
+  logo lives inside the name, so the brand never needed a mascot. Everything else about the identity
+  I derived from the logo book: four colours, one typeface, flat fills, no gradients anywhere.</p>
+
+  <figure class="figure figure-bare">
+    <div class="marks">
+      <div class="logo-plate"><img src="../images/apps/kuul/wordmark-light.svg" alt="The Kuul wordmark in heavy rounded lowercase. The two u letters are drawn as a pair of violet sunglasses with a white glint on each lens, bridged in the middle." loading="lazy" decoding="async"></div>
+      <div class="logo-plate" style="background:#5B4BFF"><img src="../images/apps/kuul/wordmark-brand.svg" alt="The same wordmark on brand violet: the letters in white and the sunglasses in lime." loading="lazy" decoding="async"></div>
+    </div>
+    <figcaption>The pairing rule. On a light ground the accent is violet with ink text. On violet or dark, the accent flips to lime with white text, and the whole UI follows the same swap.</figcaption>
+  </figure>
+
+  <div class="swatches four">
+    <div class="swatch" style="--c:#5B4BFF"><b>Violet</b><span>#5B4BFF, the accent on light</span></div>
+    <div class="swatch" style="--c:#101828"><b>Ink</b><span>#101828, text and dark ground</span></div>
+    <div class="swatch" style="--c:#D4F542;--ink:#101828"><b>Lime</b><span>#D4F542, the accent on dark</span></div>
+    <div class="swatch" style="--c:#FFFFFF;--ink:#101828"><b>White</b><span>#FFFFFF, cards and light ground</span></div>
+  </div>
+
+  <p>Two letters made the typeface decision for me. Ө and Ү are in every Mongolian sentence and
+  most display faces do not have them. Onest does, in every weight, so Onest is bundled with the app
+  and the landing page serves it from its own folder rather than from Google Fonts, whose copy is
+  missing both. The voice is one student talking to another, informal singular, numbers over
+  adjectives. 60 секундэд, 3 найз чөлөөтэй. No emoji. The shades in the wordmark are the only face
+  the brand gets.</p>
+
+  <p>I kept the UI rules short and strict. Pill controls, 20 pixel cards, 28 pixel sheets. Each course
+  in the week is a tinted card with a vivid four pixel left bar and matching text, five colours,
+  every pair above 4.5 to 1 and inverted in dark mode. Free slots are dashed outlines, negative
+  space, like the bridge in the logo. Red is for errors and never touches the mark.</p>
+
+  <h2 id="the-build">Four programs in three weeks</h2>
+
+  <p>I built the first version myself, with AI coding tools doing the typing, then found a co-founder. The market report
+  is dated 12 September. The NUM data was verified on 17 September. The plan and the import model
+  were written on 21 September, and the API, the moderation console and the Flutter app were
+  deployed on the 23rd. Tengis joined that week, designed the visual system properly and started
+  moving the app onto it screen by screen while I kept shipping features underneath.</p>
+
+  <dl class="gloss">
+    <div><dt>The server</dt><dd>Fastify with Zod schemas, so every request is validated and the same schema writes the API docs. Drizzle on PostgreSQL. Phone login, the nightly NUM import, friends and who&rsquo;s free, groups and chat over WebSocket, alerts, lost and found, moderation. 332 tests in 37 files.</dd></div>
+    <div><dt>The app</dt><dd>Flutter, because it draws a dense week grid smoothly on a 2021 Redmi and because it is what the local banks ship with. Six feature areas, 780 Mongolian strings, offline timetable, a shake to add the friend next to you.</dd></div>
+    <div><dt>The console</dt><dd>React. Twelve pages for the verification queue, reports, alert moderation, official accounts, keyword lists, the catalogue and an audit log.</dd></div>
+    <div><dt>The pipeline</dt><dd>Jobs inside the server. Each night it reads NUM&rsquo;s timetable, joins it, and writes sections a student can tap. A re-run updates in place and raises a system alert when a room or time changed for a section students already have.</dd></div>
+  </dl>
+
+  <p>Two decisions I made early kept the build small enough for two people. TypeScript for the server and the
+  console, Dart for the app, and nothing else, because two people should not juggle four languages.
+  And an embedded PostgreSQL for laptops, so one command starts the whole system and the tests run
+  against a real Postgres engine in memory. Real SMS, push and email sit behind interfaces with
+  development stand-ins, so the switch to production providers is a line in a config file.</p>
+
+  <p>I wrote the rules for working together into the repo, after we broke things. One screen
+  per branch. Same job, same control, even when the design shows something else. Migrating a screen
+  changes how it looks, never what it does. Run against the real server to check with real data, and
+  look, don&rsquo;t post, because the posts reach real students.</p>
+
+  <h2 id="where-it-stands">Where it stands</h2>
+
+  <p>I launch Kuul in the first week of the spring semester, February 2027, in a pilot faculty at
+  NUM and at the MUST School of ICT. I made the targets specific because I made the kill criteria specific too.
+  Move to the next faculty when 60 percent of this one has a timetable in the app, half the active
+  users have three friends linked, and a quarter are still here after thirty days. Stop and rethink
+  if, eight weeks after a real launch, penetration is under 30 percent or verification completion is
+  under 60.</p>
+
+  <p>What I am proudest of is not a screen. It is that a product with chat, personal data, minors
+  and campus-wide push notifications was designed from the first page to never hold a password it
+  does not need, never store an identifier it does not use, and never push a rumour. The screens are
+  the easy part. The rules are the product.</p>
+
+  <hr class="notes-rule">
+  <ol class="notes">
+    <li id="note-1"><span class="note-body">The phone screens on this page are renders from the design system Tengis built in late September 2026, which the Flutter app is being moved onto one screen at a time. The first build of the app, the one deployed on 23 September, had my own plainer look: ink on white, a red now-line, eight entry colours. <a class="note-back" href="#ref-1" aria-label="Back to reference 1"></a></span></li>
+    <li id="note-2"><span class="note-body">Market figures are from the 2025 to 2026 higher education statistics and the sources listed in my market report. Where I could not find a primary source, the report marks the number as an estimate, and I have left those out here. <a class="note-back" href="#ref-2" aria-label="Back to reference 2"></a></span></li>
+    <li id="note-3"><span class="note-body">The portal also turned out to be a semester behind. Two weeks into the 2026 autumn term, the current-semester endpoint still returned 2025 autumn. Freshness, not access, is the real risk with Tier A, and it is a conversation with NUM&rsquo;s student development centre rather than an engineering task. For the demo I shifted the real 2025 snapshot forward one year. <a class="note-back" href="#ref-3" aria-label="Back to reference 3"></a></span></li>
+    <li id="note-4"><span class="note-body">While checking the portal I also looked at bagsh.space, a schedule builder listed on NUM&rsquo;s open-data portal. Its live data carries raw integer ids that the open data does not expose, so it has a fresher feed than the public API. I noted that as a conversation to have with its founders, not as a competitor. <a class="note-back" href="#ref-4" aria-label="Back to reference 4"></a></span></li>
+  </ol>
+
+  <footer class="article-foot">
+    <h2 class="foot-heading">Similar</h2>
+    <ul class="related-list">
+      <li><a href="../work/nadad-oir.html">Nadad Oir brand identity<span>2023</span></a></li>
+      <li><a href="../work/minu-merchant.html">Minu Merchant app, version 2 redesign<span>2023</span></a></li>
+    </ul>
+  </footer>
+
+</article>
+
+<script src="../article.js?v=c5c2e37a" defer></script>
+<script src="../effects.js?v=92f0cab3" defer></script>
+</body>
+</html>

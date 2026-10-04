@@ -21,6 +21,18 @@
         "/Users/temo/Claude/Oyutan/landing"
       ],
       "port": 4322
+    },
+    {
+      "name": "kuul-design",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4323",
+        "--directory",
+        "/Users/temo/Claude/Oyutan/design_reference"
+      ],
+      "port": 4323
     }
   ]
 }
