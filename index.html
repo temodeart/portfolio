@@ -46,7 +46,8 @@
            hidden attribute here and on #panel-writing to bring the tab back. -->
       <button class="tab" role="tab" id="tab-writing" aria-controls="panel-writing" aria-selected="false" tabindex="-1" hidden>Writing</button>
       <button class="tab" role="tab" id="tab-apps"    aria-controls="panel-apps"    aria-selected="false" tabindex="-1">Apps</button>
-      <button class="tab" role="tab" id="tab-games"   aria-controls="panel-games"   aria-selected="false" tabindex="-1">Games</button>
+      <!-- Games is hidden for now. Delete the hidden attribute here and on #panel-games to bring it back. -->
+      <button class="tab" role="tab" id="tab-games"   aria-controls="panel-games"   aria-selected="false" tabindex="-1" hidden>Games</button>
       <button class="tab" role="tab" id="tab-about"   aria-controls="panel-about"   aria-selected="false" tabindex="-1">About</button>
       <span class="tab-indicator" aria-hidden="true"></span>
     </div>
@@ -121,7 +122,7 @@
     <!-- =========================== APPS =========================== -->
     <div class="panel" role="tabpanel" id="panel-apps" aria-labelledby="tab-apps" tabindex="0" hidden>
       <p class="panel-intro">The apps I made for various reasons beside work.</p>
-      <!-- Drop real icons into images/apps/ over the placeholders. -->
+      <!-- Aise, Exit Plan and Cattime are hidden until their case studies exist; delete hidden on each li to show them. -->
       <ul class="bento bento-apps">
         <li>
           <a class="card card-app" href="apps/kuul.html">
@@ -132,7 +133,7 @@
             <img class="card-icon" src="images/apps/kuul/app-icon-brand.svg" alt="" width="200" height="200">
           </a>
         </li>
-        <li>
+        <li hidden>
           <a class="card card-app">
             <div class="card-body">
               <h3 class="card-title">Aise</h3>
@@ -141,7 +142,7 @@
             <img class="card-icon" src="images/apps/aise.svg" alt="" width="256" height="256">
           </a>
         </li>
-        <li>
+        <li hidden>
           <a class="card card-app">
             <div class="card-body">
               <h3 class="card-title">Exit Plan</h3>
@@ -150,7 +151,7 @@
             <img class="card-icon" src="images/apps/exit-plan.svg" alt="" width="256" height="256">
           </a>
         </li>
-        <li>
+        <li hidden>
           <a class="card card-app">
             <div class="card-body">
               <h3 class="card-title">Cattime</h3>
