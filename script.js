@@ -367,6 +367,37 @@
     (window.requestIdleCallback || ((fn) => setTimeout(fn, 400)))(preload);
   }
 
+  /* ------------------------------------------------------------ email */
+
+  // A mailto link opens a blank tab for anyone without a mail app set up,
+  // which is most people on webmail. A plain click copies the address
+  // instead and says so; modified clicks and right-click keep the link.
+  for (const link of document.querySelectorAll('a[href^="mailto:"]')) {
+    const label = link.textContent;
+    let timer = 0;
+
+    link.addEventListener('click', async (event) => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      const address = link.getAttribute('href').slice(7).split('?')[0];
+      try {
+        await navigator.clipboard.writeText(address);
+      } catch {
+        const field = document.createElement('textarea');
+        field.value = address;
+        field.setAttribute('readonly', '');
+        field.style.cssText = 'position:fixed;opacity:0';
+        document.body.append(field);
+        field.select();
+        try { document.execCommand('copy'); } catch { /* nothing more to try */ }
+        field.remove();
+      }
+      link.textContent = 'Copied to clipboard';
+      clearTimeout(timer);
+      timer = setTimeout(() => { link.textContent = label; }, 1800);
+    });
+  }
+
   /* ------------------------------------------------------------ clock */
 
   const clock = document.querySelector('.clock');
